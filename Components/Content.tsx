@@ -16,7 +16,7 @@ export default function Content() {
           </div>
           {/* para */}
           <div className="flex flex-col justify-start p-4 gap-y-4">
-            <p className="text-left leading-3 text-gray-600 dark:text-gray-400 text-lg font-semibold">
+            <p className="text-left leading-6 text-gray-600 dark:text-gray-400 text-lg font-semibold">
               Hi, am abir & a web developer | UI designer. Besides this i am
               undergraduate studen.
             </p>

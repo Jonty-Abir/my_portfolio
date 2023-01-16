@@ -7,10 +7,10 @@ function About() {
         </h2>
       </div>
       <div className="grid grid-cols-1 mob-md:grid-cols-2 text-black  dark:text-gray-500 p-6 gap-8">
-        <p className="text-gray-500 dark:text-gray-400 text-right text-lg font-semibold">
+        <p className="text-gray-500 dark:text-gray-400 text-left text-lg font-semibold">
           I love to do something differen.
         </p>
-        <p className="text-gray-500 dark:text-gray-400 text-right text-lg font-semibold">
+        <p className="text-gray-500 dark:text-gray-400 text-left text-lg font-semibold">
           I started coding few year ago & currently am 3rd of my collage, i{"'"}{" "}
           a undergraduate, studying Computer Science & Engineering at IST
           Institute of Science and Technology.
