@@ -2,12 +2,12 @@ function ContactUs() {
   return (
     <div>
       <div className="mb-16 space-y-4">
-        <div className="flex flex-col justify-start items-start p-4 gap-y-4">
+        <div className="flex flex-col justify-start items-start p-4 gap-y-8">
           <h2 className=" text-gray-800 font-bold dark:text-white text-2xl border-b-4 pb-2 capitalize">
             contact me
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 text-lg">
-            sumit the form bellow to get in touch with me
+          <p className="text-gray-600 dark:text-gray-400 text-lg font-semibold">
+            Submit the form bellow to get in touch with me.
           </p>
         </div>
         <div
@@ -23,7 +23,7 @@ function ContactUs() {
               name="name"
               type="text"
               placeholder="enter your name"
-              className=" focus:outline-none bg-transparent rounded-md border-gray-800 dark:border-white border-2 text-gray-600 dark:text-gray-300 px-1 py-2 h-full w-full focus:outline-dashed focus:outline-green-500"
+              className=" focus:outline-none bg-transparent rounded-md border-gray-700 dark:border-white border-2 text-gray-600 dark:text-gray-300 px-1 py-2 h-full w-full focus:outline-dashed focus:outline-green-500"
               autoComplete="off"
               required
             />
@@ -31,7 +31,7 @@ function ContactUs() {
               name="subject"
               type="text"
               placeholder="subject"
-              className=" focus:outline-none bg-transparent rounded-md border-gray-800 dark:border-white border-2 text-gray-600 dark:text-gray-300 px-1 py-2 h-full w-full focus:outline-dashed focus:outline-green-500"
+              className=" focus:outline-none bg-transparent rounded-md border-gray-700 dark:border-white border-2 text-gray-600 dark:text-gray-300 px-1 py-2 h-full w-full focus:outline-dashed focus:outline-green-500"
               autoComplete="off"
               required
             />
@@ -40,7 +40,7 @@ function ContactUs() {
               name="email"
               id="email"
               placeholder="example@gmail.com"
-              className=" focus:outline-none bg-transparent rounded-md border-gray-800 dark:border-white border-2 text-gray-600 dark:text-gray-300 px-1 py-2 h-full w-full focus:outline-dashed focus:outline-green-500"
+              className=" focus:outline-none bg-transparent rounded-md border-gray-700 dark:border-white border-2 text-gray-600 dark:text-gray-300 px-1 py-2 h-full w-full focus:outline-dashed focus:outline-green-500"
               autoComplete="off"
               required
             />
@@ -50,11 +50,11 @@ function ContactUs() {
               id="msg"
               cols={35}
               rows={10}
-              className="focus:outline-none bg-transparent rounded-md border-gray-800 dark:border-white border-2 text-gray-600 dark:text-gray-300 px-1 py-2 h-full w-full focus:outline-dashed focus:outline-green-500"
+              className="focus:outline-none bg-transparent rounded-md border-gray-700 dark:border-white border-2 text-gray-600 dark:text-gray-300 px-1 py-2 h-full w-full focus:outline-dashed focus:outline-green-500"
             ></textarea>
             <button
               type="submit"
-              className="focus:outline-none bg-transparent rounded-md border-gray-800 dark:border-white border-2  dark:text-white capitalize font-bold  px-1 py-2 h-full w-[40%] bg-blue-600 text-white "
+              className="focus:outline-none bg-transparent rounded-md border-gray-700 dark:border-white border-2  dark:text-white capitalize font-bold  px-1 py-2 h-full w-[40%] bg-blue-600 text-white "
             >
               submit
             </button>

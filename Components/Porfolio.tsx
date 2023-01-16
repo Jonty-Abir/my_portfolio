@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ReactElement } from "react";
 import uniqid from "uniqid";
 import ourFImg from "../public/assets/pf1.jpg";
@@ -12,9 +13,9 @@ function Portfolio() {
   interface markup {
     id: string;
     child: ReactElement;
+    link: string;
   }
-  console.log(uniqid());
-  const markupArray = [
+  const markupArray: markup[] = [
     {
       id: uniqid(),
       child: (
@@ -27,6 +28,7 @@ function Portfolio() {
           />
         </>
       ),
+      link: "https://ourfamilychatapp.onrender.com/",
     },
     {
       id: uniqid(),
@@ -40,6 +42,7 @@ function Portfolio() {
           />
         </>
       ),
+      link: "https://weatherapp-0ls3.onrender.com/",
     },
     {
       id: uniqid(),
@@ -53,6 +56,7 @@ function Portfolio() {
           />
         </>
       ),
+      link: "https://mahapravufurniture.netlify.app/",
     },
     {
       id: uniqid(),
@@ -66,6 +70,7 @@ function Portfolio() {
           />
         </>
       ),
+      link: "https://mahapravufurniture.netlify.app/",
     },
     {
       id: uniqid(),
@@ -79,6 +84,7 @@ function Portfolio() {
           />
         </>
       ),
+      link: "https://quize-app-by-abir.netlify.app/login",
     },
     {
       id: uniqid(),
@@ -92,6 +98,7 @@ function Portfolio() {
           />
         </>
       ),
+      link: "https://quize-app-by-abir.netlify.app/login",
     },
   ];
   return (
@@ -102,28 +109,24 @@ function Portfolio() {
           <h2 className="text-black inline pb-2 dark:text-white font-bold text-2xl ml-4 border-b-4 border-gray-800 dark:border-blue-50">
             Portfolio
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-500 p-4">
-            Chek out my work right here
+          <p className="text-lg text-gray-600 dark:text-gray-400 p-4 font-semibold ">
+            Chek out my project right here
           </p>
         </div>
         {/* Image section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 grid-flow-row gap-4 gap-y-8 group justify-center items-center p-4 md:p-4">
-          {markupArray.map(() => {
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 grid-flow-row gap-4 gap-y-8 group justify-center items-center p-4 md:p-4 bg-red-500">
+          {markupArray.map(({ id, child, link }) => {
+            let keyId = uniqid();
             return (
               <>
-                <>
-                  <div
-                    key={uniqid().toString()}
-                    className=" rounded-2xl w-[90%] h-80 mx-auto shadow-lg dark:shadow-gray-400 shadow-gray-800"
-                  >
-                    <Image
-                      key={uniqid().toString()}
-                      src={quize1}
-                      alt="portfplipImg"
-                      className=" h-[100%] object-fill rounded-2xl"
-                    />
-                  </div>
-                </>
+                <div
+                  key={keyId}
+                  className=" rounded-2xl w-[90%] h-80 mx-auto shadow-lg dark:shadow-gray-400 shadow-gray-800"
+                >
+                  <Link href={link} target="_blank">
+                    {child}
+                  </Link>
+                </div>
               </>
             );
           })}

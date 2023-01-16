@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ReactElement } from "react";
+import uniqid from "uniqid";
 import bootstrap from "../public/assets/bootstrap.png";
 import c from "../public/assets/c.svg";
 import css from "../public/assets/css3.svg";
@@ -17,14 +18,14 @@ import typeScript from "../public/assets/typescript.svg";
 
 function Experience() {
   interface obj {
-    id: number;
+    id: string;
     img: ReactElement;
     title: string;
     sub: string;
   }
   const objArr: obj[] = [
     {
-      id: 1,
+      id: uniqid(),
       img: (
         <>
           <Image
@@ -38,7 +39,7 @@ function Experience() {
       title: "web design",
     },
     {
-      id: 2,
+      id: uniqid(),
       img: (
         <>
           <Image
@@ -52,7 +53,7 @@ function Experience() {
       title: "web design",
     },
     {
-      id: 3,
+      id: uniqid(),
       img: (
         <>
           <Image
@@ -66,7 +67,7 @@ function Experience() {
       title: "Framework",
     },
     {
-      id: 4,
+      id: uniqid(),
       img: (
         <>
           <Image
@@ -80,7 +81,7 @@ function Experience() {
       title: "Framework",
     },
     {
-      id: 5,
+      id: uniqid(),
       img: (
         <>
           <Image
@@ -94,7 +95,7 @@ function Experience() {
       title: "programing language",
     },
     {
-      id: 6,
+      id: uniqid(),
       img: (
         <>
           <Image
@@ -108,7 +109,7 @@ function Experience() {
       title: "programing language",
     },
     {
-      id: 7,
+      id: uniqid(),
       img: (
         <>
           <Image
@@ -122,7 +123,7 @@ function Experience() {
       title: "Runtime",
     },
     {
-      id: 8,
+      id: uniqid(),
       img: (
         <>
           <Image
@@ -136,7 +137,7 @@ function Experience() {
       title: "library",
     },
     {
-      id: 9,
+      id: uniqid(),
       img: (
         <>
           <Image src={next} alt="logo" className="h-20 w-16 object-contain" />
@@ -147,7 +148,7 @@ function Experience() {
     },
 
     {
-      id: 10,
+      id: uniqid(),
       img: (
         <>
           <Image
@@ -161,7 +162,7 @@ function Experience() {
       title: "framework",
     },
     {
-      id: 11,
+      id: uniqid(),
       img: (
         <>
           <Image
@@ -175,7 +176,7 @@ function Experience() {
       title: "DataBase",
     },
     {
-      id: 12,
+      id: uniqid(),
       img: (
         <>
           <Image
@@ -189,7 +190,7 @@ function Experience() {
       title: "web development",
     },
     {
-      id: 13,
+      id: uniqid(),
       img: (
         <>
           <Image
@@ -203,7 +204,7 @@ function Experience() {
       title: "software development kit",
     },
     {
-      id: 14,
+      id: uniqid(),
       img: (
         <>
           <Image
@@ -218,15 +219,15 @@ function Experience() {
     },
   ];
   return (
-    <div className="flex flex-col mb-12">
-      <div className="p-4 flex flex-col gap-8 mb-4">
-        <div>
+    <div className="flex flex-col mb-12 h-full">
+      <div className="p-4 flex flex-col gap-y-8 mb-4">
+        <div className="mt-4">
           <h2 className=" text-2xl inline font-bold text-black  pb-4 dark:text-white border-b-4 border-b-black dark:border-b-white">
-            Technology
+            Experience
           </h2>
         </div>
-        <p className="text-gray-600 dark:text-gray-300 text-lg">
-          there are the technologies i have worked with.
+        <p className="text-gray-600 dark:text-gray-400 text-lg font-semibold text-justify mt-8 px-4">
+          Here we have some technologies which are i used daily.
         </p>
       </div>
       <div className="grid gap-4 p-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3">

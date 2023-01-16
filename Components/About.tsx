@@ -6,23 +6,22 @@ function About() {
           About Me
         </h2>
       </div>
-      <div className="grid grid-cols-1 mob-md:grid-cols-2 text-black  dark:text-gray-500">
-        <div>
-          <p className="p-6 text-gray-500 dark:text-gray-400 text-justify text-lg">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat
-            nemo nesciunt beatae unde iure atque? Esse temporibus debitis vel
-            dolorum fugiat perferendis, error explicabo laborum ut, odio
-            nesciunt minus in.
-          </p>
-        </div>
-        <div>
-          <p className="p-6 text-gray-500 dark:text-gray-400 text-justify text-lg">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis
-            facilis ipsum dolores dolor doloribus in officia, delectus
-            recusandae modi labore optio quos, libero deleniti doloremque
-            repudiandae, deserunt aliquid! Autem, a!
-          </p>
-        </div>
+      <div className="grid grid-cols-1 mob-md:grid-cols-2 text-black  dark:text-gray-500 p-6 gap-8">
+        <p className="text-gray-500 dark:text-gray-400 text-right text-lg font-semibold">
+          I love to do something differen.
+        </p>
+        <p className="text-gray-500 dark:text-gray-400 text-right text-lg font-semibold">
+          I started coding few year ago & currently am 3rd of my collage, i{"'"}{" "}
+          a undergraduate, studying Computer Science & Engineering at IST
+          Institute of Science and Technology.
+        </p>
+        {/* <p className="text-gray-500 dark:text-gray-400 text-right text-lg">
+          I{"'"}m pretty positive and strong-willed and I always finish what I
+          start. My dream is to be happy in life, doing what I love and being
+          surrounded by my loved ones. When I{"'"}m not coding, I love to hang
+          out with my friends and play video games, listen to music, jam on my
+          drums, and watch Anime.
+        </p> */}
       </div>
     </div>
   );

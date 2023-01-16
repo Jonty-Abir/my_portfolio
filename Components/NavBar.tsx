@@ -84,7 +84,14 @@ export default function NavBar() {
         {/* NavBar For Mobile */}
 
         {manuBar && (
-          <ul className="flex flex-col justify-center items-center absolute left-0 top-0 w-full h-screen text-gray-800 dark:text-gray-300 font-bold backdrop-blur-md duration-500 space-y-10 md:hidden z-40">
+          <ul
+            className="flex flex-col justify-center items-center absolute left-0 top-0 w-full h-screen text-white font-bold  space-y-10 md:hidden z-40"
+            style={{
+              // background: "rgb(2,0,36)",
+              background:
+                "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,0.6979166666666667) 35%, rgba(0,212,255,1) 100%)",
+            }}
+          >
             {links.map(({ id, pageLink, pageTittle }) => {
               return (
                 <Link key={id} href={pageLink}>
