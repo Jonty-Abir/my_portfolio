@@ -1,0 +1,38 @@
+/* import google fonts */
+/* raleway font */
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+/*Great vibes font*/
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* genarate utility */
+
+.mainDiv {
+  @apply p-6 max-w-sm mx-auto bg-white rounded-xl flex items-center space-x-4 dark:bg-gray-600 dark:hover:bg-purple-900 hover:scale-105 duration-500 hover:shadow-md hover:shadow-white;
+}
+
+@layer base {
+  html {
+    font-family: "Raleway", sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+  ::-webkit-scrollbar {
+    width: 1.2rem;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: rgba(21, 24, 39, 0.487);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(41, 245, 129, 0.61);
+    border-radius: 1rem;
+    border: 0.2rem solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #129ff7;
+  }
+}
