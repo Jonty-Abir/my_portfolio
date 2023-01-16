@@ -16,10 +16,10 @@ function contact() {
       </Head>
       <main className="w-screen h-full flex flex-col gap-y-4">
         <NavBar />
-        <div className="flex flex-col justify-center mt-20 mx-4">
+        <div className="flex flex-col justify-center mt-20">
           <div className="flex flex-col justify-center capitalize dark:text-white">
-            <div className="flex flex-col font-bold text-4xl text-green-500 items-center my-4">
-              <h2 className="font-bold py-20">Contact me</h2>
+            <div className="flex flex-col font-bold text-4xl text-green-500 items-center">
+              <h2 className="font-bold">Contact me</h2>
             </div>
             <br />
             <ContactMe />

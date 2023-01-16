@@ -226,7 +226,7 @@ function Experience() {
             Experience
           </h2>
         </div>
-        <p className="text-gray-600 dark:text-gray-400 text-lg font-semibold text-justify mt-8 px-4">
+        <p className="text-gray-600 dark:text-gray-400 text-lg font-semibold text-left mt-8 px-4">
           Here we have some technologies which are i used daily.
         </p>
       </div>
