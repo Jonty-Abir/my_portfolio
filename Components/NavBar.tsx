@@ -72,14 +72,25 @@ export default function NavBar() {
             );
           })}
         </ul>
-
-        <div
-          className="z-50 p-4 m-2 md:hidden"
-          onClick={() => {
-            setManuBar(!manuBar);
-          }}
-        >
-          {manuBar ? <FaTimes size={30} /> : <FaBars size={30} />}
+        <div className="z-50 flex w-auto md:hidden">
+          <div
+            onClick={switchTheme}
+            className="md:hidden flex justify-center items-center"
+          >
+            {theme ? (
+              <FaMoon size={30} className="hover:animate-spin duration-900" />
+            ) : (
+              <FaSun size={30} className="hover:animate-spin duration-900" />
+            )}
+          </div>
+          <div
+            className="z-50 p-4 m-2 md:hidden"
+            onClick={() => {
+              setManuBar(!manuBar);
+            }}
+          >
+            {manuBar ? <FaTimes size={30} /> : <FaBars size={30} />}
+          </div>
         </div>
         {/* NavBar For Mobile */}
 
@@ -103,9 +114,9 @@ export default function NavBar() {
             })}
             <li onClick={switchTheme} className="hover:text-green-500">
               {theme ? (
-                <FaSun size={30} className="hover:animate-spin duration-900" />
+                <FaMoon size={30} className="hover:animate-spin duration-900" />
               ) : (
-                <FaMoon size={30} />
+                <FaSun size={30} className="hover:animate-spin duration-900" />
               )}
             </li>
           </ul>
