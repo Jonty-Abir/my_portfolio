@@ -60,9 +60,13 @@ export default function NavBar() {
         <ul className="hidden md:flex justify-center items-center space-x-10 px-4 mr-16">
           <li onClick={switchTheme} className="cursor-pointer">
             {theme ? (
-              <FaSun size={30} className="hover:animate-spin duration-900" />
+              <FaSun
+                size={30}
+                className="hover:animate-spin duration-900"
+                style={{ zIndex: 9999 }}
+              />
             ) : (
-              <FaMoon size={30} />
+              <FaMoon size={30} style={{ zIndex: 9999 }} />
             )}
           </li>
           {links.map(({ id, pageLink, pageTittle }) => {
@@ -75,20 +79,25 @@ export default function NavBar() {
             );
           })}
         </ul>
-
-        <div
-          className="z-50 p-4 m-2 md:hidden"
-          onClick={() => {
-            setManuBar(!manuBar);
-          }}
-        >
-          {manuBar ? <FaTimes size={30} /> : <FaBars size={30} />}
+        <div className="flex items-center">
+          <div className="flex md:hidden" onClick={switchTheme}>
+            {theme ? <FaSun size={30} /> : <FaMoon size={30} />}
+          </div>
+          <div
+            className=" z-50 p-4 m-2 md:hidden"
+            style={{ zIndex: 9999 }}
+            onClick={() => {
+              setManuBar(!manuBar);
+            }}
+          >
+            {manuBar ? <FaTimes size={30} /> : <FaBars size={30} />}
+          </div>
         </div>
         {/* NavBar For Mobile */}
 
         {manuBar && (
           <ul
-            className="flex flex-col justify-center items-center absolute left-0 top-0 w-full h-screen text-white font-bold  space-y-10 md:hidden z-40"
+            className=" flex flex-col justify-center items-center absolute left-0 top-0 w-full h-screen text-white font-bold  space-y-10 md:hidden z-40"
             style={{
               // background: "rgb(2,0,36)",
               background:
