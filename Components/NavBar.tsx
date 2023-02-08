@@ -81,7 +81,7 @@ export default function NavBar() {
         </ul>
         <div className="flex items-center">
           <div className="flex md:hidden" onClick={switchTheme}>
-            {theme ? <FaSun size={30} /> : <FaMoon size={30} />}
+            {theme ? <FaMoon size={30} /> : <FaSun size={30} />}
           </div>
           <div
             className=" z-50 p-4 m-2 md:hidden"
