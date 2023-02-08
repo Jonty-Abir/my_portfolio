@@ -114,15 +114,16 @@ function Portfolio() {
           </p>
         </div>
         {/* Image section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 grid-flow-row gap-4 gap-y-8 group justify-center items-center p-4 md:p-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 grid-flow-row gap-4 gap-y-8 group justify-center items-center p-4 md:p-4">
           {markupArray.map(({ id, child, link }) => {
             let keyId = uniqid();
             return (
               <>
                 <div
                   key={keyId}
-                  className=" rounded-2xl w-[90%] h-80 mx-auto shadow-lg dark:shadow-gray-400 shadow-gray-800"
+                  className="projectBlur rounded-2xl w-[90%] h-80 mx-auto shadow-lg dark:shadow-gray-400 shadow-gray-800 hover:scale-105 duration-300 relative"
                 >
+                  {" "}
                   <Link href={link} target="_blank">
                     {child}
                   </Link>

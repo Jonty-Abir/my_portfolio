@@ -46,7 +46,10 @@ export default function NavBar() {
   ];
   return (
     <div className="">
-      <nav className=" hover:scale-100 h-16 w-screen bg-gray-200 text-gray-800 dark:bg-transparent dark:text-slate-100  bg-transparent flex justify-between text-lg items-center backdrop-blur fixed">
+      <nav
+        className="navbar hover:scale-100 h-16 w-screen bg-gray-200 text-gray-800 bg-transparent dark:bg-transparent dark:text-slate-100 flex justify-between text-lg items-center backdrop-blur"
+        style={{ position: "fixed", zIndex: 9999 }}
+      >
         <div className="flex justify-center items-center">
           <h1 className="font-signature px-4 font-bold text-4xl">
             Abir Santra
