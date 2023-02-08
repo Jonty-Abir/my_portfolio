@@ -79,7 +79,7 @@ export default function NavBar() {
             );
           })}
         </ul>
-        <div className="flex items-center">
+        <div className="flex items-center md:hidden">
           <div className="flex md:hidden" onClick={switchTheme}>
             {theme ? <FaMoon size={30} /> : <FaSun size={30} />}
           </div>
