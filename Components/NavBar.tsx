@@ -61,13 +61,13 @@ export default function NavBar() {
           <ul className="hidden md:flex justify-center items-center space-x-10 px-4 mr-16">
             <li onClick={switchTheme} className="cursor-pointer">
               {theme ? (
+                <FaMoon size={30} style={{ zIndex: 9999 }} />
+              ) : (
                 <FaSun
                   size={30}
                   className="hover:animate-spin duration-900"
                   style={{ zIndex: 9999 }}
                 />
-              ) : (
-                <FaMoon size={30} style={{ zIndex: 9999 }} />
               )}
             </li>
             {links.map(({ id, pageLink, pageTittle }) => {
@@ -82,7 +82,7 @@ export default function NavBar() {
           </ul>
           <div className="flex items-center md:hidden">
             <div className="flex md:hidden" onClick={switchTheme}>
-              {theme ? <FaSun size={30} /> : <FaMoon size={30} />}
+              {theme ? <FaMoon size={30} /> : <FaSun size={30} />}
             </div>
             <div
               className=" z-50 p-4 m-2 md:hidden"
