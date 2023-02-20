@@ -82,7 +82,7 @@ export default function NavBar() {
           </ul>
           <div className="flex items-center md:hidden">
             <div className="flex md:hidden" onClick={switchTheme}>
-              {theme ? <FaMoon size={30} /> : <FaSun size={30} />}
+              {theme ? <FaSun size={30} /> : <FaMoon size={30} />}
             </div>
             <div
               className=" z-50 p-4 m-2 md:hidden"
@@ -116,12 +116,12 @@ export default function NavBar() {
               })}
               <li onClick={switchTheme} className="hover:text-green-500">
                 {theme ? (
+                  <FaMoon size={30} />
+                ) : (
                   <FaSun
                     size={30}
                     className="hover:animate-spin duration-900"
                   />
-                ) : (
-                  <FaMoon size={30} />
                 )}
               </li>
             </ul>
