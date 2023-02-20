@@ -1,3 +1,4 @@
+import { GetStaticProps } from "next";
 import Head from "next/head";
 import About from "../Components/About";
 import Footer from "../Components/Footer";
@@ -29,3 +30,10 @@ function about() {
 }
 
 export default about;
+
+// just for static genration
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {},
+  };
+};

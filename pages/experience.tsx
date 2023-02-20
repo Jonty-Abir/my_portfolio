@@ -1,3 +1,5 @@
+import { GetStaticProps } from "next";
+
 import Head from "next/head";
 import Experience from "../Components/Experience";
 import Footer from "../Components/Footer";
@@ -34,3 +36,10 @@ function experience() {
 }
 
 export default experience;
+
+// just for static genration
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {},
+  };
+};

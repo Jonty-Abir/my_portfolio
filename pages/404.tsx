@@ -1,3 +1,4 @@
+import { GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import Footer from "../Components/Footer";
@@ -31,3 +32,10 @@ function NotFound() {
 }
 
 export default NotFound;
+
+// just for static genration
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {},
+  };
+};
