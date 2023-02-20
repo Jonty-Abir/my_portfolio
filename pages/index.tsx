@@ -6,7 +6,6 @@ import ContactUs from "../Components/ContactMe";
 import Content from "../Components/Content";
 import Experience from "../Components/Experience";
 import Footer from "../Components/Footer";
-import NavBar from "../Components/NavBar";
 import Portfolio from "../Components/Porfolio";
 import SocialIcone from "../Components/SciolIcone";
 
@@ -25,7 +24,6 @@ export default function Home() {
         <link rel="icon" href="./assets/favicone.png" />
       </Head>
       <main>
-        <NavBar />
         <Content />
         <SocialIcone />
         <About />

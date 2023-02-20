@@ -2,7 +2,6 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import Footer from "../Components/Footer";
-import NavBar from "../Components/NavBar";
 function NotFound() {
   return (
     <>
@@ -13,7 +12,6 @@ function NotFound() {
       </Head>
       <div className="flex flex-col  w-full h-screen">
         <main className="w-screen h-full flex flex-col gap-y-4">
-          <NavBar />
           <div className=" flex flex-col items-center justify-center h-full  text-white gap-6 p-4 ">
             <h2 className=" font-bold text-gray-500 dark:text-white text-xl md:text-3xl ">
               <code>Page Was Not Found {":("}</code>

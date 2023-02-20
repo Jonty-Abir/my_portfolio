@@ -3,7 +3,6 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import Experience from "../Components/Experience";
 import Footer from "../Components/Footer";
-import NavBar from "../Components/NavBar";
 function experience() {
   return (
     <>
@@ -18,7 +17,6 @@ function experience() {
       </Head>
       <div className="flex flex-col  w-full h-full">
         <main className="w-screen h-full flex flex-col gap-y-4">
-          <NavBar />
           <div className="mt-20">
             <div className="flex justify-center items-center">
               <h2 className="text-green-500 font-extrabold text-4xl capitalize ">

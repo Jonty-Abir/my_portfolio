@@ -2,7 +2,6 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import ContactMe from "../Components/ContactMe";
 import Footer from "../Components/Footer";
-import NavBar from "../Components/NavBar";
 function contact() {
   return (
     <>
@@ -16,7 +15,6 @@ function contact() {
         <link rel="icon" href="./assets/favicone.png" />
       </Head>
       <main className="w-screen h-full flex flex-col gap-y-4">
-        <NavBar />
         <div className="flex flex-col justify-center mt-20">
           <div className="flex flex-col justify-center capitalize dark:text-white">
             <div className="flex flex-col font-bold text-4xl text-green-500 items-center">
