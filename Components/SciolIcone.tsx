@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useState } from "react";
 import {
   AiFillLinkedin,
   AiOutlineGithub,
@@ -9,7 +9,7 @@ import { MdOutlineMarkEmailRead } from "react-icons/md";
 import uniqid from "uniqid";
 
 const SocialIcone = () => {
-  const [isVisable, setIsVisable] = useState(false);
+  const [isVisable, setIsVisable] = useState(true);
   interface objIner {
     id: string;
     socialMedia: string;
@@ -50,7 +50,7 @@ const SocialIcone = () => {
     {
       id: uniqid(),
       socialMedia: "Resume",
-      link: "assets/resume.pdf",
+      link: "https://abirsantra.w3spaces.com/",
       child: (
         <>
           <FaUserTie size={30} />
@@ -101,39 +101,40 @@ const SocialIcone = () => {
       setIsVisable(false);
     }
   };
-  useEffect(() => {
-    window.addEventListener("scroll", listenToScrol);
-    return () => window.removeEventListener("scroll", listenToScrol);
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener("scroll", listenToScrol);
+  //   return () => window.removeEventListener("scroll", listenToScrol);
+  // }, []);
 
   return (
     <>
-      <div className="hidden md:flex lg:flex xl:flex 2xl:flex flex-col top-[35%] left-0 fixed ">
+      <div
+        className="hidden s md:flex lg:flex xl:flex 2xl:flex flex-col top-[35%] left-0 fixed "
+        style={{ position: "fixed", zIndex: 9999 }}
+      >
         {isVisable && (
           <ul className="flex flex-col gap-y-1">
             {obj.map(({ id, link, socialMedia, child }, index) => {
               if (index <= 3) {
                 return (
-                  <>
-                    <li
-                      key={index}
-                      className="flex flex-col items-center justify-center  w-40 h-14 px-4 bg-gray-500 ml-[-100px] rounded-sm hover:rounded-md hover:ml-[5px] hover:ring-2 hover:ring-green-500 duration-300"
+                  <li
+                    key={index}
+                    className="flex flex-col items-center justify-center  w-40 h-14 px-4 bg-gray-500 ml-[-100px] rounded-sm hover:rounded-md hover:ml-[5px] hover:ring-2 hover:ring-green-500 duration-300"
+                  >
+                    <a
+                      href={link}
+                      className="flex justify-between items-center text-white w-full"
+                      target="_blank"
+                      rel="noreferrer"
                     >
-                      <a
-                        href={link}
-                        className="flex justify-between items-center text-white w-full"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <>
-                          {socialMedia} {child}
-                        </>
-                      </a>
-                    </li>
-                  </>
+                      <>
+                        {socialMedia} {child}
+                      </>
+                    </a>
+                  </li>
                 );
               } else {
-                return <></>;
+                return <div key={index}></div>;
               }
             })}
           </ul>
@@ -144,23 +145,21 @@ const SocialIcone = () => {
         <ul className="grid gap-2 mob-sm:grid-cols-2  mob-lg:grid-cols-4  justify-center mx-auto items-center  p">
           {obj.map(({ id, link, socialMedia, child }) => {
             return (
-              <>
-                <li
-                  key={id}
-                  className=" mt-0 flex flex-col items-center justify-center w-full h-14 px-4 bg-gray-500 rounded-sm hover:ring-4 ring-green-500 hover:scale-105 duration-500"
+              <li
+                key={id}
+                className=" mt-0 flex flex-col items-center justify-center w-full h-14 px-4 bg-gray-500 rounded-sm hover:ring-4 ring-green-500 hover:scale-105 duration-500"
+              >
+                <a
+                  href={link}
+                  className="mt-0 flex justify-between items-center text-white w-full"
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  <a
-                    href={link}
-                    className="mt-0 flex justify-between items-center text-white w-full"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <>
-                      {socialMedia} {child}
-                    </>
-                  </a>
-                </li>
-              </>
+                  <>
+                    {socialMedia} {child}
+                  </>
+                </a>
+              </li>
             );
           })}
         </ul>

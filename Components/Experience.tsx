@@ -10,9 +10,11 @@ import html from "../public/assets/html5.svg";
 import javaScript from "../public/assets/javascript.png";
 import mongoDd from "../public/assets/mongodb.svg";
 import mongoose from "../public/assets/mongoose.png";
-import next from "../public/assets/next.svg";
+import next from "../public/assets/next-js.svg";
 import nodeJs from "../public/assets/nodejs.svg";
+import react_Query from "../public/assets/react-query.svg";
 import react from "../public/assets/react.svg";
+import redux from "../public/assets/redux.svg";
 import tailwindCss from "../public/assets/tailwindcss.svg";
 import typeScript from "../public/assets/typescript.svg";
 
@@ -140,6 +142,34 @@ function Experience() {
       id: uniqid(),
       img: (
         <>
+          <Image
+            src={react_Query}
+            alt="logo"
+            className="h-20 w-16 object-contain rounded-3xl"
+          />
+        </>
+      ),
+      sub: "React Query",
+      title: "library",
+    },
+    {
+      id: uniqid(),
+      img: (
+        <>
+          <Image
+            src={redux}
+            alt="logo"
+            className="h-20 w-16 object-contain rounded-3xl"
+          />
+        </>
+      ),
+      sub: "Redux JS",
+      title: "library",
+    },
+    {
+      id: uniqid(),
+      img: (
+        <>
           <Image src={next} alt="logo" className="h-20 w-16 object-contain" />
         </>
       ),
@@ -227,31 +257,29 @@ function Experience() {
           </h2>
         </div>
         <p className="text-gray-600 dark:text-gray-400 text-lg font-semibold text-left mt-8 px-4">
-          Here we have some technologies which are i used daily.
+          Here i have some technologies which are i used daily.
         </p>
       </div>
       <div className="grid gap-4 p-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3">
         {objArr.map(({ id, img, sub, title }) => {
           return (
-            <>
-              <div
-                key={id}
-                className=" hover:ring-2 hover:ring-green-400 h-auto px-6 py-3 rounded-md w-full flex gap-x-6 justify-start items-center dark:shadow-gray-400 shadow-gray-800 hover:shadow-none shadow-md bg-gray-300 dark:bg-gray-700 hover:scale-105 duration-300 "
-              >
-                <div>
-                  {/* img */}
-                  {img}
-                </div>
-                <div className="flex flex-col gap-y-1 justify-center items-start">
-                  <h2 className="text-green-500 font-extrabold text-lg capitalize">
-                    {sub}
-                  </h2>
-                  <p className="text-gray-600 dark:text-gray-400 font-bold capitalize">
-                    {title}
-                  </p>
-                </div>
+            <div
+              key={id}
+              className=" hover:ring-2 hover:ring-green-400 h-auto px-6 py-3 rounded-md w-full flex gap-x-6 justify-start items-center dark:shadow-gray-400 shadow-gray-800 hover:shadow-none shadow-md bg-gray-300 dark:bg-gray-700 hover:scale-105 duration-300 "
+            >
+              <div>
+                {/* img */}
+                {img}
               </div>
-            </>
+              <div className="flex flex-col gap-y-1 justify-center items-start">
+                <h2 className="text-green-500 font-extrabold text-lg capitalize">
+                  {sub}
+                </h2>
+                <p className="text-gray-600 dark:text-gray-400 font-bold capitalize">
+                  {title}
+                </p>
+              </div>
+            </div>
           );
         })}
       </div>

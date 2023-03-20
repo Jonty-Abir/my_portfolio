@@ -118,17 +118,15 @@ function Portfolio() {
           {markupArray.map(({ id, child, link }) => {
             let keyId = uniqid();
             return (
-              <>
-                <div
-                  key={keyId}
-                  className="projectBlur rounded-2xl w-[90%] h-80 mx-auto shadow-lg dark:shadow-gray-400 shadow-gray-800 hover:scale-105 duration-300 relative"
-                >
-                  {" "}
-                  <Link href={link} target="_blank">
-                    {child}
-                  </Link>
-                </div>
-              </>
+              <div
+                key={keyId}
+                className="projectBlur rounded-2xl w-[90%] h-80 mx-auto shadow-lg dark:shadow-gray-400 shadow-gray-800 hover:scale-105 duration-300 relative"
+              >
+                {" "}
+                <Link href={link} target="_blank">
+                  {child}
+                </Link>
+              </div>
             );
           })}
         </div>
