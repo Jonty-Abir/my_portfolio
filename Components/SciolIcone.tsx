@@ -141,8 +141,8 @@ const SocialIcone = () => {
         )}
       </div>
       {/* formmobile */}
-      <div className="mob-sm:flex  md:hidden xl:hidden 2xl:hidden mt-8">
-        <ul className="grid gap-2 mob-sm:grid-cols-2  mob-lg:grid-cols-4  justify-center mx-auto items-center  p">
+      <div className="mob-sm:flex  md:hidden xl:hidden 2xl:hidden ">
+        <ul className="grid gap-2 mob-sm:grid-cols-2  mob-lg:grid-cols-4 mt-8  justify-center mx-auto items-center">
           {obj.map(({ id, link, socialMedia, child }) => {
             return (
               <li

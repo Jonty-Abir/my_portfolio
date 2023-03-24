@@ -6,27 +6,33 @@ function About() {
           About Me
         </h2>
       </div>
-      <div className="grid grid-cols-1 mob-md:grid-cols-2 text-black  dark:text-gray-500 p-6 gap-8 font-thin">
-        <p
-          className="text-gray-600 dark:text-gray-400 text-left text-xl font-semibold"
-          // style={{ fontSize: "18px", lineHeight: "30px" }}
+      <div className="grid grid-cols-1 mob-md:grid-cols-2 text-black   dark:text-gray-500 p-6 gap-8 font-thin">
+        <div
+          className="text-gray-600 dark:text-gray-400 text-left text-xl font-semibold leading-5 flex flex-col gap-6"
+          style={{ lineHeight: "35px" }}
         >
-          I love to do something differen. <br />
-          {
-            <span>
-              When I{"'"}m not start coding, I love to hang out with my friends
-              and play video games , Footboll, Racket, and watch movies &&
-              webserise.
-            </span>
-          }{" "}
-          <br />I started coding few year ago & currently am 3rd of my collage,
-          i{"'"} a undergraduate, studying Computer Science & Engineering at IST
-          Institute of Science and Technology.
-        </p>
+          <p>
+            I love to do something differen. <br />
+            {
+              <span>
+                When I{"'"}m not start coding, I love to hang out with my
+                friends and play video games , Footboll, Racket, and watch
+                movies && webserise.
+              </span>
+            }{" "}
+            I started coding few year ago & currently am 3rd of my collage, i
+            {"'"} a undergraduate, studying Computer Science & Engineering at
+            IST Institute of Science and Technology.
+          </p>
+          <p className="text-left leading-4 text-gray-600 dark:text-gray-400 text-lg font-semibold">
+            I{"'"}m pretty positive and strong-willed. and I always finish what
+            I start. doing what I love and being surrounded by my loved ones.
+          </p>{" "}
+        </div>
 
         <p
-          className="text-gray-600 dark:text-gray-400 text-left text-xl font-semibold"
-          // style={{ fontSize: "18px", lineHeight: "30px" }}
+          className="text-gray-600 dark:text-gray-400 text-left text-xl font-semibold leading-10"
+          style={{ lineHeight: "35px" }}
         >
           As a fresher, I have the enthusiasm to learn and develop my skills as
           a front-end developer & back-end developer . I am familiar with HTML,
