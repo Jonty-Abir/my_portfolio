@@ -8,8 +8,8 @@ function About() {
       </div>
       <div className="grid grid-cols-1 mob-md:grid-cols-2 text-black  dark:text-gray-500 p-6 gap-8 font-thin">
         <p
-          className="text-gray-500 dark:text-gray-400 text-left"
-          style={{ fontSize: "18px", lineHeight: "30px" }}
+          className="text-gray-600 dark:text-gray-400 text-left"
+          // style={{ fontSize: "18px", lineHeight: "30px" }}
         >
           I love to do something differen. <br />
           {
@@ -25,8 +25,8 @@ function About() {
         </p>
 
         <p
-          className="text-gray-500 dark:text-gray-400 text-left"
-          style={{ fontSize: "18px", lineHeight: "30px" }}
+          className="text-gray-600 dark:text-gray-400 text-left"
+          // style={{ fontSize: "18px", lineHeight: "30px" }}
         >
           As a fresher, I have the enthusiasm to learn and develop my skills as
           a front-end developer & back-end developer . I am familiar with HTML,
