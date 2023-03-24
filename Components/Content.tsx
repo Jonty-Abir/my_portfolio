@@ -10,22 +10,22 @@ export default function Content() {
         <div className="h-full flex flex-col justify-center items-start">
           {/* heading */}
           <div>
-            <h2 className="p-4 text-4xl dark:text-white font-bold capitalize text-gray-600">
+            <h2 className="p-4 text-4xl dark:text-white font-bold capitalize text-gray-600 ">
               i{"'"}m Abir & web developer
             </h2>
           </div>
           {/* para */}
           <div className="flex flex-col justify-start p-4 gap-y-4">
-            <p className="text-left leading-6 text-gray-500 dark:text-gray-400 text-xs font-semibold">
+            <p className="text-justify leading-2 md:leading-6 text-gray-500 dark:text-gray-400 text-xs font-semibold">
               Hi, am abir & a web developer | UI designer. Besides this i am
               undergraduate student.
             </p>
 
-            <p className="text-left leading-6 text-gray-500 dark:text-gray-400 text-xs font-semibold">
+            <p className="text-justify leading-2 md:leading-6 text-gray-500 dark:text-gray-400 text-xs font-semibold">
               I{"'"}m pretty positive and strong-willed and I always finish what
               I start. doing what I love and being surrounded by my loved ones.
             </p>
-            <p className="text-left leading-6 text-gray-500 dark:text-gray-400 text-xs font-semibold">
+            <p className="text-justify leading-2 md:leading-6 text-gray-500 dark:text-gray-400 text-xs font-semibold">
               Have a high motivation with determination to learn. Have high aim
               to be a successful. A disciplined and open-minded person.
             </p>
