@@ -53,6 +53,7 @@ export default function NavBar() {
             position: "fixed",
             zIndex: 9999,
             backgroundColor: "#5c5a5962",
+            backdropFilter: " blur(64px)",
           }}
         >
           <div className="flex justify-center items-center">
@@ -89,7 +90,7 @@ export default function NavBar() {
               );
             })}
           </ul>
-          <div className="flex items-center md:hidden">
+          <div className="flex items-center md:hidden ">
             <div className="flex md:hidden" onClick={switchTheme}>
               {theme ? <FaMoon size={30} /> : <FaSun size={30} />}
             </div>
@@ -124,7 +125,7 @@ export default function NavBar() {
                 <Link href={"/"}>
                   <div className="flex justify-between gap-x-4 items-center">
                     <p className="text-4xl">Home</p>
-                    <div>
+                    {/* <div>
                       {manuBar ? (
                         <FaTimes
                           size={30}
@@ -136,7 +137,7 @@ export default function NavBar() {
                           onClick={() => setManuBar((prev) => !prev)}
                         />
                       )}
-                    </div>
+                    </div> */}
                   </div>
                 </Link>
               </li>

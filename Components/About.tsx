@@ -6,16 +6,37 @@ function About() {
           About Me
         </h2>
       </div>
-      <div className="grid grid-cols-1 mob-md:grid-cols-2 text-black  dark:text-gray-500 p-6 gap-8">
-        <p className="text-gray-500 dark:text-gray-400 text-left text-lg font-semibold">
-          I love to do something differen.
-        </p>
-        <p className="text-gray-500 dark:text-gray-400 text-left text-lg font-semibold">
-          I started coding few year ago & currently am 3rd of my collage, i{"'"}{" "}
-          a undergraduate, studying Computer Science & Engineering at IST
+      <div className="grid grid-cols-1 mob-md:grid-cols-2 text-black  dark:text-gray-500 p-6 gap-8 font-thin">
+        <p
+          className="text-gray-500 dark:text-gray-400 text-left"
+          style={{ fontSize: "18px", lineHeight: "30px" }}
+        >
+          I love to do something differen. <br />
+          {
+            <span>
+              When I{"'"}m not start coding, I love to hang out with my friends
+              and play video games , Footboll, Racket, and watch movies &&
+              webserise.
+            </span>
+          }{" "}
+          <br />I started coding few year ago & currently am 3rd of my collage,
+          i{"'"} a undergraduate, studying Computer Science & Engineering at IST
           Institute of Science and Technology.
         </p>
-        {/* <p className="text-gray-500 dark:text-gray-400 text-right text-lg">
+
+        <p
+          className="text-gray-500 dark:text-gray-400 text-left"
+          style={{ fontSize: "18px", lineHeight: "30px" }}
+        >
+          As a fresher, I have the enthusiasm to learn and develop my skills as
+          a front-end developer & back-end developer . I am familiar with HTML,
+          CSS, and JavaScript,React JS, Next Js, Redux and also backend
+          technology for instance Node js, Express, MongoDB, MVC structure &
+          REST API and am eager to learn more. {"I'"}m looking forward to
+          expanding my knowledge and putting my skills to the test in a creative
+          and innovative environment.
+        </p>
+        {/* <p className="text-gray-500 dark:text-gray-400 text-right >
           I{"'"}m pretty positive and strong-willed and I always finish what I
           start. My dream is to be happy in life, doing what I love and being
           surrounded by my loved ones. When I{"'"}m not coding, I love to hang

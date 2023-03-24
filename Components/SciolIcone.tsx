@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import {
   AiFillLinkedin,
   AiOutlineGithub,
@@ -90,7 +90,7 @@ const SocialIcone = () => {
   ];
   // listent scroll
   const listenToScrol = () => {
-    let heightTohidden = 6;
+    let heightTohidden = 300;
     const windowScroll =
       document.body.scrollTop || document.documentElement.scrollTop;
     if (windowScroll < heightTohidden) {
@@ -101,15 +101,15 @@ const SocialIcone = () => {
       setIsVisable(false);
     }
   };
-  // useEffect(() => {
-  //   window.addEventListener("scroll", listenToScrol);
-  //   return () => window.removeEventListener("scroll", listenToScrol);
-  // }, []);
+  useEffect(() => {
+    window.addEventListener("scroll", listenToScrol);
+    return () => window.removeEventListener("scroll", listenToScrol);
+  }, []);
 
   return (
     <>
       <div
-        className="hidden s md:flex lg:flex xl:flex 2xl:flex flex-col top-[35%] left-0 fixed "
+        className="hidden s md:flex lg:flex xl:flex 2xl:flex flex-col top-[35%] left-0 fixed"
         style={{ position: "fixed", zIndex: 9999 }}
       >
         {isVisable && (
@@ -141,7 +141,7 @@ const SocialIcone = () => {
         )}
       </div>
       {/* formmobile */}
-      <div className="mob-sm:flex  md:hidden xl:hidden 2xl:hidden">
+      <div className="mob-sm:flex  md:hidden xl:hidden 2xl:hidden mt-8">
         <ul className="grid gap-2 mob-sm:grid-cols-2  mob-lg:grid-cols-4  justify-center mx-auto items-center  p">
           {obj.map(({ id, link, socialMedia, child }) => {
             return (
