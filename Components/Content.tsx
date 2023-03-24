@@ -6,10 +6,7 @@ import img from "../public/assets/hero-min.jpg";
 export default function Content() {
   return (
     <div id="home" className="h-screen md:h-screen w-screen flex items-center">
-      <div
-        className="max-w-screen-2xl h-auto flex flex-col  relative px-4 md:flex-row  p-4 md:mx-18 lg:mx-[10%] 2xl:mx-96 xl:mx-56 "
-        style={{ marginTop: "8rem" }}
-      >
+      <div className="max-w-screen-2xl h-auto flex flex-col items-start  px-4 md:flex-row mt-28  p-4 md:mx-18 lg:mx-[10%] 2xl:mx-96 xl:mx-56">
         <div className="h-full flex flex-col justify-center items-start">
           {/* heading */}
           <div>
@@ -18,12 +15,17 @@ export default function Content() {
             </h2>
           </div>
           {/* para */}
-          <div className="flex flex-col justify-start p-4 gap-y-4 ">
-            <p className="text-left leading-4 text-gray-600 dark:text-gray-400 text-lg font-semibold">
+          <div className="flex flex-col justify-start p-4 gap-y-4">
+            <p className="text-left leading-6 text-gray-500 dark:text-gray-400 text-xs font-semibold">
               Hi, am abir & a web developer | UI designer. Besides this i am
               undergraduate student.
             </p>
-            <p className="text-left leading-4 text-gray-600 dark:text-gray-400 text-lg font-semibold">
+
+            <p className="text-left leading-6 text-gray-500 dark:text-gray-400 text-xs font-semibold">
+              I{"'"}m pretty positive and strong-willed and I always finish what
+              I start. doing what I love and being surrounded by my loved ones.
+            </p>
+            <p className="text-left leading-6 text-gray-500 dark:text-gray-400 text-xs font-semibold">
               Have a high motivation with determination to learn. Have high aim
               to be a successful. A disciplined and open-minded person.
             </p>
