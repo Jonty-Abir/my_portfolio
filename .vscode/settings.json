@@ -18,11 +18,5 @@
     "titleBar.inactiveBackground": "#4b008299",
     "titleBar.inactiveForeground": "#e7e7e799"
   },
-  "peacock.color": "indigo",
-  "tailwindCSS.emmetCompletions": true,
-  "editor.inlineSuggest.enabled": true,
-  "editor.quickSuggestions": {
-    "strings": true
-  },
-  "css.validate": false
+  "peacock.color": "indigo"
 }

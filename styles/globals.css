@@ -1,45 +1,118 @@
-/* import google fonts */
-/* raleway font */
-@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-/*Great vibes font*/
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=fallback");
+@import "./style.css";
+@import "./vendors/flatpickr.min.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* genarate utility */
-
-.mainDiv {
-  @apply p-6 max-w-sm mx-auto bg-white rounded-xl flex items-center space-x-4 dark:bg-gray-600 dark:hover:bg-purple-900 hover:scale-105 duration-500 hover:shadow-md hover:shadow-white;
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
 
-@layer base {
-  html {
-    font-family: "Raleway", sans-serif;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-  }
-  ::-webkit-scrollbar {
-    width: 1.2rem;
-  }
-  ::-webkit-scrollbar-track {
-    background-color: rgba(21, 24, 39, 0.487);
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: rgba(41, 245, 129, 0.61);
-    border-radius: 1rem;
-    border: 0.2rem solid transparent;
-    background-clip: content-box;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: #129ff7;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
   }
 }
-/* .navbar {
-  background-color: #161414f3;
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  @apply bg-white dark:bg-gray-800;
+}
+
+body::-webkit-scrollbar,
+.showFullDeskTopSidebar::-webkit-scrollbar {
   display: none;
-} */
+}
+.sidebar::-webkit-scrollbar {
+  display: block;
+}
+.navbar,
+.footer {
+  background: rgb(2, 2, 32);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 2, 32, 0.8547618876652223) 100%,
+    rgba(1, 0, 17, 0.7959383582534576) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+.gustNavbar {
+  background: rgb(7, 6, 19);
+  background: linear-gradient(
+    90deg,
+    rgba(7, 6, 19, 0.9415966215587798) 100%,
+    rgba(11, 4, 112, 0.8127450809425333) 100%,
+    rgba(11, 4, 112, 0.8127450809425333) 100%,
+    rgba(0, 212, 255, 1) 100%,
+    rgba(3, 3, 42, 0.8575630081134016) 100%
+  );
+}
 
-.p-text {
+.backdrop {
+  background: rgba(7, 6, 19, 0.712);
+  background: linear-gradient(
+    90deg,
+    rgba(7, 6, 19, 0.685) 100%,
+    rgba(11, 4, 112, 0.479) 100%,
+    rgba(11, 4, 112, 0.616) 100%,
+    rgba(0, 213, 255, 0.568) 100%,
+    rgba(3, 3, 42, 0.603) 100%
+  );
+}
+.btn {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  @apply font-semibold rounded-md;
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+.loading {
+  @apply h-screen w-screen flex justify-center items-center text-center text-green-500 text-2xl font-bold;
+}
+.isError {
+  @apply h-screen w-screen flex justify-center items-center text-center text-orange-500 text-2xl font-bold;
+}
+
+.form-input {
+  outline: none;
+  @apply px-2 py-3 border-gray-400 text-gray-500 bg-indigo-50 placeholder:text-indigo-500 w-full;
+}
+
+.liBorder {
+  border-bottom-left-radius: 11%;
+  border-bottom-right-radius: 11%;
+
+  @apply border-b-2 border-indigo-700 duration-300;
+}
+
+.toCenter {
+  @apply w-screen h-screen flex justify-center items-center;
+}
+
+.form-input-width {
+  @apply xmd:w-[50rem] md:w-[55rem]  lg:w-[55rem];
 }
