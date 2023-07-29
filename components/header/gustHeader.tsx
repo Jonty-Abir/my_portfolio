@@ -110,7 +110,7 @@ export function GustHeader() {
                     </div>
                     {/* mobile */}
                     {/* {isMenuOpen ? ( */}
-                    <div className={`absolute bg-transparent backdrop h-[80rem] inset-x-0 top-0 z-50 origin-top-right transform p-2${isMenuOpen ? '  duration-500 ' : ' duration-500 -translate-y-[80rem]'}  lg:-translate-y-[80rem] `}>
+                    <div className={`absolute bg-transparent backdrop h-[80rem] inset-x-0 top-0 left-[-1rem] z-50 origin-top-right transform ${isMenuOpen ? '  duration-500 ' : ' duration-500 -translate-y-[80rem]'}  lg:-translate-y-[80rem] `}>
                         <div className="divide-y-2 divide-gray-50 rounded-lg bg-transparent backdrop-blur-2xl shadow-lg ring-1 ring-black ring-opacity-5 z-60 gustNavbar ">
                             <div className="px-5 pb-6 pt-5  text-black  dark:text-gray-50 ">
                                 <div className="flex items-center justify-between">

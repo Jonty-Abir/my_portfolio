@@ -5,7 +5,7 @@ import {
   ArrowRightIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
 import { FaComments } from "react-icons/fa";
@@ -17,10 +17,13 @@ import SwiperCompo from "../shared/swiper";
 
 export default function Blog({ accessToken, refreshToken, user, isAuthenticate }: IProps) {
 
-  const { error, isLoading, data } = useQuery(["all-post"], () => (findAllPost(accessToken, refreshToken)));
+  const queryClient = useQueryClient();
 
+  const { error, isLoading, data, isError } = useQuery(["all-post"], () => (findAllPost(accessToken, refreshToken)));
   if (isLoading) return <div className="toCenter"><LodderCompo /></div>
-  if (!data) return <h2 className="isError">Some think went worng!</h2>
+  if (!data) {
+    return <h2 className="isError">Some think went worng!</h2>;
+  }
 
 
   const posts: IPost[] = data;
