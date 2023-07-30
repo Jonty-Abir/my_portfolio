@@ -5,7 +5,7 @@ import {
   ArrowRightIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
 import { FaComments } from "react-icons/fa";
@@ -17,11 +17,11 @@ import SwiperCompo from "../shared/swiper";
 
 export default function Blog({ accessToken, refreshToken, user, isAuthenticate }: IProps) {
 
-  const queryClient = useQueryClient();
 
   const { error, isLoading, data, isError } = useQuery(["all-post"], () => (findAllPost(accessToken, refreshToken)));
   if (isLoading) return <div className="toCenter"><LodderCompo /></div>
   if (!data) {
+    console.log(data);
     return <h2 className="isError">Some think went worng!</h2>;
   }
 
@@ -102,7 +102,7 @@ export default function Blog({ accessToken, refreshToken, user, isAuthenticate }
                 className="flex flex-col justify-between space-y-2  px-2 py-4 rounded-md bg-indigo-100 pb-8"
               >
                 <div className="space-y-2 ">
-                  <Link href={`/blog/${post.id}`}>
+                  <Link href={`/blog/${post._id}`}>
                     <Image
                       src={`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/blogs/poster/${post.img}`}
                       className="aspect-video w-full rounded-md cursor-pointer"
@@ -136,7 +136,7 @@ export default function Blog({ accessToken, refreshToken, user, isAuthenticate }
                     </span>
                   </div>
                   {/*  */}
-                  <Link href={`/blog/${post.id}`} className=" hover:underline btn bg-indigo-700">Read more</Link>
+                  <Link href={`/blog/${post._id}`} className=" hover:underline btn bg-indigo-700">Read more</Link>
                 </div>
               </div>
             )
@@ -214,7 +214,7 @@ export default function Blog({ accessToken, refreshToken, user, isAuthenticate }
                   className="flex flex-col justify-between space-y-2 px-2 py-4 rounded-md bg-indigo-200 pb-8"
                 >
                   <div className="space-y-2">
-                    <Link href={`/blog/${post.id}`}>
+                    <Link href={`/blog/${post._id}`}>
                       <Image
                         src={`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/blogs/poster/${post.img}`}
                         className="aspect-video w-full cursor-pointer rounded-md"

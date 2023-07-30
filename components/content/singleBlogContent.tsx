@@ -20,7 +20,6 @@ function SingleBlogCompo({ user, accessToken, refreshToken, isAuthenticate }: IP
     if (!dataAllPost && !isloadingAllPost) return <h2 className="isError">Some think went worng!</h2>
 
     const posts: IPost[] = dataAllPost;
-
     return (
         <div className="w-full bg-slate-400">
 
@@ -36,10 +35,10 @@ function SingleBlogCompo({ user, accessToken, refreshToken, isAuthenticate }: IP
                                      Current Blog
                             ============================== */}
 
-                            {posts && blogId && posts.filter((v) => v.id === +blogId).map((post: IPost) => {
+                            {posts && blogId && posts.filter((v) => v._id === blogId).map((post: IPost) => {
 
                                 return (
-                                    <div key={post.id} className="mb-12 w-full px-4 lg:mb-0 lg:w-3/5 bg-indigo-100 py-4 rounded-md shadow-lg shadow-indigo-800 hover:shadow-none">
+                                    <div key={post._id} className="mb-12 w-full px-4 lg:mb-0 lg:w-3/5 bg-indigo-100 py-4 rounded-md shadow-lg shadow-indigo-800 hover:shadow-none">
                                         <a className="group block w-full">
                                             <Image
                                                 className="mb-5 block w-full rounded-lg"
@@ -107,9 +106,9 @@ function SingleBlogCompo({ user, accessToken, refreshToken, isAuthenticate }: IP
 
                                 {/* true side */}
 
-                                {blogId && posts && posts.filter((v: IPost) => +blogId !== v.id).map((value: IPost) => {
+                                {blogId && posts && posts.filter((v: IPost) => blogId !== v._id).map((value: IPost) => {
                                     return (
-                                        <Link key={value.id} href={`/blog/${value.id}`} className="group cursor-pointer mb-8 md:flex ">
+                                        <Link key={value._id} href={`/blog/${value._id}`} className="group cursor-pointer mb-8 md:flex ">
                                             <Image
                                                 className="h-30 w-44 rounded-lg"
                                                 src={`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/blogs/poster/${value.img}`}

@@ -9,6 +9,7 @@ import { toast } from "react-hot-toast";
 import { HiOutlineEye, HiOutlineEyeOff, HiUser } from "react-icons/hi";
 import { useDispatch } from "react-redux";
 import NoficationToast from "../notification/NoficationToast";
+import LoadingBtn from "../shared/LoadingBtn";
 
 
 export interface formikObj {
@@ -43,7 +44,6 @@ function SignInFrom() {
                     <NoficationToast t={t} success={true} msg={`Login successfull...`} />
                 ))
                 dispatch(setAccessToken(data["accessToken"]));
-                setLoading(false);
                 dispatch(setIsAuthenticate(true));
                 setError(null);
                 router.push('/dashboard');
@@ -52,8 +52,10 @@ function SignInFrom() {
                     <NoficationToast t={t} success={false} msg={`Login faild try again!`} />
                 ))
                 setError(err?.response?.data?.message);
-                setLoading(false);
-            });
+            })
+                .finally(() => {
+                    setLoading(false);
+                })
         }
     });
 
@@ -144,8 +146,8 @@ function SignInFrom() {
                         disabled={loading ? true : false}
                         className="inline-flex uppercase w-full items-center justify-center rounded-md bg-indigo-600 px-3.5 py-2.5 text-base font-semibold leading-7 text-white hover:bg-indigo-500"
                     >
-                        {loading ? "Sending..." : "Sign In"}
-                        <svg
+                        {loading ? <LoadingBtn /> : "Sign In"}
+                        {!loading && <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
@@ -158,7 +160,7 @@ function SignInFrom() {
                                 strokeLinejoin="round"
                                 d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
                             />
-                        </svg>
+                        </svg>}
                     </button>
 
                 </div>

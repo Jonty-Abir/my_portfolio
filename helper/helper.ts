@@ -30,7 +30,7 @@ export async function login(payload: IpayloadLogin) {
     try {
         const { data, status } = await instance.post("/auth/login", { ...payload }, { withCredentials: true });
         if (status !== 200) return Promise.reject("Login Failed! Try Again");
-
+        await axios.get("/api/cookie", { headers: { Authorization: `Bearer ${data.accessToken} ${data.refreshToken}` } });
         return Promise.resolve(data);
 
     } catch (error: any) {

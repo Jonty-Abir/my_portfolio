@@ -43,7 +43,7 @@ interface IAuthor {
 
 }
 export interface IPost {
-    id: number
+    _id: string
     title: string;
     subtitle: string;
     category: string;

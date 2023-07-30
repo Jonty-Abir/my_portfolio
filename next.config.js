@@ -8,6 +8,7 @@ const nextConfig = {
       "overreacted.io",
       "localhost",
       "plus.unsplash.com",
+      "serverofabirsantraonilne.adaptable.app",
     ],
   },
 };
