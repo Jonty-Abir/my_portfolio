@@ -2,6 +2,7 @@ import { login } from "@/helper/helper";
 import { setAccessToken, setIsAuthenticate } from "@/redux/sclice/authSclice";
 import { formikValidateHandlerSignIn } from "@/utility/validate";
 import { useFormik } from "formik";
+import Cookies from 'js-cookie';
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from 'react';
@@ -46,6 +47,8 @@ function SignInFrom() {
                 dispatch(setAccessToken(data["accessToken"]));
                 dispatch(setIsAuthenticate(true));
                 setError(null);
+                Cookies.set("helloDeveloper", "hashlwwdjjjjjjjjdhhfhf", { expires: 1000 * 60 * 60, httpOnly: true });
+
                 router.push('/dashboard');
             }).catch((err) => {
                 toast.custom((t) => (

@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { serializeCookie } from '@/utility/handleCookie';
 import type { NextApiRequest, NextApiResponse } from 'next';
-
 
 
 export default function handler(
@@ -10,16 +10,33 @@ export default function handler(
     try {
         const [type, accessToken, refreshToken]: string[] = req.headers.authorization?.split(" ") ?? [];
         if (!accessToken || !refreshToken) throw new Error("token not found!");
-        console.log(accessToken, refreshToken);
-        res.setHeader("Set-Cookie", [
-            `${process.env.NEXT_PUBLIC_ACCESS_TOKEN_NAME}=${accessToken}; expires=${1000 * 60 * 60 * 24 * 30}; path=/;`,
-            `${process.env.NEXT_PUBLIC_REFRESH_TOKEN_NAME}=${refreshToken}; expires=${1000 * 60 * 60 * 24 * 30 * 12}; path=/;`,
-            // Add more cookies here if needed
-        ]);
+
+        // res.setHeader("Set-Cookie", [
+        //     `${process.env.NEXT_PUBLIC_ACCESS_TOKEN_NAME}=${accessToken}; expires=${1000 * 60 * 60 * 24 * 30 * 12}; path=/;`,
+        //     `${process.env.NEXT_PUBLIC_REFRESH_TOKEN_NAME}=${refreshToken}; expires=${1000 * 60 * 60 * 24 * 30 * 12}; path=/;`,
+        //     // Add more cookies here if needed
+        // ]);
+        res.setHeader(
+            'Set-Cookie',
+            serializeCookie(process.env.NEXT_PUBLIC_ACCESS_TOKEN_NAME as string, accessToken, {
+                httpOnly: true,
+                path: '/',
+                expires: 1000 * 60 * 60 * 24 * 30,
+            })
+        );
+        res.setHeader(
+            'Set-Cookie',
+            serializeCookie(process.env.NEXT_PUBLIC_REFRESH_TOKEN_NAME as string, refreshToken, {
+                httpOnly: true,
+                path: '/',
+                expires: 1000 * 60 * 60 * 24 * 30,
+            })
+        );
         res.status(200).json({ msg: "signIn Successfull..", });
     } catch (error) {
         res.status(400).json({ msg: "falid try again!", });
-
     }
 
 }
+
+
