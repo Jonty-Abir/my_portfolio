@@ -1,6 +1,7 @@
 import { useAuth } from '@/hooks/useAuth';
 import Layout from '@/layout/layout';
 import { setAccessToken, setIsAuthenticate, setUser } from '@/redux/sclice/authSclice';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 
@@ -30,9 +31,20 @@ function Page() {
         return <h2 className='loading'>Loading...</h2>
     }
     return (
-        <Layout>
-            <h2 className=' text-2xl text-center'>This service Comming soon!</h2>
-        </Layout>
+        <>
+            <Head>
+                <title>setting</title>
+                <meta charSet="UTF-8" />
+                <meta name="description" content="abir santra profile" />
+                <meta name="keywords" content="abir santra web developer " />
+                <meta name="author" content="abir santra" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="./assets/favicone.png" />
+            </Head>
+            <Layout>
+                <h2 className=' text-2xl text-center'>This service Comming soon!</h2>
+            </Layout>
+        </>
     )
 }
 

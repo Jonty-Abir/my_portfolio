@@ -28,6 +28,7 @@ instance.interceptors.response.use(
                 });
 
                 if (status !== 200) throw new Error("Error was occure from axios interceptors :)");
+                await axios.get("/api/cookie", { headers: { Authorization: `Bearer ${data.accessToken} ${data.refreshToken}` } });
 
                 return instance.request(originalRequest);
             } catch (err: any) {

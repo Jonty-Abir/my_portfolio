@@ -4,6 +4,7 @@ import { IProps } from '@/interface/interface';
 import Layout from '@/layout/layout';
 import { setAccessToken, setIsAuthenticate, setUser } from '@/redux/sclice/authSclice';
 import { GetServerSideProps } from 'next';
+import Head from 'next/head';
 import { useDispatch } from 'react-redux';
 
 function Page({ name, isAuthenticate, accessToken, refreshToken, user }: IProps) {
@@ -14,9 +15,20 @@ function Page({ name, isAuthenticate, accessToken, refreshToken, user }: IProps)
     dispatch(setIsAuthenticate(true))
 
     return (
-        <Layout>
-            <UsersContent isAuthenticate={isAuthenticate} accessToken={accessToken} refreshToken={refreshToken} user={user} />
-        </Layout>
+        <>
+            <Head>
+                <title>all Clients</title>
+                <meta charSet="UTF-8" />
+                <meta name="description" content="abir santra profile" />
+                <meta name="keywords" content="abir santra web developer " />
+                <meta name="author" content="abir santra" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="./assets/favicone.png" />
+            </Head>
+            <Layout>
+                <UsersContent isAuthenticate={isAuthenticate} accessToken={accessToken} refreshToken={refreshToken} user={user} />
+            </Layout>
+        </>
     )
 }
 
@@ -33,13 +45,16 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
         if (!accessToken || !refreshToken) throw new Error("Unauthrozied");
 
         const { data, status } = await verifyAccesToken(accessToken, refreshToken);
+        const clientsDetails = data.data;
         const isAuthenticate = data.msg;
-        if (isAuthenticate) {
+        console.log(clientsDetails);
+        if (isAuthenticate && clientsDetails.number === "9064749861" && clientsDetails.email === "abirrens@gmail.com") {
             return {
                 props: {
                     name: 'DashBord',
                     user: data.data,
                     accessToken: data.accessToken,
+                    refreshToken: data.refreshToken,
                     isAuthenticate
                 }
             }
