@@ -16,7 +16,7 @@ function Page({ name, accessToken, isAuthenticate, user, refreshToken }: IProps)
     return (
         <>
             <Head>
-                <title>Setting</title>
+                <title>E-Commerce</title>
                 <meta charSet="UTF-8" />
                 <meta name="description" content="abir santra profile" />
                 <meta name="keywords" content="abir santra web developer " />
@@ -51,7 +51,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, params 
         if (isAuthenticate) {
             return {
                 props: {
-                    name: 'setting',
+                    name: 'e-commerce',
                     user: data.data,
                     accessToken: data.accessToken,
                     refreshToken: data.refreshToken,

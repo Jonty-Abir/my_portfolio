@@ -1,5 +1,6 @@
 import { ChevronUpIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import SocialIcone from '../socialIcone';
 
@@ -7,22 +8,22 @@ const logos = [
     {
         id: 1,
         img_url:
-            'https://assets.website-files.com/61ed56ae9da9fd7e0ef0a967/61f12e022df47d704e9958f3_MintyDefault.svg',
+            '/assets/nodejs.svg',
     },
     {
         id: 2,
         img_url:
-            'https://assets.website-files.com/61ed56ae9da9fd7e0ef0a967/61f12d717a5df974cd42415a_EbooksDefault.svg',
+            '/assets/typescript.svg',
     },
     {
         id: 3,
         img_url:
-            'https://assets.website-files.com/61ed56ae9da9fd7e0ef0a967/61f12dcfc7ae6798c49b2a55_IcebergDefault.svg',
+            '/assets/mongodb.svg',
     },
     {
         id: 4,
         img_url:
-            'https://assets.website-files.com/61ed56ae9da9fd7e0ef0a967/61f12e78784f087c65fe2757_SnapShotDefault.svg',
+            '/assets/react.svg',
     },
 ]
 
@@ -33,35 +34,46 @@ export const LandingPage = () => {
     const [question4, setQuestion4] = useState(false);
 
     /***_______     ________**/
+
+    const testimonials = [
+        {
+            name: "Meghlal Khan",
+            comment: `We thank Flatworld Solutions for the wonderful job in helping us develop our program.Everyone was professional, excellent and hard working.Thanks to him, we were able to achieve our goal on time, and we look forward to continue working with him in the future.`,
+            ctagory: "Senior DevOps Developer"
+        },
+        {
+            name: "Sangita Jana",
+            comment: `We thank Flatworld Solutions for the wonderful job in helping us develop our program.Everyone was professional, excellent and hard working.Thanks to him, we were able to achieve our goal on time, and we look forward to continue working with him in the future.`,
+            ctagory: "Senior Font-End Developer"
+        },
+    ];
+
     const propulerQuestion = [{
         id: 1,
         question: " How do I get started?",
         state: question1,
         setStateFun: setQuestion1,
-        ans: ` Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat aliquam adipisci
-        iusto aperiam? Sint asperiores sequi nobis inventore ratione deleniti?`
+        ans: ` It started with designing and now it has expanded to web development as well. and watching online tutorials. And participate conference , lecture about that libraries, frameworks. but one thing keep in your mind that is don't get tutorial hell.`
     }
         , {
         id: 2,
-        question: " How do I get started?",
+        question: " What should i learn first front-end, back-end.",
         state: question2,
         setStateFun: setQuestion2,
-        ans: ` Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat aliquam adipisci
-    iusto aperiam? Sint asperiores sequi nobis inventore ratione deleniti?`
+        ans: ` I always say that It's totally up to you .But i was learn backend first.`
     }, {
         id: 3,
-        question: " How do I get started?",
+        question: "  You are freelancer?",
         state: question3,
         setStateFun: setQuestion3,
-        ans: ` Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat aliquam adipisci
-    iusto aperiam? Sint asperiores sequi nobis inventore ratione deleniti?`
+        ans: ` No i am not freelancers right now but in future i have some plan about freelancing.`
     }];
+
 
 
     return (
         <>
             <section className="relative mt-8">
-
                 <div className="overflow-hidden pt-16 pb-48">
                     <div className="container relative mx-auto px-4">
                         <div className="-m-8 flex flex-col lg:flex-row">
@@ -70,9 +82,8 @@ export const LandingPage = () => {
                                     Collab With Abir
                                 </h1>
                                 <div>
-                                    <p className="dark:text-gray-300ss mb-9 text-xl font-medium text-gray-900 dark:text-gray-300 md:max-w-sm">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, quo dolores
-                                        facilis laudantium dicta fuga?
+                                    <p className="dark:text-gray-300ss mb-9 text-xl capitalize font-medium text-gray-900 dark:text-gray-300 md:max-w-sm">
+                                        Hey I{"'"}am create minimal & Functional Website & Application, Powered by the latest technology.
                                     </p>
                                     <a href="#testimonials" className="mb-12 md:inline-block">
                                         <button className="w-full rounded-xl border border-indigo-700 bg-indigo-600 py-4 px-6 font-semibold text-white transition duration-200 ease-in-out hover:bg-indigo-700 focus:ring focus:ring-indigo-300">
@@ -197,7 +208,7 @@ export const LandingPage = () => {
                                     </div>
                                     <div className="relative">
                                         <Image
-                                            src="/assets/owner04.jpg"
+                                            src="/assets/learing.jpg"
                                             alt="owner3"
                                             className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
                                             width={400}
@@ -238,21 +249,21 @@ export const LandingPage = () => {
                     <div className="grid grid-cols-4 justify-items-center gap-8">
                         {logos.map((logo) => (
                             <div key={logo.id} className="flex items-center justify-center">
-                                <Image src={logo.img_url} alt="Logo" width={200} height={200} />
+                                <Image src={logo.img_url} alt="Logo" width={75} height={75} className="w-8 h-8 lg:w-20 lg:h-20" />
                             </div>
                         ))}
                     </div>
                     <h2 className="font-heading tracking-px-n mx-auto mt-12 mb-4 text-center text-4xl font-bold leading-none md:max-w-2xl md:text-4xl xl:text-5xl">
                         Loved by the incredible community
                     </h2>
-                    <p className="mx-auto text-center text-base font-medium leading-normal text-gray-600 dark:text-gray-400 md:max-w-lg">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
-                        elementum.
+                    <p className="mx-auto text-center text-base font-medium leading-normal text-gray-600 dark:text-gray-400 md:max-w-lg capitalize">
+                        Those community are so huge and more developer friendly & and i love those communities
                     </p>
                 </div>
             </section>
             <section className="overflow-hidden py-12">
                 <div className="container mx-auto px-4">
+                    <h3 className=' text-3xl font-semibold pb-8 text-center'>Nice to Meet you</h3>
                     <div className="grid grid-cols-1 gap-8 xl:grid-cols-2 xl:gap-10">
                         <div className="w-full md:w-1/2 xl:w-auto">
                             <a className="block overflow-hidden rounded-3xl" href="#">
@@ -308,7 +319,7 @@ export const LandingPage = () => {
                             Frequently Asked Questions
                         </h2>
                         <p className="mt-4 max-w-xl text-base leading-relaxed text-gray-600 lg:mx-auto">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere, assumenda
+                            Here is some questions people always ask me!
                         </p>
                     </div>
                     <div className="mx-auto mt-8 max-w-3xl space-y-4 md:mt-16">
@@ -352,12 +363,16 @@ export const LandingPage = () => {
                         Testimonials
                     </h2>
                     <p className="mb-8 w-full font-medium leading-snug text-gray-700 dark:text-gray-300 md:w-2/3 lg:w-1/2">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid deleniti illo eos
-                        voluptates accusantium! Consectetur ullam tempore corporis! Id dicta ipsam mollitia
-                        alias in dolor, adipisci facilis aliquam vel blanditiis?
+                        I am very passionate about being able to help solve some problems, my coding skills help me do this. Grow consistently and rapidly with the
+                        organization. Ready to work as a team player.
+                        Ready to work hard efficiently. Have a high
+                        motivation with determination to learn. Have
+                        high aim to be a successful. A disciplined and
+                        open-minded person
+
                     </p>
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                        {Array.from({ length: 3 }).map((_, index) => (
+                        {testimonials.map((value, index) => (
                             <div key={index} className="flex justify-center">
                                 <div className="relative overflow-hidden rounded-3xl">
                                     <Image
@@ -367,7 +382,7 @@ export const LandingPage = () => {
                                         width={600}
                                         height={600}
                                     />
-                                    <div className="absolute left-0 top-0 h-full  overflow-y-auto bg-white bg-opacity-60 px-4 py-4 backdrop-blur-sm">
+                                    <div className="absolute left-0 top-0 h-full  overflow-y-auto bg-white bg-opacity-40 px-4 py-4 backdrop-blur-sm">
                                         <svg
                                             className="mb-4"
                                             width="47"
@@ -382,12 +397,10 @@ export const LandingPage = () => {
                                             ></path>
                                         </svg>
                                         <h3 className="text-md mb-4 font-bold leading-snug text-black">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque reprehenderit
-                                            aperiam, voluptatum commodi fuga sit ratione! Mollitia maiores quas sit cumque
-                                            animi cum labore est iste, facere iusto? Inventore, corrupti.
+                                            {value.comment}
                                         </h3>
-                                        <div className="mb-1 font-bold text-black">Jenny Wilson</div>
-                                        <div className="font-medium text-gray-600">Senior UX Designer</div>
+                                        <div className="mb-1 font-bold text-black"><h2 className=' inline-flex font-extrabold pr-1'>_</h2>{value.name}</div>
+                                        <div className="font-medium text-gray-600">{value.ctagory}</div>
                                     </div>
                                 </div>
                             </div>
@@ -401,9 +414,9 @@ export const LandingPage = () => {
                         <div className="w-full p-8 md:w-auto">
                             <a href="#">
                                 <Image
-                                    className="mx-auto h-fit w-[300px] transform transition duration-1000 ease-in-out hover:translate-y-4"
-                                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDF8fHBlb3BsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-                                    alt=""
+                                    className="mx-auto h-fit w-[300px] transform transition duration-1000 ease-in-out hover:translate-y-4 rounded-md"
+                                    src="/assets/learing.jpg"
+                                    alt="/assets/"
                                     width={600}
                                     height={600}
                                 />
@@ -411,13 +424,13 @@ export const LandingPage = () => {
                         </div>
                         <div className="w-full p-8 md:flex-1">
                             <div className="mx-auto text-center md:max-w-2xl">
-                                <h2 className="font-heading tracking-px-n mb-10 text-center text-3xl font-bold leading-tight md:text-5xl">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                <h2 className="font-heading tracking-px-n mb-10 text-center text-3xl font-bold leading-tight md:text-5xl capitalize">
+                                    explore more
                                 </h2>
                                 <div className="mb-12 md:inline-block">
-                                    <button className="shadow-4xl w-full rounded-xl border border-indigo-700 bg-indigo-600 py-4 px-6 font-semibold text-white transition duration-200 ease-in-out hover:bg-indigo-700 focus:ring focus:ring-indigo-300">
+                                    <Link href={"/dashboard"} className="shadow-4xl w-full rounded-xl border border-indigo-700 bg-indigo-600 py-4 px-6 font-semibold text-white transition duration-200 ease-in-out hover:bg-indigo-700 focus:ring focus:ring-indigo-300">
                                         Get Started
-                                    </button>
+                                    </Link>
                                 </div>
                                 <div className="mx-auto md:max-w-sm">
                                     <div className="-m-2 flex flex-wrap">
@@ -438,10 +451,9 @@ export const LandingPage = () => {
                                         </div>
                                         <div className="flex-1 p-2">
                                             <p className="mb-4 text-left text-lg font-medium leading-normal">
-                                                Ease of use and efficiency of design tools. The ability for the team to see
-                                                all of a project.
+                                                code never lies
                                             </p>
-                                            <h3 className="text-left font-bold">- Jenny Wilson</h3>
+                                            <h3 className="text-left font-bold">- Meghlal Khan</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -449,8 +461,8 @@ export const LandingPage = () => {
                         </div>
                         <div className="hidden w-full self-end p-8 md:w-auto xl:block">
                             <Image
-                                className="mx-auto h-fit w-[300px] transform transition duration-1000 ease-in-out hover:-translate-y-4"
-                                src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDh8fHBlb3BsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
+                                className="mx-auto h-fit w-[300px] transform transition duration-1000 ease-in-out hover:-translate-y-4 rounded-md"
+                                src="/assets/learing.jpg"
                                 alt=""
                                 width={600}
                                 height={600}
