@@ -72,7 +72,7 @@ function VerifyOtp({ setCount }: IComponentProps) {
                 <div className="space-y-4">
                     <div>
                         <label className="block text-sm font-medium mb-1" htmlFor="email"> OTP <span className="text-rose-500">*</span></label>
-                        <input id="email" placeholder="Enter Your OTP" className={` w-full px-4 py-3 rounded-md placeholder:text-gray-300 ${formik.errors.otp && formik.touched.otp ? "dark:border-rose-600" : "dark:border-gray-700"}`} type="text" {...formik.getFieldProps("otp")} />
+                        <input id="email" autoComplete="off" placeholder="Enter Your OTP" className={` w-full px-4 py-3 rounded-md placeholder:text-gray-300 ${formik.errors.otp && formik.touched.otp ? "dark:border-rose-600" : "dark:border-gray-700"}`} type="text" {...formik.getFieldProps("otp")} />
                         <p className="text-rose-500 pt-2 pl-2 font-semibold text-xs text-left">
                             {formik?.errors?.otp && formik.touched.otp
                                 ? formik.errors.otp

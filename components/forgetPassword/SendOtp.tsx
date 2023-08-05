@@ -61,7 +61,7 @@ function SendOtp({ setCount }: IComponentProps) {
                 <div className="space-y-4">
                     <div>
                         <label className="block text-sm font-medium mb-1" htmlFor="email">Email Address <span className="text-rose-500">*</span></label>
-                        <input id="email" placeholder="Enter Your Email Address" className={` w-full px-4 py-3 rounded-md placeholder:text-gray-300 ${formik.errors.userName && formik.touched.userName ? "dark:border-rose-600" : "dark:border-gray-700"}`} type="email"  {...formik.getFieldProps("userName")} />
+                        <input id="email" autoComplete="off" placeholder="Enter Your Email Address" className={` w-full px-4 py-3 rounded-md placeholder:text-gray-300 ${formik.errors.userName && formik.touched.userName ? "dark:border-rose-600" : "dark:border-gray-700"}`} type="email"  {...formik.getFieldProps("userName")} />
                         <p className="text-rose-500 pt-2 pl-2 font-semibold text-xs text-left">
                             {formik?.errors?.userName && formik.touched.userName
                                 ? formik.errors.userName

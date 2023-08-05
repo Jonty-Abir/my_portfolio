@@ -451,9 +451,9 @@ export const LandingPage = () => {
                                         </div>
                                         <div className="flex-1 p-2">
                                             <p className="mb-4 text-left text-lg font-medium leading-normal">
-                                                code never lies
+                                                Confusion is part of programming.
                                             </p>
-                                            <h3 className="text-left font-bold">- Meghlal Khan</h3>
+                                            <h3 className="text-left font-bold">- Felienne Hermans</h3>
                                         </div>
                                     </div>
                                 </div>

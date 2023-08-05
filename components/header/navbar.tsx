@@ -44,7 +44,7 @@ export default function Navbar() {
                                 <path d="M4 12l10 0" />
                                 <path d="M4 18l14 0" />
                             </svg>
-                            <span className="font-bold text-2xl hidden mxs:block" style={{ fontFamily: "Great Vibes", }}>Abir Santra</span>
+                            <span className="font-bold text-2xl hidden font-signature mxs:block" >Abir Santra</span>
                         </div>
 
                         {/* Header: Right side */}

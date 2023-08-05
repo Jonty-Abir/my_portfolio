@@ -76,6 +76,7 @@ function SignUpFrom() {
                         <input
                             className={`flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900 ${formik.errors.firstName && formik.touched.firstName ? "dark:border-rose-600" : "dark:border-gray-700"} ${!formik.errors.firstName && formik.touched.firstName ? "dark:border-green-500" : "dark:border-gray-700"}`}
                             type="text"
+                            autoComplete="off"
                             {...formik.getFieldProps("firstName")}
                             id="first_name"
                             placeholder="First Name"
@@ -100,6 +101,7 @@ function SignUpFrom() {
                         <input
                             className={`flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900 ${formik.errors.lastName && formik.touched.lastName ? "dark:border-rose-600" : "dark:border-gray-700"} ${!formik.errors.lastName && formik.touched.lastName ? "dark:border-green-500" : "dark:border-gray-700"}`}
                             type="text"
+                            autoComplete="off"
                             {...formik.getFieldProps("lastName")}
                             id="last_name"
                             placeholder="Last Name"
@@ -126,6 +128,7 @@ function SignUpFrom() {
                     <input
                         className={`flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900 ${formik.errors.email && formik.touched.email ? "dark:border-rose-600" : "dark:border-gray-700"} ${!formik.errors.email && formik.touched.email ? "dark:border-green-500" : "dark:border-gray-700"}`}
                         type="text"
+                        autoComplete="off"
                         {...formik.getFieldProps("email")}
                         id="email"
                         placeholder="Email"
@@ -154,6 +157,7 @@ function SignUpFrom() {
                     <input
                         className={`flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900 ${formik.errors.number && formik.touched.number ? "dark:border-rose-600" : "dark:border-gray-700"} ${!formik.errors.number && formik.touched.number ? "dark:border-green-500" : "dark:border-gray-700"}`}
                         type="text"
+                        autoComplete="off"
                         {...formik.getFieldProps("number")}
                         id="phone_number"
                         placeholder="Phone number"
@@ -181,6 +185,7 @@ function SignUpFrom() {
                     <input
                         className={`flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900 ${formik.errors.password && formik.touched.password ? "dark:border-rose-600" : "dark:border-gray-700"} ${!formik.errors.password && formik.touched.password ? "dark:border-green-500" : "dark:border-gray-700"}`}
                         type={showPw ? "text" : "password"}
+                        autoComplete="off"
                         {...formik.getFieldProps("password")}
                         id="password"
                         placeholder="Password"
@@ -218,6 +223,7 @@ function SignUpFrom() {
                     <input
                         className={`flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900 ${formik.errors.cPassword && formik.touched.cPassword ? "dark:border-rose-600" : "dark:border-gray-700"} ${!formik.errors.cPassword && formik.touched.cPassword ? "dark:border-green-500" : "dark:border-gray-700"}`}
                         type={showcPw ? "text" : "password"}
+                        autoComplete="off"
                         {...formik.getFieldProps("cPassword")}
                         id="c_password"
                         placeholder="Confirm password"

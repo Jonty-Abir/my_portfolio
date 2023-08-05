@@ -143,7 +143,7 @@ function BlogFrom({ client, accessToken, refreshToken }: IpageProops) {
                         <div className="sm:flex sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 mt-2 form-input-width">
                             <div className="sm:w-1/3">
                                 <label className="block text-sm font-medium mb-1" htmlFor="title">Title</label>
-                                <input placeholder="Enter Title" id="title" className="form-input " type="text"   {...formik.getFieldProps("title")} />
+                                <input placeholder="Enter Title" autoComplete="off" id="title" className="form-input " type="text"   {...formik.getFieldProps("title")} />
                                 <p className="text-rose-500 pt-2 pl-2 font-semibold text-xs text-left">
                                     {formik?.errors?.title && formik.touched.title
                                         ? formik.errors.title
@@ -152,7 +152,7 @@ function BlogFrom({ client, accessToken, refreshToken }: IpageProops) {
                             </div>
                             <div className="sm:w-1/3 ml-auto">
                                 <label className="block text-sm font-medium mb-1" htmlFor="subtitle">Subtitle</label>
-                                <input placeholder="Enter SubTitle" id="subtitle" className="form-input " type="text"  {...formik.getFieldProps("subtitle")} />
+                                <input placeholder="Enter SubTitle" id="subtitle" autoComplete="off" className="form-input " type="text"  {...formik.getFieldProps("subtitle")} />
                                 <p className="text-rose-500 pt-2 pl-2 font-semibold text-xs text-left">
                                     {formik?.errors?.subtitle && formik.touched.subtitle
                                         ? formik.errors.subtitle
@@ -169,7 +169,7 @@ function BlogFrom({ client, accessToken, refreshToken }: IpageProops) {
 
                             <div className="sm:w-1/3">
                                 <label className="block text-sm font-medium mb-1" htmlFor="category">Category</label>
-                                <input placeholder="Enter Category" id="category" className="form-input" type="text"  {...formik.getFieldProps("category")} />
+                                <input placeholder="Enter Category" autoComplete="off" id="category" className="form-input" type="text"  {...formik.getFieldProps("category")} />
                                 <p className="text-rose-500 pt-2 pl-2 font-semibold text-xs text-left">
                                     {formik?.errors?.category && formik.touched.category
                                         ? formik.errors.category
@@ -179,7 +179,7 @@ function BlogFrom({ client, accessToken, refreshToken }: IpageProops) {
                             </div>
                             <div className="sm:w-1/3">
                                 <label className="block text-sm font-medium mb-1" htmlFor="poster">Blog Poster</label>
-                                <input id="poster" name="poster_img" className="form-input w-full text-indigo-500 bg-indigo-50 " type="file" onChange={(event: ChangeEvent<HTMLInputElement>) => upload(event, setPosterBase64)} required />
+                                <input id="poster" autoComplete="off" name="poster_img" className="form-input w-full text-indigo-500 bg-indigo-50 " type="file" onChange={(event: ChangeEvent<HTMLInputElement>) => upload(event, setPosterBase64)} required />
 
                                 <p className="text-rose-500 pt-2 pl-2 font-semibold text-xs text-left">
                                     {!posterBase64 ? "Required*" : ""}
@@ -193,7 +193,7 @@ function BlogFrom({ client, accessToken, refreshToken }: IpageProops) {
                         <div className="sm:flex sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 mt-2">
                             <div className="sm:w-1/3">
                                 <label className="block text-sm font-medium mb-1" htmlFor="published">Publish Date:</label>
-                                <input id="published" className="form-input xmd:w-[34.5rem] md:w-[38rem] lg:w-[36rem]" type="date"  {...formik.getFieldProps("published")} />
+                                <input id="published" autoComplete="off" className="form-input xmd:w-[34.5rem] md:w-[38rem] lg:w-[36rem]" type="date"  {...formik.getFieldProps("published")} />
 
                                 <p className="text-rose-500 pt-2 pl-2 font-semibold text-xs text-left">
                                     {formik?.errors?.published && formik.touched.published
@@ -210,7 +210,7 @@ function BlogFrom({ client, accessToken, refreshToken }: IpageProops) {
 
                             <div className="sm:w-1/3">
                                 <label className="block text-sm font-medium mb-1" htmlFor="description">Description</label>
-                                <textarea id="description" placeholder="Enter Blog Description" className="form-input xmd:w-[34.5rem] md:w-[38rem] lg:w-[36rem] h-[14rem]"  {...formik.getFieldProps("description")} />
+                                <textarea id="description" autoComplete="off" placeholder="Enter Blog Description" className="form-input xmd:w-[34.5rem] md:w-[38rem] lg:w-[36rem] h-[14rem]"  {...formik.getFieldProps("description")} />
                                 <p className="text-rose-500 pt-2 pl-2 font-semibold text-xs text-left">
                                     {formik?.errors?.description && formik.touched.description
                                         ? formik.errors.description
@@ -228,7 +228,7 @@ function BlogFrom({ client, accessToken, refreshToken }: IpageProops) {
 
                             <div className="sm:w-1/3">
                                 <label className="block text-sm font-medium mb-1" htmlFor="author_img">Author Image:</label>
-                                <input id="author_img" name="avatar_img" className="form-input w-full text-indigo-500 bg-indigo-50 " type="file" onChange={(event: ChangeEvent<HTMLInputElement>) => upload(event, setAuthorBase64)} required />
+                                <input id="author_img" autoComplete="off" name="avatar_img" className="form-input w-full text-indigo-500 bg-indigo-50 " type="file" onChange={(event: ChangeEvent<HTMLInputElement>) => upload(event, setAuthorBase64)} required />
 
                                 <p className="text-rose-500 pt-2 pl-2 font-semibold text-xs text-left">
                                     {!authorBase64 ? "Required*" : ""}
@@ -236,7 +236,7 @@ function BlogFrom({ client, accessToken, refreshToken }: IpageProops) {
                             </div>
                             <div className="sm:w-1/3">
                                 <label className="block text-sm font-medium mb-1" htmlFor="autorName">Author Name:</label>
-                                <input id="autorName" placeholder="Enter Author Name" className="form-input" type="text"  {...formik.getFieldProps("authorName")} />
+                                <input id="autorName" autoComplete="off" placeholder="Enter Author Name" className="form-input" type="text"  {...formik.getFieldProps("authorName")} />
                                 <p className="text-rose-500 pt-2 pl-2 font-semibold text-xs text-left">
                                     {formik?.errors?.authorName && formik.touched.authorName
                                         ? formik.errors.authorName

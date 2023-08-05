@@ -70,7 +70,7 @@ function ResetPassword({ setCount }: IComponentProps) {
                     <div>
                         <label className="block text-sm font-medium mb-1" htmlFor="pw">Passwors  <span className="text-rose-500">*</span></label>
                         <div className="flex items-center gap-x-2">
-                            <input type={showPw ? "text" : "password"} id="pw" placeholder="New Password" className={` w-full px-4 py-3 rounded-md placeholder:text-gray-300 ${formik.errors.cPassword && formik.touched.cPassword ? "dark:border-rose-600" : "dark:border-gray-700"}`} {...formik.getFieldProps("password")} />
+                            <input type={showPw ? "text" : "password"} autoComplete="off" id="pw" placeholder="New Password" className={` w-full px-4 py-3 rounded-md placeholder:text-gray-300 ${formik.errors.cPassword && formik.touched.cPassword ? "dark:border-rose-600" : "dark:border-gray-700"}`} {...formik.getFieldProps("password")} />
                             <span>
                                 {showPw ? (
                                     <HiOutlineEyeOff
@@ -93,7 +93,7 @@ function ResetPassword({ setCount }: IComponentProps) {
                                 : ""}
                         </p>
                         <div className="flex items-center gap-x-2">
-                            <input type={showCPw ? "text" : "password"} id="pw" placeholder="Confrim New Password" className={`w-full px-4 py-3 mt-2 rounded-md placeholder:text-gray-300 ${formik.errors.cPassword && formik.touched.cPassword ? "dark:border-rose-600" : "dark:border-gray-700"}`} {...formik.getFieldProps("cPassword")} />
+                            <input type={showCPw ? "text" : "password"} autoComplete="off" id="pw" placeholder="Confrim New Password" className={`w-full px-4 py-3 mt-2 rounded-md placeholder:text-gray-300 ${formik.errors.cPassword && formik.touched.cPassword ? "dark:border-rose-600" : "dark:border-gray-700"}`} {...formik.getFieldProps("cPassword")} />
                             <span>
                                 {showCPw ? (
                                     <HiOutlineEyeOff

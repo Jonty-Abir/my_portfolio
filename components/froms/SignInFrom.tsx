@@ -74,7 +74,7 @@ function SignInFrom() {
                         UserName{' '}
                     </label>
                     <div className="mt-2.5 flex justify-center  items-center gap-x-2">
-                        <input
+                        <input autoComplete="off"
                             className={`flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 ${formik.errors.userName && formik.touched.userName ? "dark:border-rose-600" : "dark:border-gray-700"} ${!formik.errors.userName && formik.touched.userName ? "dark:border-green-500" : "dark:border-gray-700"} dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900`}
                             type="text"
                             placeholder="Email or Mobile No"
@@ -112,7 +112,7 @@ function SignInFrom() {
                         </Link>
                     </div>
                     <div className="mt-2.5 flex justify-center  items-center gap-x-2">
-                        <input
+                        <input autoComplete="off"
                             className={`flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 ${formik.errors.pw && formik.touched.pw ? "dark:border-rose-600" : "dark:border-gray-700"} ${!formik.errors.pw && formik.touched.pw ? "dark:border-green-500" : "dark:border-gray-700"} dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900`}
                             type={showPw ? "text" : "password"}
                             placeholder="Password"

@@ -158,3 +158,59 @@ export function clientUpdateValidate(value: IUpdateClientPayload) {
     // console.log(errors)
     return errors;
 }
+
+
+interface formikObj {
+    firstName: string;
+    lastName: string;
+    contactNumber: string;
+    contactEmail: string;
+    message: string;
+}
+
+export function contactUsFromValidation(value: formikObj) {
+    const errors = {};
+    /***_______  firstName    ________**/
+
+    if (!value.firstName) {
+        // @ts-ignore
+        errors.firstName = "Required*";
+    }
+    /***_______  lastName    ________**/
+
+    if (!value.lastName) {
+        // @ts-ignore
+
+        errors.lastName = "Required*";
+    }
+    /***_______  Mobile    ________**/
+
+    if (!value.contactNumber) {
+        // @ts-ignore
+
+        errors.contactNumber = "Required*";
+    } else if (!/^(\+\d{1,3}[- ]?)?\d{10}$/.test(value.contactNumber)) {
+        // @ts-ignore
+
+        errors.contactNumber = "invalid mobile no!";
+    }
+    /***_______  email   ________**/
+
+    if (!value.contactEmail) {
+        // @ts-ignore
+
+        errors.contactEmail = "Required*";
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value.contactEmail)) {
+        // @ts-ignore
+
+        errors.contactEmail = "enter a valid email address!";
+    }
+    if (!value.message) {
+        // @ts-ignore
+
+        errors.message = "Required*";
+    }
+
+    // console.log(errors)
+    return errors;
+};

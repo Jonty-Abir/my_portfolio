@@ -159,3 +159,20 @@ export async function findAllClient(accessToken: string, refreshToken: string) {
         return null;
     }
 }
+
+export interface IpayloadSendContactMessage {
+    clientName: string;
+    contactNumber: string;
+    contactEmail: string;
+    message: string;
+}
+
+export async function sendContactMessage(payload: IpayloadSendContactMessage) {
+    try {
+        const { data, status } = await instance.post("/contacts-details", { ...payload });
+        if (status !== 201) return Promise.reject("Can't send message! please try again!");
+        return Promise.resolve("Message send successfull!");
+    } catch (error: any) {
+        return Promise.reject(error);
+    }
+}

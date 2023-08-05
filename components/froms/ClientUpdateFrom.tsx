@@ -139,7 +139,7 @@ const ClientUpdateFrom = ({ client, accessToken, refreshToken }: IpageProops) =>
                             <label htmlFor="profile_img" className="cursor-pointer">
                                 <div className="btn-sm bg-indigo-500 hover:bg-indigo-600 text-white">Change</div>
                             </label>
-                            <input type="file" name="avatar" id="profile_img" className=" hidden" onChange={upload} />
+                            <input type="file" autoComplete="off" name="avatar" id="profile_img" className=" hidden" onChange={upload} />
                         </div>
                     </section>
 
@@ -150,7 +150,7 @@ const ClientUpdateFrom = ({ client, accessToken, refreshToken }: IpageProops) =>
                         <div className="sm:flex sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 mt-5">
                             <div className="sm:w-1/3">
                                 <label className="block text-sm font-medium mb-1" htmlFor="name">First Name</label>
-                                <input id="name" className="form-input w-full" type="text"   {...formik.getFieldProps("firstName")} />
+                                <input id="name" autoComplete="off" className="form-input w-full" type="text"   {...formik.getFieldProps("firstName")} />
                                 <p className="text-rose-500 pt-2 pl-2 font-semibold text-xs text-left">
                                     {formik?.errors?.firstName && formik.touched.firstName
                                         ? formik.errors.firstName
@@ -159,7 +159,7 @@ const ClientUpdateFrom = ({ client, accessToken, refreshToken }: IpageProops) =>
                             </div>
                             <div className="sm:w-1/3">
                                 <label className="block text-sm font-medium mb-1" htmlFor="business-id">Last Name</label>
-                                <input id="business-id" className="form-input w-full" type="text"  {...formik.getFieldProps("lastName")} />
+                                <input id="business-id" autoComplete="off" className="form-input w-full" type="text"  {...formik.getFieldProps("lastName")} />
                                 <p className="text-rose-500 pt-2 pl-2 font-semibold text-xs text-left">
                                     {formik?.errors?.lastName && formik.touched.lastName
                                         ? formik.errors.lastName
@@ -176,7 +176,7 @@ const ClientUpdateFrom = ({ client, accessToken, refreshToken }: IpageProops) =>
 
                             <div className="sm:w-1/3">
                                 <label className="block text-sm font-medium mb-1" htmlFor="location">Number</label>
-                                <input id="location" className="form-input w-full" type="text"  {...formik.getFieldProps("number")} />
+                                <input id="location" autoComplete="off" className="form-input w-full" type="text"  {...formik.getFieldProps("number")} />
                                 <p className="text-rose-500 pt-2 pl-2 font-semibold text-xs text-left">
                                     {formik?.errors?.number && formik.touched.number
                                         ? formik.errors.number
@@ -188,7 +188,7 @@ const ClientUpdateFrom = ({ client, accessToken, refreshToken }: IpageProops) =>
                             </div>
                             <div className="sm:w-1/3">
                                 <label className="block text-sm font-medium mb-1" htmlFor="location">Email</label>
-                                <input id="location" className="form-input w-full" type="text"  {...formik.getFieldProps("email")} />
+                                <input id="location" autoComplete="off" className="form-input w-full" type="text"  {...formik.getFieldProps("email")} />
                                 <p className="text-rose-500 pt-2 pl-2 font-semibold text-xs text-left">
                                     {formik?.errors?.email && formik.touched.email
                                         ? formik.errors.email
