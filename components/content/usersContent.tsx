@@ -207,7 +207,7 @@ function UsersContent({ user, isAuthenticate, accessToken, refreshToken }: IProp
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-200 bg-white">
-                                        {contactInfo && contactInfo.map((person) => (
+                                        {contactInfo && contactInfo instanceof Array && contactInfo.map((person) => (
                                             <tr key={uniqid()} className="divide-x divide-gray-200">
                                                 <td className="whitespace-nowrap px-4 py-4">
                                                     <div className="flex items-center">
