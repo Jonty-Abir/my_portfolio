@@ -176,3 +176,13 @@ export async function sendContactMessage(payload: IpayloadSendContactMessage) {
         return Promise.reject(error);
     }
 }
+
+export async function getAllContactInfo() {
+    try {
+        const { data, status } = await instance.get("/contacts-details");
+        if (status !== 200) return Promise.reject("Can't get contact details! please try again!");
+        return data;
+    } catch (error: any) {
+        return null;
+    }
+}

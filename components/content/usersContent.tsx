@@ -1,4 +1,4 @@
-import { findAllClient } from '@/helper/helper'
+import { findAllClient, getAllContactInfo } from '@/helper/helper'
 import { IProps } from '@/interface/interface'
 import { Iuser } from '@/redux/sclice/authSclice'
 import { useQuery } from '@tanstack/react-query'
@@ -8,23 +8,23 @@ import { GrEdit } from "react-icons/gr"
 
 import uniqid from 'uniqid'
 
+interface Iresponse {
+    clientName: string;
+    contactNumber: string;
+    contactEmail: string;
+    message: string;
+}
 
 function UsersContent({ user, isAuthenticate, accessToken, refreshToken }: IProps) {
     const { error, isLoading, data } = useQuery(["all-client"], () => findAllClient(accessToken, refreshToken))
+    const { error: contactInfoError, isLoading: contactInfoIsLoading, data: contactInfoData } = useQuery(["all-contactInfo"], () => getAllContactInfo())
+
 
     if (isLoading) return <h2 className="loading">Loading...</h2>
-    if (!data && !isLoading) return <h2 className="isError">Some think went worng!</h2>
-
-    const contactClient = [{
-        firstName: "testing",
-        lastName: "testing",
-        contactNumber: "9064749861",
-        contactEmail: "testing@gmail.com",
-        message: " Lorem ipsum dolor sit, amet",
-    }]
-
+    if ((!data && !isLoading) || (!contactInfoData && !contactInfoIsLoading)) return <h2 className="isError">Some think went worng!</h2>
 
     const clients: Iuser[] = data;
+    const contactInfo: Iresponse[] = contactInfoData;
     return (
         <>
             <section className="mx-auto w-full max-w-7xl px-4 py-4 overflow-x-hidden">
@@ -207,13 +207,13 @@ function UsersContent({ user, isAuthenticate, accessToken, refreshToken }: IProp
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-200 bg-white">
-                                        {contactClient.map((person) => (
+                                        {contactInfo && contactInfo.map((person) => (
                                             <tr key={uniqid()} className="divide-x divide-gray-200">
                                                 <td className="whitespace-nowrap px-4 py-4">
                                                     <div className="flex items-center">
 
                                                         <div className="ml-4">
-                                                            <div className="text-sm font-medium text-gray-900">{person.firstName} {person.lastName}</div>
+                                                            <div className="text-sm font-medium text-gray-900">{person.clientName}</div>
                                                         </div>
                                                     </div>
                                                 </td>

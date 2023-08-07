@@ -33,6 +33,7 @@
     "react-icons": "^4.8.0",
     "react-redux": "^8.0.5",
     "react-scroll": "^1.8.9",
+    "sharp": "^0.32.4",
     "smoothscroll-polyfill": "^0.4.4",
     "swiper": "^10.0.4",
     "typescript": "5.0.4",

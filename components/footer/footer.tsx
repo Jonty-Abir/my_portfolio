@@ -119,8 +119,7 @@ export default function Footer() {
                         Newsletter
                     </h4>
                     <p className="text-sm md:text-base lg:text-lg text-gray-500 dark:text-gray-400 font-medium mt-4 w-[320px] md:w-[391px]">
-                        When your team needs to kick off a project, and more, DevUI Covered
-                        You.
+                        When new update available we will informed you via email about the new updates.
                     </p>
                     <form className="mt-4 flex items-center space-x-2">
                         <input

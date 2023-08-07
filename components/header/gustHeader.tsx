@@ -49,7 +49,9 @@ export function GustHeader() {
                 <div className="mx-auto flex max-w-7xl items-center justify-between px-4 pr-4 py-2 sm:px-6 lg:px-8 lg:pr-0 h-[4rem]">
                     <div className="inline-flex items-center space-x-2">
 
-                        <span className="font-bold font-signature text-2xl">Abir Santra</span>
+                        <span className="font-bold font-signature text-2xl"> Abir Santra</span>
+                        {/* <Image src={"/assets/textLogo.png"} alt="logo" width={40} height={200} className=' h-auto w-auto' /> */}
+
                     </div>
                     {/* Large device */}
                     <div className="hidden grow items-start lg:flex">

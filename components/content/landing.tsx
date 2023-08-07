@@ -280,8 +280,9 @@ export const LandingPage = () => {
                             <div className="md:max-w-xl">
                                 <div className="mb-11 border-b pb-12 dark:border-gray-700 lg:pb-32">
                                     <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-300 md:max-w-lg">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo vero rerum ea!
-                                        Distinctio blanditiis sapiente reiciendis dicta officiis in aperiam?
+                                        If everyone is moving forward together, then success takes care of itself, is one of my personal favorite quotes on teamwork.
+                                        Because it{"'"} true: Teamwork has the incredible power to increase productivity, job satisfaction, and even each person{"'"}s individual performance. <br />
+                                        To inspire your team to band together and celebrate collaboration, we{"'"}ve gathered some of our favorite quotes on the power of teamwork.
                                     </h3>
                                 </div>
                                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -301,8 +302,7 @@ export const LandingPage = () => {
                                                 No Commitment
                                             </h3>
                                             <p className="font-medium text-gray-900 dark:text-gray-300">
-                                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit,
-                                                eaque?
+                                                Without involvement, there is no commitment. Mark it down, asterisk it, circle it, underline it. No involvement, no commitment. ~ Stephen Covey
                                             </p>
                                         </div>
                                     </div>
