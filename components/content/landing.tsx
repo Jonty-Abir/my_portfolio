@@ -74,7 +74,7 @@ export const LandingPage = () => {
     return (
         <>
             <section className="relative mt-8">
-                <div className="overflow-hidden pt-16 pb-48">
+                <div className="overflow-hidden pt-16 pb-28">
                     <div className="container relative mx-auto px-4">
                         <div className="-m-8 flex flex-col lg:flex-row">
                             <div className="w-full p-8 lg:w-6/12">
@@ -91,7 +91,7 @@ export const LandingPage = () => {
                                         </button>
                                     </a>
                                     <SocialIcone />
-                                    <div className="-m-1 flex flex-wrap items-center">
+                                    <div className="-m-1 flex flex-wrap items-center mt-4 md:mt-0">
                                         <div className="w-auto p-1">
                                             <div className="-m-0.5 flex flex-wrap">
                                                 <div className="w-auto p-0.5">
