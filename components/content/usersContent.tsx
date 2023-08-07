@@ -21,7 +21,7 @@ function UsersContent({ user, isAuthenticate, accessToken, refreshToken }: IProp
 
 
     if (isLoading) return <h2 className="loading">Loading...</h2>
-    if ((!data && !isLoading) || (!contactInfoData && !contactInfoIsLoading)) return <h2 className="isError">Some think went worng!</h2>
+    if (!data && !isLoading) return <h2 className="isError">Some think went worng!</h2>
 
     const clients: Iuser[] = data;
     const contactInfo: Iresponse[] = contactInfoData;
