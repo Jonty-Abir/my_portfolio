@@ -25,7 +25,6 @@ function UsersContent({ user, isAuthenticate, accessToken, refreshToken }: IProp
 
     const clients: Iuser[] = data;
     const contactInfo: Iresponse[] = contactInfoData;
-    console.log(contactInfo)
     return (
         <>
             <section className="mx-auto w-full max-w-7xl px-4 py-4 overflow-x-hidden">
