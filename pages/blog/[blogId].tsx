@@ -35,7 +35,7 @@ function SingleBlog({
         <meta name="keywords" content="abir santra web developer " />
         <meta name="author" content="abir santra" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="./assets/favicone.png" />
+        <link rel="icon" href="/assets/favicone.png" />
       </Head>
       <Layout>
         <SingleBlogCompo

@@ -10,7 +10,6 @@ import {
 } from "@/redux/sclice/authSclice";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 
 function Page({
@@ -25,8 +24,6 @@ function Page({
   dispatch(setAccessToken({ accessToken, refreshToken }));
   dispatch(setIsAuthenticate(isAuthenticate));
 
-  const router = useRouter();
-  const { productId } = router.query;
   return (
     <>
       <Head>
@@ -36,7 +33,7 @@ function Page({
         <meta name="keywords" content="abir santra web developer " />
         <meta name="author" content="abir santra" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="./assets/favicone.png" />
+        <link rel="icon" href="/assets/favicone.png" />
       </Head>
       <Layout>
         <NestLayoutE_commerce>

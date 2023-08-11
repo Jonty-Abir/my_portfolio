@@ -39,7 +39,7 @@ export default function NestLayoutE_commerce({ children }: IChildren) {
       img: "/assets/ecommerce/0ff199d1bd27eb98.webp",
     },
     {
-      category: "Beauty ,Toys & More",
+      category: " More",
       img: "/assets/ecommerce/dff3f7adcf3a90c6.webp",
     },
   ];

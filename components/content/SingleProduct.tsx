@@ -1,7 +1,12 @@
 import { ChevronLeft, ChevronRight, Heart, Share } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 function SingleProduct() {
+  const router = useRouter();
+
+  const { productId } = router.query;
+
   return (
     <div className="sp mx-auto max-w-7xl px-2 py-10 lg:px-0">
       <div className="overflow-hidden">
