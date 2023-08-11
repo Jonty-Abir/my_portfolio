@@ -116,3 +116,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .form-input-width {
   @apply xmd:w-[50rem] md:w-[55rem]  lg:w-[55rem];
 }
+
+.toHideScrollBar::-webkit-scrollbar {
+  display: none;
+}

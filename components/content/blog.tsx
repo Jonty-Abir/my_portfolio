@@ -15,28 +15,38 @@ import uniqId from "uniqid";
 import LodderCompo from "../shared/lodder";
 import SwiperCompo from "../shared/swiper";
 
-export default function Blog({ accessToken, refreshToken, user, isAuthenticate }: IProps) {
-
-
-  const { error, isLoading, data, isError } = useQuery(["all-post"], () => (findAllPost(accessToken, refreshToken)));
-  if (isLoading) return <div className="toCenter"><LodderCompo /></div>
+export default function Blog({
+  accessToken,
+  refreshToken,
+  user,
+  isAuthenticate,
+}: IProps) {
+  const { error, isLoading, data, isError } = useQuery(["all-post"], () =>
+    findAllPost(accessToken, refreshToken)
+  );
+  if (isLoading)
+    return (
+      <div className="toCenter">
+        <LodderCompo />
+      </div>
+    );
   if (!data) {
     console.log(data);
     return <h2 className="isError">Some think went worng!</h2>;
   }
 
-
   const posts: IPost[] = data;
   return (
     <div className="bg-white dark:bg-slate-400 overflow-x-hidden ">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
         {/* Head */}
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-center space-y-8 py-20">
             <div className=" text-center">
               <h2 className=" text-6xl font-bold uppercase">My Blogs</h2>
-              <div className=" text-xl text-gray-700 font-bold">Latest news from my blog</div>
+              <div className=" text-xl text-gray-700 font-bold">
+                Latest news from my blog
+              </div>
             </div>
             <div className="ace-x-2 flex w-80 items-center space-x-2 overflow-hidden rounded-lg border border-gray-300  bg-white px-3.5 shadow">
               <MagnifyingGlassIcon className="h-5 w-5 rounded-lg" />
@@ -92,7 +102,10 @@ export default function Blog({ accessToken, refreshToken, user, isAuthenticate }
                    Current Post
            ==========================*/}
 
-        <div id="letsUp" className="mt-4 grid gap-4 gap-y-8 py-6 md:grid-cols-2 lg:grid-cols-3">
+        <div
+          id="letsUp"
+          className="mt-4 grid gap-4 gap-y-8 py-6 md:grid-cols-2 lg:grid-cols-3"
+        >
           {posts.map((post, i) => {
             const data = post.description.split(" ");
             const blogDescription = data.filter((v, i) => i <= 20).join(" ");
@@ -109,9 +122,17 @@ export default function Blog({ accessToken, refreshToken, user, isAuthenticate }
                       alt=""
                       width={400}
                       height={300}
-                    /></Link>
+                    />
+                  </Link>
                   <div className="w-full text-sm flex items-center gap-x-2 font-semibold leading-tight text-gray-600">
-                    <Image src={`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/blogs/author/${post.author.img}`} width={25} height={20} alt="avtar_user" className="w-6 h-6 ring-2 ring-green-500 rounded-full" /> {post.author.name} <FcClock size={22} /> {post.published}
+                    <Image
+                      src={`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/blogs/author/${post.author.img}`}
+                      width={25}
+                      height={20}
+                      alt="avtar_user"
+                      className="w-6 h-6 ring-2 ring-green-500 rounded-full"
+                    />{" "}
+                    {post.author.name} <FcClock size={22} /> {post.published}
                     <div className=" inline-flex gap-x-1">
                       <FaComments size={20} />
                       comments: 0
@@ -129,20 +150,25 @@ export default function Blog({ accessToken, refreshToken, user, isAuthenticate }
                 <div className=" flex items-center justify-between pt-8">
                   <div className="flex  space-x-3 ">
                     <span
-                      className={`rounded-full px-2.5 py-0.5 text-center text-sm font-medium leading-tight ${colors[i % +posts.length]
-                        }`}
+                      className={`rounded-full px-2.5 py-0.5 text-center text-sm font-medium leading-tight ${
+                        colors[i % +posts.length]
+                      }`}
                     >
                       {post.category}
                     </span>
                   </div>
                   {/*  */}
-                  <Link href={`/blog/${post._id}`} className=" hover:underline btn bg-indigo-700">Read more</Link>
+                  <Link
+                    href={`/blog/${post._id}`}
+                    className=" hover:underline btn bg-indigo-700"
+                  >
+                    Read more
+                  </Link>
                 </div>
               </div>
-            )
+            );
           })}
         </div>
-
 
         <hr className="my-6" />
 
@@ -181,7 +207,6 @@ export default function Blog({ accessToken, refreshToken, user, isAuthenticate }
             </a>
           </div>
         </div>
-
       </div>
 
       {/*  ==============================
@@ -200,7 +225,10 @@ export default function Blog({ accessToken, refreshToken, user, isAuthenticate }
               </div>
             </div>
             <div className="mt-8 md:mt-0 ml-auto">
-              <a href={"#letsUp"} className="rounded-md bg-indigo-600 px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-indigo-800  inline-flex justify-center items-center">
+              <a
+                href={"#letsUp"}
+                className="rounded-md bg-indigo-600 px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-indigo-800  inline-flex justify-center items-center"
+              >
                 <IoIosArrowUp size={32} className="" />
               </a>
             </div>
@@ -224,7 +252,13 @@ export default function Blog({ accessToken, refreshToken, user, isAuthenticate }
                       />
                     </Link>
                     <div className="w-full text-sm flex items-center gap-x-2 font-semibold leading-tight text-gray-600">
-                      <Image src={`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/blogs/author/${post.author.img}`} width={25} height={20} alt="avtar_user" className="w-6 h-6 ring-2 ring-green-500 rounded-full" />
+                      <Image
+                        src={`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/blogs/author/${post.author.img}`}
+                        width={25}
+                        height={20}
+                        alt="avtar_user"
+                        className="w-6 h-6 ring-2 ring-green-500 rounded-full"
+                      />
                       {post.author.name} <FcClock size={22} /> {post.published}
                       <div className=" inline-flex gap-x-1">
                         <FaComments size={20} />
@@ -236,7 +270,6 @@ export default function Blog({ accessToken, refreshToken, user, isAuthenticate }
                         {post.title}
                       </div>
                     </div>
-
                   </div>
                   {/*  */}
                 </div>
@@ -256,7 +289,6 @@ const navigation = [
   { name: "Marketplace", href: "#" },
   { name: "Company", href: "#" },
 ];
-
 
 const colors = [
   "text-pink-700 bg-pink-100",

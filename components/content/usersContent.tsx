@@ -1,14 +1,18 @@
-import { findAllClient, getAllContactInfo } from '@/helper/helper'
+import { deleteContactMsg, findAllClient, getAllContactInfo } from '@/helper/helper'
 import { IProps } from '@/interface/interface'
 import { Iuser } from '@/redux/sclice/authSclice'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import Image from 'next/image'
+import { useState } from "react"
 import { AiTwotoneDelete } from "react-icons/ai"
 import { GrEdit } from "react-icons/gr"
 
+import { toast } from 'react-hot-toast'
 import uniqid from 'uniqid'
+import LoadingBtn from '../shared/LoadingBtn'
 
 interface Iresponse {
+    _id: string;
     clientName: string;
     contactNumber: string;
     contactEmail: string;
@@ -16,9 +20,26 @@ interface Iresponse {
 }
 
 function UsersContent({ user, isAuthenticate, accessToken, refreshToken }: IProps) {
-    const { error, isLoading, data } = useQuery(["all-client"], () => findAllClient(accessToken, refreshToken))
-    const { error: contactInfoError, isLoading: contactInfoIsLoading, data: contactInfoData } = useQuery(["all-contactInfo"], () => getAllContactInfo())
 
+    const [loading, setLoading] = useState(false);
+    // create query client
+    const queryClient = useQueryClient();
+
+    const { error, isLoading, data } = useQuery(["all-client"], () => findAllClient(accessToken, refreshToken))
+    const { error: contactInfoError, isLoading: contactInfoIsLoading, data: contactInfoData } = useQuery(["all-contactInfo"], () => getAllContactInfo(accessToken, refreshToken))
+
+    const handleDelete = (id: string) => {
+        setLoading(true);
+        deleteContactMsg(id, { accessToken, refreshToken })
+            .then((data) => {
+                toast.success("Message was Delete.");
+                queryClient.invalidateQueries(["all-contactInfo"])
+            })
+            .catch((error) => {
+                toast.error("Task Faild try again!");
+            })
+            .finally(() => { setLoading(false) })
+    };
 
     if (isLoading) return <h2 className="loading">Loading...</h2>
     if (!data && !isLoading) return <h2 className="isError">Some think went worng!</h2>
@@ -184,9 +205,6 @@ function UsersContent({ user, isAuthenticate, accessToken, refreshToken }: IProp
                                             >
                                                 Contact-Number
                                             </th>
-
-
-
                                             <th
                                                 scope="col"
                                                 className="px-4 py-3.5 text-left text-sm text-gray-500"
@@ -201,7 +219,7 @@ function UsersContent({ user, isAuthenticate, accessToken, refreshToken }: IProp
                                                 Message
                                             </th>
 
-                                            <th scope="col" colSpan={2} className="relative px-4 py-3.5 text-gray-500 cursor-not-allowed ">
+                                            <th scope="col" colSpan={2} className="relative px-4 py-3.5 bg-rose-200 text-gray-500">
                                                 action
                                             </th>
                                         </tr>
@@ -221,28 +239,23 @@ function UsersContent({ user, isAuthenticate, accessToken, refreshToken }: IProp
                                                     <div className="text-sm text-gray-900">{person.contactNumber}</div>
                                                     {/* <div className="text-sm text-gray-500">{person.department}</div> */}
                                                 </td>
-                                                {/* <td className="whitespace-nowrap px-4 py-4">
-                                                <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
-                                                    Active
-                                                </span>
-                                            </td> */}
                                                 <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500">
                                                     {person.contactEmail}
                                                 </td>
                                                 <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500">
                                                     {person.message}
                                                 </td>
-                                                <td className="whitespace-nowrap px-4 py-4 text-right text-sm font-medium cursor-not-allowed ">
+                                                <td className="whitespace-nowrap px-4 py-4 text-right text-sm font-medium bg-rose-200 ">
                                                     <div className='flex justify-center items-center'>
-                                                        <AiTwotoneDelete size={20} className=' text-gray-700' />
+                                                        {loading ? <LoadingBtn /> : <AiTwotoneDelete onClick={() => handleDelete(person._id)} size={20} className=' text-gray-700' />}
 
                                                     </div>
                                                 </td>
-                                                <td className="whitespace-nowrap px-4 py-4 text-right text-sm font-medium cursor-not-allowed">
-                                                    <div className='flex justify-center items-center'>
-                                                        <GrEdit size={20} className=' text-gray-700' />
-                                                    </div>
-                                                </td>
+                                                {/* <td className="whitespace-nowrap px-4 py-4 text-right text-sm font-medium cursor-not-allowed">
+                                        <div className='flex justify-center items-center'>
+                                            <GrEdit size={20} className=' text-gray-700' />
+                                        </div>
+                                    </td> */}
                                             </tr>
                                         ))}
                                     </tbody>

@@ -1,3 +1,4 @@
+import E_commerce from '@/components/content/E-commerce';
 import { verifyAccesToken } from '@/helper/helper';
 import { IProps } from '@/interface/interface';
 import Layout from '@/layout/layout';
@@ -25,7 +26,7 @@ function Page({ name, accessToken, isAuthenticate, user, refreshToken }: IProps)
                 <link rel="icon" href="./assets/favicone.png" />
             </Head>
             <Layout>
-                <h2 className=' text-2xl text-center'>This service Comming soon!</h2>
+                <E_commerce />
             </Layout>
         </>
     )

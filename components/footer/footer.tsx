@@ -113,7 +113,7 @@ export default function Footer() {
                     </span>
                 </div>
             </div>
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center lg:space-x-12 w-[100%]">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-evenly lg:space-x-12 w-[100%]">
                 <div className="mb-4">
                     <h4 className="font-medium text-xl md:text-[26px] md:leading-[30.3px] lg:text-[31px] lg:leading-[40.3px] text-gray-700 dark:text-gray-100">
                         Newsletter

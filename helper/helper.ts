@@ -177,10 +177,29 @@ export async function sendContactMessage(payload: IpayloadSendContactMessage) {
     }
 }
 
-export async function getAllContactInfo() {
+export async function getAllContactInfo(accessToken: string, refreshToken: string) {
     try {
-        const { data, status } = await instance.get("/contacts-details");
+        if (!accessToken || !refreshToken) throw new Error("Bad request!");
+        const { data, status } = await instance.get("/contacts-details", {
+            headers: {
+                Authorization: `Bearer ${accessToken} ${refreshToken}`
+            }
+        });
         if (status !== 200) return Promise.reject("Can't get contact details! please try again!");
+        return data;
+    } catch (error: any) {
+        return null;
+    }
+}
+export async function deleteContactMsg(id: string, token: { accessToken: string, refreshToken: string }) {
+    try {
+        if (!token.accessToken || !token.refreshToken) throw new Error("Bad request!");
+        const { data, status } = await instance.delete(`/contacts-details/${id}`, {
+            headers: {
+                Authorization: `Bearer ${token.accessToken} ${token.refreshToken}`
+            }
+        });
+        if (status !== 200) return Promise.reject("Can't delete message! please try again!");
         return data;
     } catch (error: any) {
         return null;

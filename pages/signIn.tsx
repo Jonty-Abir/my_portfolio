@@ -37,7 +37,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     if (accessToken && refreshToken) {
         return {
             redirect: {
-                destination: "/blog",
+                destination: "/dashboard",
                 permanent: false,
             },
         }

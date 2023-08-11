@@ -11,8 +11,8 @@ export default function handler(
         if (!accessToken || !refreshToken) throw new Error("token not found!");
 
         res.setHeader("Set-Cookie", [
-            `${process.env.NEXT_PUBLIC_ACCESS_TOKEN_NAME}=${accessToken}; expires=${1000 * 60 * 60 * 24 * 30}; path=/;  HttpOnly;`,
-            `${process.env.NEXT_PUBLIC_REFRESH_TOKEN_NAME}=${refreshToken}; expires=${1000 * 60 * 60 * 24 * 30}; path=/; HttpOnly;`,
+            `${process.env.NEXT_PUBLIC_ACCESS_TOKEN_NAME}=${accessToken}; Max-Age=${1000 * 60 * 60 * 24 * 30}; expires=${1000 * 60 * 60 * 24 * 30}; path=/;  HttpOnly;`,
+            `${process.env.NEXT_PUBLIC_REFRESH_TOKEN_NAME}=${refreshToken}; Max-Age=${1000 * 60 * 60 * 24 * 30}; expires=${1000 * 60 * 60 * 24 * 30}; path=/; HttpOnly;`,
             // Add more cookies here if needed
         ]);
         // res.setHeader(
