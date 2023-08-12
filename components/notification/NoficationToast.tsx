@@ -1,17 +1,18 @@
-import Image from 'next/image';
-import { toast } from 'react-hot-toast';
+import Image from "next/image";
+import { toast } from "react-hot-toast";
 
 interface IToastPros {
   t: any;
   success: boolean;
   msg: string;
-};
+}
 
-function NoficationToast({ t, success, msg }: IToastPros) {
+function NotificationToast({ t, success, msg }: IToastPros) {
   return (
     <div
-      className={`${t.visible ? 'animate-enter' : 'animate-leave'
-        } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
+      className={`${
+        t.visible ? "animate-enter" : "animate-leave"
+      } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
     >
       <div className="flex-1 w-0 p-4">
         <div className="flex items-start">
@@ -27,11 +28,18 @@ function NoficationToast({ t, success, msg }: IToastPros) {
           <div className="ml-3 flex-1">
             <p className="text-sm font-semibold text-gray-900 flex flex-col">
               <span>Abir Santra</span>
-              <span style={{ fontSize: "10px" }} className=" text-gray-400 capitalize">owner</span>
-
-
+              <span
+                style={{ fontSize: "10px" }}
+                className=" text-gray-400 capitalize"
+              >
+                owner
+              </span>
             </p>
-            <p className={`mt-1 text-sm font-bold ${success ? "text-green-500" : " text-rose-500"}`}>
+            <p
+              className={`mt-1 text-sm font-bold ${
+                success ? "text-green-500" : " text-rose-500"
+              }`}
+            >
               {msg}
             </p>
           </div>
@@ -46,7 +54,7 @@ function NoficationToast({ t, success, msg }: IToastPros) {
         </button>
       </div>
     </div>
-  )
+  );
 }
 
-export default NoficationToast
+export default NotificationToast;

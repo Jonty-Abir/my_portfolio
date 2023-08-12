@@ -1,7 +1,7 @@
 import NestLayoutE_commerce from "@/layout/NestedLayoutE_Commerce";
 import Products from "./Products";
 
-function E_commerce() {
+function Ecommerce() {
   return (
     <NestLayoutE_commerce>
       <Products />
@@ -9,4 +9,4 @@ function E_commerce() {
   );
 }
 
-export default E_commerce;
+export default Ecommerce;
