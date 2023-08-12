@@ -106,68 +106,69 @@ export default function Blog({
           id="letsUp"
           className="mt-4 grid gap-4 gap-y-8 py-6 md:grid-cols-2 lg:grid-cols-3"
         >
-          {posts.map((post, i) => {
-            const data = post.description.split(" ");
-            const blogDescription = data.filter((v, i) => i <= 20).join(" ");
-            return (
-              <div
-                key={post.title}
-                className="flex flex-col justify-between space-y-2  px-2 py-4 rounded-md bg-indigo-100 pb-8"
-              >
-                <div className="space-y-2 ">
-                  <Link href={`/blog/${post._id}`}>
-                    <Image
-                      src={`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/blogs/poster/${post.img}`}
-                      className="aspect-video w-full rounded-md cursor-pointer"
-                      alt=""
-                      width={400}
-                      height={300}
-                    />
-                  </Link>
-                  <div className="w-full text-sm flex items-center gap-x-2 font-semibold leading-tight text-gray-600">
-                    <Image
-                      src={`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/blogs/author/${post.author.img}`}
-                      width={25}
-                      height={20}
-                      alt="avtar_user"
-                      className="w-6 h-6 ring-2 ring-green-500 rounded-full"
-                    />{" "}
-                    {post.author.name} <FcClock size={22} /> {post.published}
-                    <div className=" inline-flex gap-x-1">
-                      <FaComments size={20} />
-                      comments: 0
+          {posts &&
+            posts.map((post, i) => {
+              const data = post.description.split(" ");
+              const blogDescription = data.filter((v, i) => i <= 20).join(" ");
+              return (
+                <div
+                  key={post.title}
+                  className="flex flex-col justify-between space-y-2  px-2 py-4 rounded-md bg-indigo-100 pb-8"
+                >
+                  <div className="space-y-2 ">
+                    <Link href={`/blog/${post._id}`}>
+                      <Image
+                        src={`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/blogs/poster/${post.img}`}
+                        className="aspect-video w-full rounded-md cursor-pointer"
+                        alt=""
+                        width={400}
+                        height={300}
+                      />
+                    </Link>
+                    <div className="w-full text-sm flex items-center gap-x-2 font-semibold leading-tight text-gray-600">
+                      <Image
+                        src={`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/blogs/author/${post.author.img}`}
+                        width={25}
+                        height={20}
+                        alt="avtar_user"
+                        className="w-6 h-6 ring-2 ring-green-500 rounded-full"
+                      />{" "}
+                      {post.author.name} <FcClock size={22} /> {post.published}
+                      <div className=" inline-flex gap-x-1">
+                        <FaComments size={20} />
+                        comments: 0
+                      </div>
+                    </div>
+                    <div className="pt-4">
+                      <div className="flex-1 px-2 text-2xl font-semibold text-gray-900">
+                        {post.title}
+                      </div>
+                    </div>
+                    <div className="w-full px-2 text-base leading-normal text-gray-600 dark:text-gray-700 font-semibold">
+                      {blogDescription}...
                     </div>
                   </div>
-                  <div className="pt-4">
-                    <div className="flex-1 px-2 text-2xl font-semibold text-gray-900">
-                      {post.title}
+                  <div className=" flex items-center justify-between pt-8">
+                    <div className="flex  space-x-3 ">
+                      <span
+                        className={`rounded-full px-2.5 py-0.5 text-center text-sm font-medium leading-tight ${
+                          colors[i % +posts.length]
+                        }`}
+                      >
+                        {post.category}
+                      </span>
                     </div>
-                  </div>
-                  <div className="w-full px-2 text-base leading-normal text-gray-600 dark:text-gray-700 font-semibold">
-                    {blogDescription}...
-                  </div>
-                </div>
-                <div className=" flex items-center justify-between pt-8">
-                  <div className="flex  space-x-3 ">
-                    <span
-                      className={`rounded-full px-2.5 py-0.5 text-center text-sm font-medium leading-tight ${
-                        colors[i % +posts.length]
-                      }`}
+                    {/*  */}
+                    <Link
+                      href={`/blog/${post._id}`}
+                      className=" hover:underline btn bg-indigo-700"
                     >
-                      {post.category}
-                    </span>
+                      Read more
+                    </Link>
                   </div>
-                  {/*  */}
-                  <Link
-                    href={`/blog/${post._id}`}
-                    className=" hover:underline btn bg-indigo-700"
-                  >
-                    Read more
-                  </Link>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
 
         <hr className="my-6" />
@@ -234,46 +235,48 @@ export default function Blog({
             </div>
           </div>
           <div className="grid gap-4 gap-y-8 py-6 md:grid-cols-2 lg:grid-cols-3">
-            {posts
-              .filter((e, i) => i < 3)
-              .map((post, i) => (
-                <div
-                  key={post.title}
-                  className="flex flex-col justify-between space-y-2 px-2 py-4 rounded-md bg-indigo-200 pb-8"
-                >
-                  <div className="space-y-2">
-                    <Link href={`/blog/${post._id}`}>
-                      <Image
-                        src={`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/blogs/poster/${post.img}`}
-                        className="aspect-video w-full cursor-pointer rounded-md"
-                        alt="poster"
-                        width={300}
-                        height={200}
-                      />
-                    </Link>
-                    <div className="w-full text-sm flex items-center gap-x-2 font-semibold leading-tight text-gray-600">
-                      <Image
-                        src={`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/blogs/author/${post.author.img}`}
-                        width={25}
-                        height={20}
-                        alt="avtar_user"
-                        className="w-6 h-6 ring-2 ring-green-500 rounded-full"
-                      />
-                      {post.author.name} <FcClock size={22} /> {post.published}
-                      <div className=" inline-flex gap-x-1">
-                        <FaComments size={20} />
-                        comments:0
+            {posts &&
+              posts
+                .filter((e, i) => i < 3)
+                .map((post, i) => (
+                  <div
+                    key={post.title}
+                    className="flex flex-col justify-between space-y-2 px-2 py-4 rounded-md bg-indigo-200 pb-8"
+                  >
+                    <div className="space-y-2">
+                      <Link href={`/blog/${post._id}`}>
+                        <Image
+                          src={`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/blogs/poster/${post.img}`}
+                          className="aspect-video w-full cursor-pointer rounded-md"
+                          alt="poster"
+                          width={300}
+                          height={200}
+                        />
+                      </Link>
+                      <div className="w-full text-sm flex items-center gap-x-2 font-semibold leading-tight text-gray-600">
+                        <Image
+                          src={`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/blogs/author/${post.author.img}`}
+                          width={25}
+                          height={20}
+                          alt="avtar_user"
+                          className="w-6 h-6 ring-2 ring-green-500 rounded-full"
+                        />
+                        {post.author.name} <FcClock size={22} />{" "}
+                        {post.published}
+                        <div className=" inline-flex gap-x-1">
+                          <FaComments size={20} />
+                          comments:0
+                        </div>
+                      </div>
+                      <div>
+                        <div className="flex-1 text-2xl font-semibold px-3 pt-3 text-gray-900">
+                          {post.title}
+                        </div>
                       </div>
                     </div>
-                    <div>
-                      <div className="flex-1 text-2xl font-semibold px-3 pt-3 text-gray-900">
-                        {post.title}
-                      </div>
-                    </div>
+                    {/*  */}
                   </div>
-                  {/*  */}
-                </div>
-              ))}
+                ))}
           </div>
         </div>
       </div>

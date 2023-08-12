@@ -1,8 +1,8 @@
 import { SingleProduct } from "@/components/content/SingleProduct";
 import { verifyAccesToken } from "@/helper/helper";
 import { IProps } from "@/interface/interface";
-import NestLayoutEcommerce from "@/layout/NestedLayoutE_Commerce";
 import Layout from "@/layout/layout";
+import NestLayoutEcommerce from "@/layout/nestedLayout/ECommerceLayout";
 import {
   setAccessToken,
   setIsAuthenticate,

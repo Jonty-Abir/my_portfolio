@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ReactElement } from "react";
 import { FcSearch } from "react-icons/fc";
 import uniqid from "uniqid";
-import { EcommerceSwiper } from "../components/shared/EcommerceSwiper";
+import { EcommerceSwiper } from "../../components/shared/EcommerceSwiper";
 
 interface IChildren {
   children: ReactElement;

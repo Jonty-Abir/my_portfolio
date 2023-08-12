@@ -60,6 +60,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     if (!accessToken || !refreshToken) throw new Error("Unauthrozied");
 
     const { data, status } = await verifyAccesToken(accessToken, refreshToken);
+
     const isAuthenticate = data.msg;
     if (isAuthenticate) {
       return {

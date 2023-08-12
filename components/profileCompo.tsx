@@ -1,3 +1,4 @@
+import { UserRole } from "@/interface/interface";
 import {
   setACtiveAccountFrom,
   setACtiveBlogFrom,
@@ -154,7 +155,7 @@ const ProfileCompo = () => {
               />
             )}
             {/* Blog */}
-            {activeFrom.blog && (
+            {activeFrom.blog && client && client.role === UserRole.ADMIN && (
               <BlogFrom
                 client={client}
                 accessToken={accessToken}

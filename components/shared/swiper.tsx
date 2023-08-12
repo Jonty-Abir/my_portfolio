@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 
 // import required modules
 import Image from "next/image";
-import { EffectFade, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 
 function SwiperCompo() {
   return (
@@ -18,15 +18,20 @@ function SwiperCompo() {
         spaceBetween={30}
         effect={"fade"}
         navigation={false}
+        autoplay={{
+          // @ts-ignore
+          Autoplay: 1500,
+          disableOnInteraction: false,
+        }}
         pagination={{
           clickable: true,
         }}
-        modules={[EffectFade, Navigation, Pagination]}
+        modules={[EffectFade, Navigation, Pagination, Autoplay]}
         className="mySwiper"
       >
         <SwiperSlide>
           <Image
-            className="aspect-video rounded-lg h-[25rem]"
+            className="aspect-video rounded-lg h-auto md:h-[25rem]"
             src="https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
             alt="slider"
             width={1260}

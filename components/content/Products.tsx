@@ -20,7 +20,7 @@ interface ResData {
   };
 }
 
-const Products = () => {
+const Products = ({ products }: any) => {
   const queryClient = useQueryClient();
 
   const { isError, isLoading, data, error } = useQuery(["products"], () =>

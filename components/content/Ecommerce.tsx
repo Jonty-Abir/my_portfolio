@@ -1,4 +1,4 @@
-import NestLayoutEcommerce from "@/layout/NestedLayoutE_Commerce";
+import NestLayoutEcommerce from "@/layout/nestedLayout/ECommerceLayout";
 import Products from "./Products";
 
 function Ecommerce() {

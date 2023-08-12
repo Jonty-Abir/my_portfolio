@@ -1,7 +1,7 @@
-import { ChevronUpIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import SocialIcone from "../socialIcone";
 
 const logos = [
@@ -344,11 +344,11 @@ export const LandingPage = () => {
           </div>
           <div className="mx-auto mt-8 max-w-3xl space-y-4 md:mt-16">
             {/* Propuler question */}
-            {propulerQuestion.map((v) => {
+            {propulerQuestion.map((v, i) => {
               return (
                 <div
                   key={v.id}
-                  className="cursor-pointer rounded-md border border-gray-400 shadow-lg transition-all duration-200 dark:border-gray-700 hover:translate-x-2"
+                  className="cursor-pointer rounded-md border border-gray-400 shadow-lg transition-all duration-200 dark:border-gray-700"
                 >
                   <button
                     type="button"
@@ -358,10 +358,17 @@ export const LandingPage = () => {
                       {v.question}
                     </span>
 
-                    <ChevronUpIcon
-                      className="h-5 w-5 text-gray-50"
-                      onClick={() => v.setStateFun(!v.state)}
-                    />
+                    {v.state ? (
+                      <IoIosArrowUp
+                        className="h-5 w-5 text-gray-50"
+                        onClick={() => v.setStateFun(!v.state)}
+                      />
+                    ) : (
+                      <IoIosArrowDown
+                        className="h-5 w-5 text-gray-50"
+                        onClick={() => v.setStateFun(!v.state)}
+                      />
+                    )}
                   </button>
                   <div
                     className={`px-4 pb-5 sm:px-6 sm:pb-6  ${
