@@ -26,7 +26,6 @@ const Products = () => {
   const { isError, isLoading, data, error } = useQuery(["products"], () =>
     getAllProduct()
   );
-  console.log(isError, isLoading, data, error);
 
   if (isLoading)
     return (
