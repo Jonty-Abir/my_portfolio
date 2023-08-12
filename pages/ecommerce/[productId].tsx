@@ -1,7 +1,7 @@
 import { SingleProduct } from "@/components/content/SingleProduct";
 import { verifyAccesToken } from "@/helper/helper";
 import { IProps } from "@/interface/interface";
-import NestLayoutE_commerce from "@/layout/NestedLayoutE_Commerce";
+import NestLayoutEcommerce from "@/layout/NestedLayoutE_Commerce";
 import Layout from "@/layout/layout";
 import {
   setAccessToken,
@@ -36,9 +36,9 @@ function Page({
         <link rel="icon" href="/assets/favicone.png" />
       </Head>
       <Layout>
-        <NestLayoutE_commerce>
+        <NestLayoutEcommerce>
           <SingleProduct />
-        </NestLayoutE_commerce>
+        </NestLayoutEcommerce>
       </Layout>
     </>
   );

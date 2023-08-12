@@ -1,4 +1,4 @@
-import Ecommerce from "@/components/content/E-commerce";
+import Ecommerce from "@/components/content/Ecommerce";
 import { verifyAccesToken } from "@/helper/helper";
 import { IProps } from "@/interface/interface";
 import Layout from "@/layout/layout";
@@ -7,7 +7,6 @@ import {
   setIsAuthenticate,
   setUser,
 } from "@/redux/sclice/authSclice";
-import jwtDecode from "jwt-decode";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { useDispatch } from "react-redux";
@@ -33,7 +32,7 @@ function Page({
         <meta name="keywords" content="abir santra web developer " />
         <meta name="author" content="abir santra" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="./assets/favicone.png" />
+        <link rel="icon" href="/assets/favicone.png" />
       </Head>
       <Layout>
         <Ecommerce />
@@ -59,7 +58,6 @@ export const getServerSideProps: GetServerSideProps = async ({
       req.cookies[process.env.NEXT_PUBLIC_REFRESH_TOKEN_NAME as string];
 
     if (!accessToken || !refreshToken) throw new Error("Unauthrozied");
-    const authoriztedUserId: any = jwtDecode(accessToken);
 
     const { data, status } = await verifyAccesToken(accessToken, refreshToken);
     const isAuthenticate = data.msg;

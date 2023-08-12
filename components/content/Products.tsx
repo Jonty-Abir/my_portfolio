@@ -26,6 +26,7 @@ const Products = () => {
   const { isError, isLoading, data, error } = useQuery(["products"], () =>
     getAllProduct()
   );
+  console.log(isError, isLoading, data, error);
 
   if (isLoading)
     return (
@@ -33,7 +34,9 @@ const Products = () => {
         <LodderCompo />
       </div>
     );
-
+  if (!data && !isLoading && error && isError) {
+    return <h2 className="isError capitalize">Request Time Out Try again!</h2>;
+  }
   if (!data && !isLoading) {
     return <h2 className="isError">Some think went worng!</h2>;
   }

@@ -1,11 +1,11 @@
-import NestLayoutE_commerce from "@/layout/NestedLayoutE_Commerce";
+import NestLayoutEcommerce from "@/layout/NestedLayoutE_Commerce";
 import Products from "./Products";
 
 function Ecommerce() {
   return (
-    <NestLayoutE_commerce>
+    <NestLayoutEcommerce>
       <Products />
-    </NestLayoutE_commerce>
+    </NestLayoutEcommerce>
   );
 }
 

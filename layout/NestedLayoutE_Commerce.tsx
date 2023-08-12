@@ -8,7 +8,7 @@ interface IChildren {
   children: ReactElement;
 }
 
-export default function NestLayoutE_commerce({ children }: IChildren) {
+export default function NestLayoutEcommerce({ children }: IChildren) {
   const categorys = [
     {
       category: "Grocery",
