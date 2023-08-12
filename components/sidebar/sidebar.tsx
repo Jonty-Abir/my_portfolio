@@ -82,10 +82,16 @@ export default function Sidebar() {
         {showFullDeskTopSidebar ? (
           <aside className=" hidden lg:flex duration-200 showFullDeskTopSidebar  flex-col w-64 h-screen px-5 py-8 pt-2 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
             <div className="flex justify-between items-center">
-              {/* <span className="text-gray-400 uppercase font-semibold">Abir Santra</span> */}
-              <span className="font-bold font-signature text-2xl hidden mxs:block">
+              {/* <span className="font-bold font-signature text-2xl hidden mxs:block">
                 Abir Santra
-              </span>
+              </span> */}
+              <Image
+                className="w-auto h-6 bg-cover"
+                src="/assets/logo_owner2.png"
+                alt="logo"
+                width={400}
+                height={400}
+              />
 
               <a
                 className="bg-gray-800 px-3 py-2 flex justify-end rounded-md"
@@ -377,9 +383,16 @@ export default function Sidebar() {
       >
         <div className="flex flex-col justify-between flex-1 ">
           <div className={`flex justify-between`}>
-            <span className="font-bold font-signature text-2xl">
+            {/* <span className="font-bold font-signature text-2xl">
               Abir Santra
-            </span>
+            </span> */}
+            <Image
+              className="w-auto h-6 bg-cover"
+              src="/assets/logo_owner2.png"
+              alt="logo"
+              width={400}
+              height={400}
+            />
             <VscChromeClose
               size={28}
               className={`bg-gray-700 p-2 rounded-sm mb-4`}

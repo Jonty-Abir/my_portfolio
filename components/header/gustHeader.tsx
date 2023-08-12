@@ -1,4 +1,5 @@
 import { RootState } from "@/redux/store";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
@@ -49,11 +50,17 @@ export function GustHeader() {
       <div className="relative w-full">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 pr-4 py-2 sm:px-6 lg:px-8 lg:pr-0 h-[4rem]">
           <div className="inline-flex items-center space-x-2">
-            <span className="font-bold font-signature text-2xl">
+            {/* <span className="font-bold font-signature text-2xl">
               {" "}
               Abir Santra
-            </span>
-            {/* <Image src={"/assets/textLogo.png"} alt="logo" width={40} height={200} className=' h-auto w-auto' /> */}
+            </span> */}
+            <Image
+              className="w-auto h-8 bg-cover"
+              src="/assets/logo_owner2.png"
+              alt="logo"
+              width={400}
+              height={400}
+            />
           </div>
           {/* Large device */}
           <div className="hidden grow items-start lg:flex">
