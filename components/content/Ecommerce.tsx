@@ -1,9 +1,10 @@
 import NestLayoutEcommerce from "@/layout/nestedLayout/ECommerceLayout";
+import Products from "./Products";
 
 function Ecommerce() {
   return (
     <NestLayoutEcommerce>
-      <h2> Hello</h2>
+      <Products />
     </NestLayoutEcommerce>
   );
 }

@@ -41,12 +41,7 @@ function Page({
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({
-  req,
-  res,
-  params,
-}) => {
-  const param: any = params;
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   try {
     //cookie[0].split("accessToken=")[1];
     // cookie[1].split("refreshToken=")[1];
