@@ -3,7 +3,7 @@ import axios from "axios";
 export async function getAllProduct() {
   try {
     const { data, status } = await axios.get(
-      "https://fakestoreapi.com/products",
+      "https://fakestoreapi.com/products?limit=10",
       { timeout: 6000 }
     );
     if (status !== 200) throw new Error("Faild To Get Products!");

@@ -41,8 +41,6 @@ function Page({
   );
 }
 
-export default Page;
-
 export const getServerSideProps: GetServerSideProps = async ({
   req,
   res,
@@ -89,3 +87,4 @@ export const getServerSideProps: GetServerSideProps = async ({
     };
   }
 };
+export default Page;

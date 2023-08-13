@@ -1,6 +1,16 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
+  const routes = [
+    { path: "/", page: "Home" },
+    { path: "/aboutUs", page: "About" },
+    { path: "/blog", page: "Blog" },
+    { path: "/ecommerce", page: "E-Commerce" },
+    { path: "/contactUs", page: "Contact-Me" },
+    { path: "/dashboard", page: "Dashboard" },
+    { path: "/techStack", page: "Tach-Stack" },
+  ];
   return (
     <footer className="px-10 md:px-6 py-10 footer">
       <div className="mb-16 flex flex-col md:flex-row md:items-center justify-between">
@@ -144,14 +154,14 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-12 mt-8 lg:mt-0">
           <div className="mb-4">
             <p className="text-lg font-semibold text-gray-700 dark:text-gray-100 mb-6">
-              Our Stores
+              Routes
             </p>
             <ul className="flex flex-col space-y-4 font-medium text-[14px] text-gray-500 dark:text-gray-400">
-              <li>Washington</li>
-              <li>New Hampshire</li>
-              <li>Maine</li>
-              <li>Texas</li>
-              <li>Indiana</li>
+              {routes.map((v, i) => (
+                <Link key={i} href={`${v.path}`}>
+                  <li>{v.page}</li>
+                </Link>
+              ))}
             </ul>
           </div>
           <div className="mb-4">

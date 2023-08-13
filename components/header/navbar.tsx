@@ -22,23 +22,6 @@ export default function Navbar() {
             {/*Header: Left side*/}
             <div className="flex  gap-x-4 md:gap-x-8 justify-between items-center">
               {/*Hamburger button*/}
-
-              {/* <button
-                                className="text-slate-500 hover:text-slate-600 lg:hidden"
-                                onClick={() => dispatch((setShowSideBar()))}
-                            >
-                                <span className="sr-only">Open sidebar</span>
-                                <svg
-                                    className="w-6 h-6 fill-current"
-                                    viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <rect x="4" y="5" width="16" height="2" />
-                                    <rect x="4" y="11" width="16" height="2" />
-                                    <rect x="4" y="17" width="16" height="2" />
-                                </svg>
-                            </button> */}
-
               <svg
                 onClick={() => dispatch(setShowSideBar())}
                 xmlns="http://www.w3.org/2000/svg"
