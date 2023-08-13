@@ -1,4 +1,3 @@
-import Ecommerce from "@/components/content/Ecommerce";
 import { verifyAccesToken } from "@/helper/helper";
 import { IProps } from "@/interface/interface";
 import Layout from "@/layout/layout";
@@ -35,7 +34,7 @@ function Page({
         <link rel="icon" href="/assets/favicone.png" />
       </Head>
       <Layout>
-        <Ecommerce />
+        <h2> Hello</h2>
       </Layout>
     </>
   );
