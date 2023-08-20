@@ -1,4 +1,5 @@
 import UsersContent from "@/components/content/usersContent";
+import TableLoading from "@/components/loading/tableLoading";
 import { verifyAccesToken } from "@/helper/helper";
 import { IProps } from "@/interface/interface";
 import Layout from "@/layout/layout";
@@ -9,6 +10,7 @@ import {
 } from "@/redux/sclice/authSclice";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
+import { Suspense } from "react";
 import { useDispatch } from "react-redux";
 
 function Page({
@@ -35,12 +37,14 @@ function Page({
         <link rel="icon" href="./assets/favicone.png" />
       </Head>
       <Layout>
-        <UsersContent
-          isAuthenticate={isAuthenticate}
-          accessToken={accessToken}
-          refreshToken={refreshToken}
-          user={user}
-        />
+        <Suspense fallback={<TableLoading />}>
+          <UsersContent
+            isAuthenticate={isAuthenticate}
+            accessToken={accessToken}
+            refreshToken={refreshToken}
+            user={user}
+          />
+        </Suspense>
       </Layout>
     </>
   );

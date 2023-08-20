@@ -1,3 +1,4 @@
+import Loading from "@/components/loading/loading";
 import ProfileCompo from "@/components/profileCompo";
 import { verifyAccesToken } from "@/helper/helper";
 import { IProps } from "@/interface/interface";
@@ -10,6 +11,7 @@ import {
 import jwtDecode from "jwt-decode";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
+import { Suspense } from "react";
 import { useDispatch } from "react-redux";
 
 function Page({
@@ -36,7 +38,9 @@ function Page({
         <link rel="icon" href="/assets/favicone.png" />
       </Head>
       <Layout>
-        <ProfileCompo />
+        <Suspense fallback={<Loading />}>
+          <ProfileCompo />
+        </Suspense>
       </Layout>
     </>
   );

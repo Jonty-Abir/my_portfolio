@@ -23,7 +23,6 @@ import { HiArrowRight } from "react-icons/hi";
 import { VscArrowLeft, VscChromeClose } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  IState,
   setShowDeskTopSidebar,
   setShowProfileInfo,
   setShowSideBar,
@@ -37,10 +36,10 @@ interface IChildren {
 export default function Sidebar() {
   // redux hooks
   const showFullDeskTopSidebar = useSelector(
-    (state: IState) => state.uiSclice.showDeskTopSidebar
+    (state: RootState) => state.uiSclice.showDeskTopSidebar
   );
   const showSideBar = useSelector(
-    (state: IState) => state.uiSclice.showSideBar
+    (state: RootState) => state.uiSclice.showSideBar
   );
   const client = useSelector((state: RootState) => state.authSclice.user);
   const [loading, setLoading] = useState(false);

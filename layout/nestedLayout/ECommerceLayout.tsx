@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { ReactElement } from "react";
+import { ReactElement, Suspense } from "react";
 import { FcSearch } from "react-icons/fc";
 import uniqid from "uniqid";
+import Loading from "../../components/loading/loading";
 import { EcommerceSwiper } from "../../components/shared/EcommerceSwiper";
 
 interface IChildren {
@@ -82,7 +83,7 @@ export default function NestLayoutEcommerce({ children }: IChildren) {
         </form>
       </div>
       <EcommerceSwiper />
-      {children}
+      <Suspense fallback={<Loading />}>{children}</Suspense>
     </div>
   );
 }

@@ -15,8 +15,6 @@ interface IProps {
 }
 
 export default function Page({ name }: IProps) {
-  console.log(name);
-
   const [state, setState] = useState(0);
   const components = [
     { compo: <SendOtp setCount={setState} /> },

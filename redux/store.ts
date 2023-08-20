@@ -3,8 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import authSclice from "./sclice/authSclice";
 import otpSclice from "./sclice/otpSclice";
 
-
 export const store = configureStore({
-    reducer: { uiSclice, authSclice, otpSclice },
+  reducer: { uiSclice, authSclice, otpSclice },
 });
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof store.getState>;
