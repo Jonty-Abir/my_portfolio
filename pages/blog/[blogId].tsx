@@ -1,4 +1,7 @@
+import { Suspense } from "react";
+
 import SingleBlogCompo from "@/components/content/singleBlogContent";
+import Loading from "@/components/loading/loading";
 import { verifyAccesToken } from "@/helper/helper";
 import { IProps } from "@/interface/interface";
 import Layout from "@/layout/layout";
@@ -38,12 +41,14 @@ function SingleBlog({
         <link rel="icon" href="/assets/favicone.png" />
       </Head>
       <Layout>
-        <SingleBlogCompo
-          isAuthenticate={isAuthenticate}
-          accessToken={accessToken}
-          refreshToken={refreshToken}
-          user={user}
-        />
+        <Suspense fallback={<Loading />}>
+          <SingleBlogCompo
+            isAuthenticate={isAuthenticate}
+            accessToken={accessToken}
+            refreshToken={refreshToken}
+            user={user}
+          />
+        </Suspense>
       </Layout>
     </>
   );

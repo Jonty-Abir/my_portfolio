@@ -1,3 +1,5 @@
+import { ErrorBoundary } from "react-error-boundary";
+
 import Image from "next/image";
 import { ReactElement, Suspense } from "react";
 import { FcSearch } from "react-icons/fc";
@@ -46,44 +48,48 @@ export default function NestLayoutEcommerce({ children }: IChildren) {
   ];
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8 py-8 pt-2 w-full max-w-9xl mx-auto bg-gray-800">
-      <div className="my-4 flex  overflow-x-scroll toHideScrollBar gap-x-8 items-center lg:justify-evenly">
-        {categorys.map((v, i) => (
-          <div key={uniqid()} className="flex flex-col gap-y-2 min-w-[5rem]">
-            <Image
-              className=" bg-cover w-22 h-16"
-              src={`${v.img}`}
-              alt=""
-              width={100}
-              height={100}
+    <ErrorBoundary
+      fallback={<h2 className="isError">Something went wrong..</h2>}
+    >
+      <div className="px-4 sm:px-6 lg:px-8 py-8 pt-2 w-full max-w-9xl mx-auto bg-gray-900">
+        <div className="my-4 flex bg-slate-200 py-2 font-semibold text-gray-600 rounded-md  overflow-x-scroll toHideScrollBar gap-x-8 items-center lg:justify-evenly">
+          {categorys.map((v, i) => (
+            <div key={uniqid()} className="flex flex-col gap-y-2 min-w-[5rem]">
+              <Image
+                className=" bg-cover w-22 h-16"
+                src={`${v.img}`}
+                alt=""
+                width={100}
+                height={100}
+              />
+              <div className=" text-center">{v.category}</div>
+            </div>
+          ))}
+        </div>
+        {/* Search Start */}
+        <div className="max-w-xl mb-5 mt-4">
+          <form className="relative">
+            <label htmlFor="app-search" className="sr-only">
+              Search
+            </label>
+            <input
+              id="app-search"
+              className="form-input w-full pl-9 py-3 focus:border-slate-300 placeholder:text-gray-600 font-semibold"
+              type="search"
+              placeholder="Search…"
             />
-            <div className=" text-gray-200 text-center">{v.category}</div>
-          </div>
-        ))}
+            <button
+              className="absolute inset-0 mr-2 left-auto group"
+              type="button"
+              aria-label="Search"
+            >
+              <FcSearch size={28} />
+            </button>
+          </form>
+        </div>
+        <EcommerceSwiper />
+        <Suspense fallback={<Loading />}>{children}</Suspense>
       </div>
-      {/* Search Start */}
-      <div className="max-w-xl mb-5 mt-4">
-        <form className="relative">
-          <label htmlFor="app-search" className="sr-only">
-            Search
-          </label>
-          <input
-            id="app-search"
-            className="form-input w-full pl-9 py-3 focus:border-slate-300 placeholder:text-gray-600 font-semibold"
-            type="search"
-            placeholder="Search…"
-          />
-          <button
-            className="absolute inset-0 mr-2 left-auto group"
-            type="button"
-            aria-label="Search"
-          >
-            <FcSearch size={28} />
-          </button>
-        </form>
-      </div>
-      <EcommerceSwiper />
-      <Suspense fallback={<Loading />}>{children}</Suspense>
-    </div>
+    </ErrorBoundary>
   );
 }

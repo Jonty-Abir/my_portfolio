@@ -226,12 +226,12 @@ export default function Blog({
               </div>
             </div>
             <div className="mt-8 md:mt-0 ml-auto">
-              <a
-                href={"#letsUp"}
+              <Link
+                href={"/blog#letsUp"}
                 className="rounded-md bg-indigo-600 px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-indigo-800  inline-flex justify-center items-center"
               >
                 <IoIosArrowUp size={32} className="" />
-              </a>
+              </Link>
             </div>
           </div>
           <div className="grid gap-4 gap-y-8 py-6 md:grid-cols-2 lg:grid-cols-3">

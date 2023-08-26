@@ -1,8 +1,6 @@
 import { getAllProduct } from "@/helper/ecommerce.helper";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
-// import { FcLike } from "react-icons/fc";
-// import { MdFavoriteBorder } from "react-icons/md";
 import Link from "next/link";
 import uniqid from "uniqid";
 import LodderCompo from "../shared/lodder";
@@ -46,101 +44,81 @@ const Products = ({ products }: any) => {
         data instanceof Array &&
         data.map((value: ResData) => (
           <Link key={uniqid()} href={`/ecommerce/${value.id}`} target="blank">
-            <div className="rounded-md border bg-gray-900">
-              <Image
-                src={`${value?.image}`}
-                alt="Laptop"
-                width={400}
-                height={600}
-                className="aspect-[16/9] w-full rounded-md md:aspect-auto md:h-[300px] bg-cover lg:h-[200px]"
-              />
-              <div className="p-4">
-                <h1 className="inline-flex items-center text-lg font-semibold">
-                  {value?.title}
-                </h1>
-                <div className="mt-3 text-sm text-gray-600 dark:text-gray-200">
-                  {value?.description
-                    .split(" ")
-                    .filter((v: string, i: number) => i < 3)
-                    .join(" ")}
-                  ....
+            <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+              <div>
+                <Image
+                  width={400}
+                  height={400}
+                  className="p-8 rounded-t-lg"
+                  // src="/assets/apple-watch.png"
+                  src={`${value.image}`}
+                  alt="product image"
+                />
+              </div>
+              <div className="px-5 pb-5">
+                <div>
+                  <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                    {value.title}
+                  </h5>
                 </div>
-                <div className="mt-4">
-                  <span className="mb-2 mr-2 inline-block rounded-full bg-green-100 px-3 py-1 text-[12px] font-bold text-green-600">
-                    #{value.category}
+                <div className="flex items-center mt-2.5 mb-5">
+                  <svg
+                    className="w-4 h-4 text-yellow-300 mr-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 22 20"
+                  >
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                  <svg
+                    className="w-4 h-4 text-yellow-300 mr-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 22 20"
+                  >
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                  <svg
+                    className="w-4 h-4 text-yellow-300 mr-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 22 20"
+                  >
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                  <svg
+                    className="w-4 h-4 text-yellow-300 mr-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 22 20"
+                  >
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                  <svg
+                    className="w-4 h-4 text-gray-200 dark:text-gray-600"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 22 20"
+                  >
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                  <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">
+                    {value.rating.rate}
                   </span>
                 </div>
-                {/* Rating Start */}
-                <div className="flex flex-wrap justify-between items-center">
-                  {/* Rating */}
-                  <div className="flex items-center space-x-2 mr-2">
-                    {/* Stars */}
-                    <div className="flex space-x-1">
-                      <button>
-                        <span className="sr-only">1 star</span>
-                        <svg
-                          className="w-4 h-4 fill-current text-amber-500"
-                          viewBox="0 0 16 16"
-                        >
-                          <path d="M10 5.934L8 0 6 5.934H0l4.89 3.954L2.968 16 8 12.223 13.032 16 11.11 9.888 16 5.934z" />
-                        </svg>
-                      </button>
-                      <button>
-                        <span className="sr-only">2 stars</span>
-                        <svg
-                          className="w-4 h-4 fill-current text-amber-500"
-                          viewBox="0 0 16 16"
-                        >
-                          <path d="M10 5.934L8 0 6 5.934H0l4.89 3.954L2.968 16 8 12.223 13.032 16 11.11 9.888 16 5.934z" />
-                        </svg>
-                      </button>
-                      <button>
-                        <span className="sr-only">3 stars</span>
-                        <svg
-                          className="w-4 h-4 fill-current text-amber-500"
-                          viewBox="0 0 16 16"
-                        >
-                          <path d="M10 5.934L8 0 6 5.934H0l4.89 3.954L2.968 16 8 12.223 13.032 16 11.11 9.888 16 5.934z" />
-                        </svg>
-                      </button>
-                      <button>
-                        <span className="sr-only">4 stars</span>
-                        <svg
-                          className="w-4 h-4 fill-current text-amber-500"
-                          viewBox="0 0 16 16"
-                        >
-                          <path d="M10 5.934L8 0 6 5.934H0l4.89 3.954L2.968 16 8 12.223 13.032 16 11.11 9.888 16 5.934z" />
-                        </svg>
-                      </button>
-                      <button>
-                        <span className="sr-only">5 stars</span>
-                        <svg
-                          className="w-4 h-4 fill-current text-slate-300"
-                          viewBox="0 0 16 16"
-                        >
-                          <path d="M10 5.934L8 0 6 5.934H0l4.89 3.954L2.968 16 8 12.223 13.032 16 11.11 9.888 16 5.934z" />
-                        </svg>
-                      </button>
-                    </div>
-                    {/* Rate */}
-                    <div className="inline-flex text-sm font-medium text-amber-600">
-                      {value?.rating?.rate}
-                    </div>
-                  </div>
-                  {/* Price */}
-                  <div>
-                    <div className="inline-flex text-sm font-medium bg-emerald-100 text-emerald-600 rounded-full text-center px-2 py-0.5">
-                      ${value?.price}
-                    </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-3xl font-bold text-gray-900 dark:text-white">
+                    ${value.price}
+                  </span>
+                  <div className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 text-center dark:bg-orange-500 dark:hover:bg-orange-600 dark:focus:ring-blue-800">
+                    Add to cart
                   </div>
                 </div>
-                {/* Rating End */}
-                <button
-                  type="button"
-                  className="mt-4 w-full rounded-sm bg-orange-500 px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                >
-                  Buy Now
-                </button>
               </div>
             </div>
           </Link>

@@ -30,7 +30,7 @@ const ProfileCompo = () => {
         {/* Page header */}
         <div className="mb-8">
           {/* Title */}
-          <h1 className="text-2xl md:text-3xl text-slate-800 font-bold">
+          <h1 className="text-2xl md:text-3xl text-slate-800 font-bold ">
             Account Settings <FcSettings className=" inline-block" />
           </h1>
         </div>

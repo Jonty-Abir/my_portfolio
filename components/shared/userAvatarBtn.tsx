@@ -11,7 +11,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
+import { FcSettings } from "react-icons/fc";
 import { HiOutlineXCircle } from "react-icons/hi";
+import { MdOutlineLogout } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import NoficationToast from "../notification/NoficationToast";
 import LoadingBtn from "./LoadingBtn";
@@ -70,7 +72,7 @@ function UserAvatarBtn() {
           <div className="absolute top-1 right-1 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
         </div>
         <div className="flex items-center truncate">
-          <span className="truncate ml-2 text-sm font-medium group-hover:text-slate-600">
+          <span className="truncate ml-2 text-sm font-medium group-hover:text-slate-600 ">
             {client && client.firstName}
           </span>
           <svg
@@ -82,18 +84,17 @@ function UserAvatarBtn() {
         </div>
       </button>
       <div
-        className={`origin-top-right z-10 absolute top-12 right-0 min-w-44 bg-white border border-slate-200 py-1.5 rounded shadow-lg overflow-hidden mt-1 ${
+        className={`origin-top-right z-10 absolute top-12 right-0 min-w-44 bg-gray-50 border border-slate-200 py-1.5 rounded shadow-lg overflow-hidden mt-1 ${
           profileInfo ? " duration-300 " : " duration-300 -translate-y-[30rem] "
         }`}
       >
         <div className=" flex justify-between pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200">
-          <div>
+          <div className="transition-transform active:scale-95">
             {client && (
               <Link
                 href={`/profile/${client._id}`}
                 className="font-medium text-slate-800"
               >
-                {" "}
                 {client &&
                   `${client && client.firstName} ${client && client.lastName}`}
               </Link>
@@ -117,7 +118,7 @@ function UserAvatarBtn() {
               className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
               href="/setting"
             >
-              Settings
+              Settings <FcSettings size={26} className="inline pl-2" />
             </Link>
           </li>
           <li>
@@ -125,7 +126,11 @@ function UserAvatarBtn() {
               onClick={clieckToSignOut}
               className="font-medium text-sm text-indigo-500 hover:text-indigo-600  py-1 px-3 cursor-pointer flex justify-left items-center"
             >
-              {loading ? <LoadingBtn /> : "Sign Out"}
+              {loading ? <LoadingBtn /> : `Sign Out`}
+              <MdOutlineLogout
+                size={26}
+                className="inline pl-2 text-gray-600"
+              />
             </a>
           </li>
         </ul>
