@@ -91,7 +91,7 @@ function ProjectCompo() {
     },
   ];
   return (
-    <div className="">
+    <div>
       <div className="">
         <div className=" text-center mt-[6rem]">
           <h2 className=" text-6xl font-bold">Project</h2>

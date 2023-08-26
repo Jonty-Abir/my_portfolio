@@ -72,7 +72,7 @@ function UserAvatarBtn() {
           <div className="absolute top-1 right-1 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
         </div>
         <div className="flex items-center truncate">
-          <span className="truncate ml-2 text-sm font-medium group-hover:text-slate-600 ">
+          <span className="truncate ml-2 text-sm font-medium transition-transform active:scale-95">
             {client && client.firstName}
           </span>
           <svg
@@ -93,13 +93,13 @@ function UserAvatarBtn() {
             {client && (
               <Link
                 href={`/profile/${client._id}`}
-                className="font-medium text-slate-800"
+                className="font-bold text-slate-600"
               >
                 {client &&
                   `${client && client.firstName} ${client && client.lastName}`}
               </Link>
             )}
-            <div className="text-xs text-slate-500 italic">
+            <div className="text-xs text-slate-500 italic font-semibold">
               {client && client?.role}
             </div>
           </div>
@@ -115,7 +115,7 @@ function UserAvatarBtn() {
         <ul>
           <li>
             <Link
-              className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
+              className="text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3 font-bold"
               href="/setting"
             >
               Settings <FcSettings size={26} className="inline pl-2" />
@@ -124,7 +124,7 @@ function UserAvatarBtn() {
           <li>
             <a
               onClick={clieckToSignOut}
-              className="font-medium text-sm text-indigo-500 hover:text-indigo-600  py-1 px-3 cursor-pointer flex justify-left items-center"
+              className="font-bold text-sm text-indigo-500 hover:text-indigo-600  py-1 px-3 cursor-pointer flex justify-left items-center"
             >
               {loading ? <LoadingBtn /> : `Sign Out`}
               <MdOutlineLogout

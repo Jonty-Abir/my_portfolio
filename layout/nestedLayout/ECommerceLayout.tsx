@@ -38,12 +38,12 @@ export default function NestLayoutEcommerce({ children }: IChildren) {
       img: "/assets/ecommerce/ab7e2b022a4587dd.webp",
     },
     {
-      category: "Appliances",
-      img: "/assets/ecommerce/0ff199d1bd27eb98.webp",
+      category: "More",
+      img: "/assets/ecommerce/dff3f7adcf3a90c6.webp",
     },
     {
-      category: " More",
-      img: "/assets/ecommerce/dff3f7adcf3a90c6.webp",
+      category: "Appliances",
+      img: "/assets/ecommerce/0ff199d1bd27eb98.webp",
     },
   ];
 
@@ -52,7 +52,7 @@ export default function NestLayoutEcommerce({ children }: IChildren) {
       fallback={<h2 className="isError">Something went wrong..</h2>}
     >
       <div className="px-4 sm:px-6 lg:px-8 py-8 pt-2 w-full max-w-9xl mx-auto bg-gray-900">
-        <div className="my-4 flex bg-slate-200 py-2 font-semibold text-gray-600 rounded-md  overflow-x-scroll toHideScrollBar gap-x-8 items-center lg:justify-evenly">
+        <div className="my-4 flex bg-slate-200 font-semibold text-gray-600 rounded-md overflow-x-scroll toHideScrollBar gap-x-8 items-center lg:justify-evenly px-2">
           {categorys.map((v, i) => (
             <div key={uniqid()} className="flex flex-col gap-y-2 min-w-[5rem]">
               <Image
@@ -62,7 +62,9 @@ export default function NestLayoutEcommerce({ children }: IChildren) {
                 width={100}
                 height={100}
               />
-              <div className=" text-center">{v.category}</div>
+              <div className=" text-center text-xs font-semibold lg:text-sm">
+                {v.category}
+              </div>
             </div>
           ))}
         </div>

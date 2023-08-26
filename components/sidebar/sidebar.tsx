@@ -163,8 +163,7 @@ export default function Sidebar() {
                     New feature availabel!
                   </h2>
                   <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Natus harum officia eligendi velit.
+                    let{"'"}s go and explore the new features.
                   </p>
                   <Link href={`/blog`}>
                     <Image
@@ -515,8 +514,7 @@ export default function Sidebar() {
                 New feature availabel!
               </h2>
               <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
-                harum officia eligendi velit.
+                let{"'"}s go and explore the new features.
               </p>
               <Link href={`/blog`}>
                 <Image

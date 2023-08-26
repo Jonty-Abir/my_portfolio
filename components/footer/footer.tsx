@@ -10,6 +10,7 @@ export default function Footer() {
     { path: "/contactUs", page: "Contact-Me" },
     { path: "/dashboard", page: "Dashboard" },
     { path: "/techStack", page: "Tach-Stack" },
+    { path: "/project", page: "Projects" },
   ];
   return (
     <footer className="px-10 md:px-6 py-10 footer">
