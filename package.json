@@ -31,6 +31,7 @@
     "react-error-boundary": "^4.0.4",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.8.0",
+    "react-multi-carousel": "^2.8.4",
     "react-redux": "^8.0.5",
     "react-responsive-carousel": "^3.2.23",
     "react-scroll": "^1.8.9",

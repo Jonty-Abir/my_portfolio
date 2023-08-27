@@ -3,6 +3,7 @@ import { Heart, Share } from "lucide-react";
 import { useRouter } from "next/router";
 import { AiFillStar } from "react-icons/ai";
 import { RWebShare } from "react-web-share";
+import Multicarosule from "../carosule/Multicarosule";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
@@ -255,6 +256,9 @@ function SingleProduct() {
         Reating Bar
       </section>
       {/* Reating Section End */}
+      {/* Related Section START */}
+      <Multicarosule />
+      {/* Related Section END  */}
     </div>
   );
 }
