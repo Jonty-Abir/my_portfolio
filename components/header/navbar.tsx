@@ -1,5 +1,6 @@
 import { setShowSideBar } from "@/redux/sclice/clientSclice";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { HiOutlineXCircle, HiX } from "react-icons/hi";
 import { useDispatch } from "react-redux";
@@ -43,13 +44,15 @@ export default function Navbar() {
               {/* <span className="font-bold text-2xl hidden font-signature mxs:block">
                 Abir Santra
               </span> */}
-              <Image
-                className="hidden mxs:block w-auto h-6 bg-cover my-auto"
-                src="/assets/logo_owner2.png"
-                alt="logo"
-                width={400}
-                height={400}
-              />
+              <Link href={"/"}>
+                <Image
+                  className="hidden mxs:block w-auto h-6 bg-cover my-auto"
+                  src="/assets/logo_owner2.png"
+                  alt="logo"
+                  width={400}
+                  height={400}
+                />
+              </Link>
             </div>
 
             {/* Header: Right side */}

@@ -1,3 +1,4 @@
+import { UserRole } from "@/interface/interface";
 import { Iuser } from "@/redux/sclice/authSclice";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -56,11 +57,6 @@ function MobileSideBar({ client }: { client: Iuser | null }) {
       icone: <SiTask size={24} />,
       routeLink: "/project",
       routeName: "Project",
-    },
-    {
-      icone: <FaUsers size={24} />,
-      routeLink: "/users",
-      routeName: "Users",
     },
     {
       icone: <CgProfile size={24} />,
@@ -150,6 +146,17 @@ function MobileSideBar({ client }: { client: Iuser | null }) {
           <span className="mx-2 text-sm font-semibold">{value.routeName}</span>
         </Link>
       ))}
+      {UserRole.ADMIN === client?.role && (
+        <Link
+          className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700  active:scale-95"
+          href={`/users`}
+        >
+          {/* Icone */}
+          <FaUsers size={24} />
+          {/*  */}
+          <span className="mx-2 text-sm font-semibold">Users</span>
+        </Link>
+      )}
     </nav>
   );
 }

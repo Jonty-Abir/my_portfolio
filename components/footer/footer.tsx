@@ -16,13 +16,15 @@ export default function Footer() {
     <footer className="px-10 md:px-6 py-10 footer">
       <div className="mb-16 flex flex-col md:flex-row md:items-center justify-between">
         <div>
-          <Image
-            className="w-auto h-6 bg-cover"
-            src="/assets/logo_owner2.png"
-            alt="logo"
-            width={400}
-            height={400}
-          />
+          <Link href={"/"}>
+            <Image
+              className="w-auto h-6 bg-cover"
+              src="/assets/logo_owner2.png"
+              alt="logo"
+              width={400}
+              height={400}
+            />
+          </Link>
         </div>
         <div className="grow mt-4 md:mt-0 md:ml-12">
           <p className="font-semibold text-base text-gray-500 dark:text-gray-300">

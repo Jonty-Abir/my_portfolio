@@ -1,11 +1,14 @@
+import { UserRole } from "@/interface/interface";
 import { RootState } from "@/redux/store";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { AiFillProfile } from "react-icons/ai";
 import {
   FaAngleLeft,
   FaAngleRight,
+  FaBlog,
   FaCartPlus,
   FaCogs,
   FaHome,
@@ -20,14 +23,6 @@ import uniqid from "uniqid";
 import UserAvatarBtn from "../shared/userAvatarBtn";
 
 const menuItems = [
-  // {
-  //   name: "Projects",
-  //   href: "/project",
-  // },
-  // {
-  //   name: "Blog",
-  //   href: "/blog",
-  // },
   {
     name: "Tech-Stack",
     href: "/techStack",
@@ -37,7 +32,7 @@ const menuItems = [
     href: "/aboutUs",
   },
   {
-    name: "Contact",
+    name: "Contact Us",
     href: "/contactUs",
   },
 ];
@@ -84,14 +79,19 @@ const linkArray = [
     routeName: "Home",
   },
   {
+    icone: <AiFillProfile size={18} />,
+    routeLink: "/dashboard",
+    routeName: "Dash Board",
+  },
+  {
     icone: <SiTask size={18} />,
     routeLink: "/project",
     routeName: "Project",
   },
   {
-    icone: <FaUsers size={18} />,
-    routeLink: "/users",
-    routeName: "Users",
+    icone: <FaBlog size={18} />,
+    routeLink: "/blog",
+    routeName: "Blog",
   },
 ];
 const ecommecreLink = [
@@ -117,6 +117,8 @@ export function GustHeader() {
   const [showNav, seteSetShowNav] = useState(false);
   const [showsubNav, seteSetsubShowNav] = useState(false);
 
+  const client = useSelector((state: RootState) => state.authSclice.user);
+
   const router = useRouter();
   const isAuthenticated = useSelector(
     (state: RootState) => state.authSclice.isAuthenticated
@@ -130,13 +132,15 @@ export function GustHeader() {
       <div className="relative w-full">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 pr-4 py-2 sm:px-6 lg:px-8 lg:pr-0 h-[4rem]">
           <div className="inline-flex items-center space-x-2">
-            <Image
-              className="w-auto h-[25px] bg-cover"
-              src="/assets/logo_owner2.png"
-              alt="logo"
-              width={400}
-              height={400}
-            />
+            <Link href={"/"}>
+              <Image
+                className="w-auto h-[25px] bg-cover"
+                src="/assets/logo_owner2.png"
+                alt="logo"
+                width={400}
+                height={400}
+              />
+            </Link>
           </div>
           {/* Large device */}
           <div className="hidden grow items-start lg:flex">
@@ -182,64 +186,73 @@ export function GustHeader() {
                   </span>
                 </div>
                 {/* TOGGLE CONTENT */}
-                {
-                  <section
-                    className={`absolute ${
-                      showNav ? " duration-300" : " collapse"
-                    } top-12 -left-4 bg-indigo-100 -hue-rotate-60  w-[15rem] px-2 rounded-md py-2`}
+                <section
+                  className={`absolute ${
+                    showNav ? " duration-300" : " collapse"
+                  } top-12 -left-4 bg-indigo-100 -hue-rotate-60  w-[15rem] px-2 rounded-md py-2`}
+                >
+                  <ul
+                    className="py-2  text-sm dark:text-gray-200"
+                    aria-labelledby="dropdownDefaultButton"
                   >
-                    <ul
-                      className="py-2  text-sm dark:text-gray-200"
-                      aria-labelledby="dropdownDefaultButton"
-                    >
-                      <li className=" relative">
-                        <a
-                          onClick={() => seteSetsubShowNav((prev) => !prev)}
-                          className="flex justify-between px-4 py-2 rounded-sm text-indigo-700 hover:bg-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-white"
-                        >
-                          <span> E-Commerce</span>
-                          {showsubNav ? (
-                            <FaAngleLeft className="inline-flex" size={18} />
-                          ) : (
-                            <FaAngleRight className="inline-flex" size={18} />
-                          )}
-                        </a>
-                        <hr className=" bg-black" />
-                        {showsubNav && (
-                          <ul
-                            className={`rounded-md transition-transform -hue-rotate-60 bg-indigo-100 py-2 absolute  -right-[13rem] top-2 w-48 text-sm dark:text-gray-200`}
-                            aria-labelledby="dropdownDefaultButton"
-                          >
-                            {ecommecreLink.map((item) => (
-                              <li key={uniqid()}>
-                                <Link
-                                  href={item.routeLink}
-                                  className=" flex gap-x-4 px-4 py-2 rounded-sm  text-indigo-700 hover:bg-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-white"
-                                >
-                                  {item.icone}
-
-                                  {item.routeName}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
+                    <li className=" relative">
+                      <a
+                        onClick={() => seteSetsubShowNav((prev) => !prev)}
+                        className="flex justify-between px-4 py-2 rounded-sm text-indigo-700 hover:bg-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-white"
+                      >
+                        <span> E-Commerce</span>
+                        {showsubNav ? (
+                          <FaAngleLeft className="inline-flex" size={18} />
+                        ) : (
+                          <FaAngleRight className="inline-flex" size={18} />
                         )}
-                      </li>
-                      {linkArray.map((item) => (
-                        <li key={uniqid()}>
-                          <Link
-                            href={item.routeLink}
-                            className=" flex gap-x-4 px-4 py-2 rounded-sm  text-indigo-700 hover:bg-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-white"
-                          >
-                            {item.icone}
+                      </a>
+                      <hr className=" bg-black" />
+                      {showsubNav && (
+                        <ul
+                          className={`rounded-md transition-transform -hue-rotate-60 bg-indigo-100 py-2 absolute  -right-[13rem] top-2 w-48 text-sm dark:text-gray-200`}
+                          aria-labelledby="dropdownDefaultButton"
+                        >
+                          {ecommecreLink.map((item) => (
+                            <li key={uniqid()}>
+                              <Link
+                                href={item.routeLink}
+                                className=" flex gap-x-4 px-4 py-2 rounded-sm  text-indigo-700 hover:bg-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-white"
+                              >
+                                {item.icone}
 
-                            {item.routeName}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </section>
-                }
+                                {item.routeName}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                    {linkArray.map((item) => (
+                      <li key={uniqid()}>
+                        <Link
+                          href={item.routeLink}
+                          className=" flex gap-x-4 px-4 py-2 rounded-sm  text-indigo-700 hover:bg-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-white"
+                        >
+                          {item.icone}
+
+                          {item.routeName}
+                        </Link>
+                      </li>
+                    ))}
+                    {UserRole.ADMIN === client?.role && (
+                      <li>
+                        <Link
+                          href={"/users"}
+                          className=" flex gap-x-4 px-4 py-2 rounded-sm  text-indigo-700 hover:bg-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-white"
+                        >
+                          <FaUsers size={18} />
+                          Users
+                        </Link>
+                      </li>
+                    )}
+                  </ul>
+                </section>
               </li>
               {/* Dashboard END */}
 

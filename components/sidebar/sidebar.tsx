@@ -150,13 +150,15 @@ export default function Sidebar() {
             {/* <span className="font-bold font-signature text-2xl">
               Abir Santra
             </span> */}
-            <Image
-              className="w-auto h-6 bg-cover"
-              src="/assets/logo_owner2.png"
-              alt="logo"
-              width={400}
-              height={400}
-            />
+            <Link href={"/"}>
+              <Image
+                className="w-auto h-6 bg-cover"
+                src="/assets/logo_owner2.png"
+                alt="logo"
+                width={400}
+                height={400}
+              />
+            </Link>
             <VscChromeClose
               size={28}
               className={`bg-gray-700 p-2 rounded-sm mb-4`}

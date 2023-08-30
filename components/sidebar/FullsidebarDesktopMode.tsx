@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 
 import { signOut } from "@/helper/helper";
+import { UserRole } from "@/interface/interface";
 import {
   Iuser,
   setAccessToken,
@@ -78,11 +79,6 @@ function FullsidebarDesktopMode({ client }: { client: Iuser | null }) {
       routeName: "Project",
     },
     {
-      icone: <FaUsers size={24} />,
-      routeLink: "/users",
-      routeName: "Users",
-    },
-    {
       icone: <CgProfile size={24} />,
       routeLink: `/profile/${client?._id}`,
       routeName: "Profile",
@@ -118,13 +114,15 @@ function FullsidebarDesktopMode({ client }: { client: Iuser | null }) {
   return (
     <aside className=" hidden lg:flex duration-200 showFullDeskTopSidebar  flex-col w-64 h-screen px-5 py-8 pt-2 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
       <div className="flex justify-between items-center">
-        <Image
-          className="w-auto h-6 bg-cover"
-          src="/assets/logo_owner2.png"
-          alt="logo"
-          width={400}
-          height={400}
-        />
+        <Link href={"/"}>
+          <Image
+            className="w-auto h-6 bg-cover"
+            src="/assets/logo_owner2.png"
+            alt="logo"
+            width={400}
+            height={400}
+          />
+        </Link>
         <a
           className="bg-gray-800 px-3 py-2 flex justify-end rounded-md"
           onClick={() => dispatch(setShowDeskTopSidebar())}
@@ -223,6 +221,15 @@ function FullsidebarDesktopMode({ client }: { client: Iuser | null }) {
               </span>
             </Link>
           ))}
+          {UserRole.ADMIN === client?.role && (
+            <Link
+              className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+              href={`/users`}
+            >
+              <FaUsers size={24} />
+              <span className="mx-2 text-sm font-medium">users</span>
+            </Link>
+          )}
         </nav>
         <div className="mt-6">
           <div className="p-3 bg-gray-100 rounded-lg dark:bg-gray-800">
