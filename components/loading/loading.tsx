@@ -61,7 +61,7 @@ function Loading() {
           </div>
           <div
             role="status"
-            className="space-y-2.5 animate-pulse max-w-lg mx-8"
+            className="space-y-2.5 animate-pulse max-w-lg mx-8 hidden md:block"
           >
             <div className="flex items-center w-full space-x-2">
               <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32"></div>
@@ -98,7 +98,7 @@ function Loading() {
         </div>
       </div>
       <div className="my-8 mx-auto flex flex-col  gap-2">
-        {Array.from({ length: 2 }).map(() => (
+        {Array.from({ length: 1 }).map(() => (
           <div
             key={uniqid()}
             role="status"

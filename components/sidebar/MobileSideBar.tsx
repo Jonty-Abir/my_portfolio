@@ -16,7 +16,7 @@ import { TiShoppingCart } from "react-icons/ti";
 import uniqid from "uniqid";
 
 function MobileSideBar({ client }: { client: Iuser | null }) {
-  const [dashboardSub, setdashboardSub] = useState(false);
+  const [dashboardSub, setdashboardSub] = useState(true);
   const [eCommercedSub, seteCommerceSub] = useState(false);
 
   const router = useRouter();
@@ -71,8 +71,8 @@ function MobileSideBar({ client }: { client: Iuser | null }) {
 
   return (
     <nav className="flex-1 -mx-3 space-y-3">
-      <div className="my-4">
-        <div className="z-20">
+      <ul>
+        <li className=" my-4 z-20">
           {/*======== Dashboard ========= */}
           <div>
             <div
@@ -89,19 +89,21 @@ function MobileSideBar({ client }: { client: Iuser | null }) {
               )}
             </div>
             {/* Dashboard Nested */}
-            {dashboardSub &&
-              subOfDashboard.map((item) => (
-                <div
-                  onClick={() => router.push(`${item.link}`)}
-                  key={uniqid()}
-                  className={`flex items-center px-3 py-2  text-gray-600 duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 transition-transform active:scale-95`}
-                >
-                  <FaAngleRight size={18} />
-                  <span className="mx-2 text-sm font-semibold">
-                    {item.text}
-                  </span>
-                </div>
-              ))}
+            <div>
+              {dashboardSub &&
+                subOfDashboard.map((item) => (
+                  <div
+                    key={uniqid()}
+                    onClick={() => router.push(`${item.link}`)}
+                    className={`flex items-center px-3 py-2  text-gray-600 duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 transition-transform active:scale-95`}
+                  >
+                    <FaAngleRight size={18} />
+                    <span className="mx-2 text-sm font-semibold">
+                      {item.text}
+                    </span>
+                  </div>
+                ))}
+            </div>
           </div>
           {/*====== E-Commerce====== */}
           <div>
@@ -133,8 +135,8 @@ function MobileSideBar({ client }: { client: Iuser | null }) {
                 </div>
               ))}
           </div>
-        </div>
-      </div>
+        </li>
+      </ul>
       <hr />
       {linkArray.map((value, i) => (
         <Link

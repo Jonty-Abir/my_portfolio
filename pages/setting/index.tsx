@@ -36,8 +36,10 @@ function Page({
         <link rel="icon" href="./assets/favicone.png" />
       </Head>
       <Layout>
-        <h2 className=" text-2xl text-center">This service Comming soon!</h2>
-        {/* <TableLoading /> */}
+        <>
+          <h2 className=" text-2xl text-center">This service Comming soon!</h2>
+          {/* <Loading /> */}
+        </>
       </Layout>
     </>
   );
