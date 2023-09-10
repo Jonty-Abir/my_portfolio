@@ -43,7 +43,7 @@ export default function Sidebar() {
         {showFullDeskTopSidebar ? (
           <FullsidebarDesktopMode client={client} />
         ) : (
-          <aside className=" duration-200 showFullDeskTopSidebar hidden lg:flex flex-col items-center w-16 h-screen py-8 pt-2 overflow-y-auto bg-white border-r dark:bg-gray-900 dark:border-gray-700">
+          <aside className="duration-300 showFullDeskTopSidebar hidden lg:flex flex-col items-center w-16 h-screen py-8 pt-2 overflow-y-auto bg-white border-r dark:bg-gray-900 dark:border-gray-700">
             <nav className="flex flex-col items-center flex-1 space-y-6">
               <a
                 className="bg-gray-800 px-2 py-2 rounded-md"

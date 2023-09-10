@@ -23,6 +23,7 @@ import sql from "../../public/assets/sql.png";
 import tailwindCss from "../../public/assets/tailwindcss.svg";
 import typeorm from "../../public/assets/typeorm.svg";
 import typeScript from "../../public/assets/typescript.svg";
+import ejs from "../../public/assets/ejs.png";
 
 
 
@@ -199,6 +200,20 @@ function Experience() {
             ),
             sub: "Express JS",
             title: "framework",
+        },
+        {
+            id: uniqid(),
+            img: (
+                <>
+                    <Image
+                        src={ejs}
+                        alt="logo"
+                        className="h-20 w-16 object-contain rounded-3xl"
+                    />
+                </>
+            ),
+            sub: "EJS",
+            title: "Template engine",
         },
         {
             id: uniqid(),

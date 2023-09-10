@@ -134,7 +134,7 @@ export function GustHeader() {
           <div className="inline-flex items-center space-x-2">
             <Link href={"/"}>
               <Image
-                className="w-auto h-[25px] bg-cover"
+                className="w-auto h-[28px] bg-cover"
                 src="/assets/logo_owner2.png"
                 alt="logo"
                 width={400}
@@ -179,9 +179,20 @@ export function GustHeader() {
 
                   <span>
                     {!showNav ? (
-                      <RxCaretDown className="ml-2 h-4 w-4" />
+                      <>
+                        <RxCaretDown
+                          size={44}
+                          className="ml-2 h-6 w-6 relative"
+                        />
+                        <span className=" absolute flex h-2 w-2 top-1 right-8">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+                        </span>
+                      </>
                     ) : (
-                      <RxCaretUp className="ml-2 h-4 w-4" />
+                      <>
+                        <RxCaretUp className="ml-2 h-6 w-6 relative" />
+                      </>
                     )}
                   </span>
                 </div>
