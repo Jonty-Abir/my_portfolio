@@ -209,6 +209,7 @@ function FullsidebarDesktopMode({ client }: { client: Iuser | null }) {
           </ul>
 
           <hr />
+          
           {linkArray.map((items) => (
             <Link
               key={uniqid()}
@@ -272,6 +273,7 @@ function FullsidebarDesktopMode({ client }: { client: Iuser | null }) {
               onClick={clieckToSignOut}
               className="text-gray-500 transition-colors duration-200 rotate-180 cursor-pointer dark:text-gray-400 rtl:rotate-0 hover:text-blue-500 dark:hover:text-blue-400"
             >
+              {/* TODO */}
               <ArrowLeftOnRectangleIcon className="h-5 w-5" />
             </a>
           </div>
