@@ -56,10 +56,9 @@ function AboutUsContent() {
             designing and now it has expanded to web development as well. I love
             the feeling of creating something out of scratch and have people use
             it. I also love taking a part of Open-Source Programs and learning
-            group. I have participated in a few internal-college hackathons as
-            well as the WebSkitter <b>Node JS</b> Development 2023 with a team
+            group. I have participated in a few internal-college programs and beside this i{"'m"} a learner of WebSkitter Academy  <b>Node JS</b> Development 2023 with a team
             of seniors and successfully cleared the internal screening. I have
-            successfully Deploy some Project whitch i build.
+            successfully Deploy some Project which i build.
           </p>
           <p className="text-gray-400">
             Grow consistently and rapidly with the organization. Ready to work

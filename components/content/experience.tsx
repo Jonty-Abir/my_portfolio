@@ -24,6 +24,13 @@ import tailwindCss from "../../public/assets/tailwindcss.svg";
 import typeorm from "../../public/assets/typeorm.svg";
 import typeScript from "../../public/assets/typescript.svg";
 import ejs from "../../public/assets/ejs.png";
+import jwt from "../../public/assets/jwt.png";
+import rest_api from "../../public/assets/rest-api.png";
+import netlify from "../../public/assets/netlify.png";
+import vercel from "../../public/assets/Vercel.png";
+import fireBase from "../../public/assets/firebase.png";
+
+
 
 
 
@@ -173,7 +180,7 @@ function Experience() {
                     />
                 </>
             ),
-            sub: "Redux JS",
+            sub: "Redux Toolkit",
             title: "library",
         },
         {
@@ -186,7 +193,34 @@ function Experience() {
             sub: "next JS",
             title: "framework",
         },
-
+        {
+            id: uniqid(),
+            img: (
+                <>
+                    <Image
+                        src={jwt}
+                        alt="logo"
+                        className="h-20 w-16 object-contain rounded-3xl"
+                    />
+                </>
+            ),
+            sub: "JWT",
+            title: "Token base authorization ",
+        },
+        {
+            id: uniqid(),
+            img: (
+                <>
+                    <Image
+                        src={rest_api}
+                        alt="logo"
+                        className="h-20 w-16 object-contain rounded-3xl"
+                    />
+                </>
+            ),
+            sub: "REST-API",
+            title: "Architecture",
+        },
         {
             id: uniqid(),
             img: (
@@ -312,7 +346,48 @@ function Experience() {
             sub: "Mysql",
             title: "Data Base",
         },
-
+        {
+            id: uniqid(),
+            img: (
+                <>
+                    <Image
+                        src={fireBase}
+                        alt="logo"
+                        className="h-20 w-16 object-contain rounded-3xl"
+                    />
+                </>
+            ),
+            sub: "FireBase",
+            title: "Data Base",
+        },
+        {
+            id: uniqid(),
+            img: (
+                <>
+                    <Image
+                        src={netlify}
+                        alt="logo"
+                        className="h-14 w-12 object-contain rounded-3xl"
+                    />
+                </>
+            ),
+            sub: "Netlify",
+            title: "web hosting",
+        },
+        {
+            id: uniqid(),
+            img: (
+                <>
+                    <Image
+                        src={vercel}
+                        alt="logo"
+                        className="h-20 w-16 object-contain rounded-3xl"
+                    />
+                </>
+            ),
+            sub: "Vercel",
+            title: "web hosting",
+        },
         {
             id: uniqid(),
             img: (
@@ -341,6 +416,7 @@ function Experience() {
             sub: "C",
             title: "programing language",
         },
+        
     ];
     return (
         <div className="flex flex-col mb-12 h-full pt-8">
