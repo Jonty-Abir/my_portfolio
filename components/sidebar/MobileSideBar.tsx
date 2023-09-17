@@ -15,6 +15,8 @@ import {
 import { SiTask } from "react-icons/si";
 import { TiShoppingCart } from "react-icons/ti";
 import uniqid from "uniqid";
+import { BsFillInfoSquareFill } from "react-icons/bs";
+
 
 function MobileSideBar({ client }: { client: Iuser | null }) {
   const [dashboardSub, setdashboardSub] = useState(true);
@@ -57,6 +59,11 @@ function MobileSideBar({ client }: { client: Iuser | null }) {
       icone: <SiTask size={24} />,
       routeLink: "/project",
       routeName: "Project",
+    },
+    {
+      icone: <BsFillInfoSquareFill size={24} />,
+      routeLink: "/aboutUs",
+      routeName: "About",
     },
     {
       icone: <CgProfile size={24} />,

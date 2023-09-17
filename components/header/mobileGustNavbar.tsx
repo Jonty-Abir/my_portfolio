@@ -5,7 +5,14 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { AiFillProfile } from "react-icons/ai";
-import { FaAngleDown, FaAngleRight, FaAngleUp, FaHome } from "react-icons/fa";
+import {
+  FaAngleDown,
+  FaAngleRight,
+  FaAngleUp,
+  FaHome,
+  FaRegUser,
+  FaUserTie,
+} from "react-icons/fa";
 import { HiX } from "react-icons/hi";
 import { RxCaretRight } from "react-icons/rx";
 import { SiTask } from "react-icons/si";
@@ -13,8 +20,8 @@ import { TiShoppingCart } from "react-icons/ti";
 import { GiStoneStack } from "react-icons/gi";
 import { useSelector } from "react-redux";
 import uniqid from "uniqid";
-import {BsFillInfoSquareFill} from 'react-icons/bs'
-import {GiRotaryPhone} from "react-icons/gi";
+import { BsFillInfoSquareFill } from "react-icons/bs";
+import { GiRotaryPhone } from "react-icons/gi";
 
 const mobileNavBar = [
   {
@@ -77,6 +84,7 @@ function MobileGustNavbar() {
   const isAuthenticated = useSelector(
     (state: RootState) => state.authSclice.isAuthenticated
   );
+  const client = useSelector((state: RootState) => state.authSclice.user);
 
   const router = useRouter();
 
@@ -109,11 +117,11 @@ function MobileGustNavbar() {
         </svg>
       </div>
       <div
-        className={`absolute bg-transparent backdrop h-[80rem] inset-x-0 top-0 left-[-1rem] z-50 origin-top-right transform ${
+        className={`absolute bg-transparent backdrop h-[80rem] inset-x-0 top-0 left-[-1rem] z-50 origin-top-right transform  ${
           isMenuOpen ? " duration-75" : "duration-75 -translate-y-[80rem]"
         }  lg:-translate-y-[80rem] `}
       >
-        <div className="divide-y-2 divide-gray-50 rounded-lg bg-transparent backdrop-blur-2xl shadow-lg ring-1 ring-black ring-opacity-5 z-60 gustNavbar ">
+        <div className="divide-y-2 divide-gray-50 rounded-lg dark:bg-blue-400 dark:backdrop:blur-3xl shadow-lg ring-1 ring-black ring-opacity-5 z-60 gustNavbar ">
           <div className="px-5 pb-6 pt-5  text-black  dark:text-gray-50 ">
             <div className="flex items-center justify-between">
               <div className="inline-flex items-center space-x-2">
@@ -204,7 +212,7 @@ function MobileGustNavbar() {
                       <li key={uniqid()}>
                         <Link
                           href={`${item.link}`}
-                          className={`flex items-center px-3 py-2  text-gray-600 duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 transition-transform active:scale-95`}
+                          className={`flex ml-6 items-center px-3 py-2  text-gray-600 duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 transition-transform active:scale-95`}
                         >
                           <FaAngleRight size={18} />
                           <span className="mx-2 text-sm font-semibold">
@@ -237,7 +245,7 @@ function MobileGustNavbar() {
                       <Link
                         href={`${item.link}`}
                         key={uniqid()}
-                        className={`flex items-center px-3 py-2  text-gray-600 duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 transition-transform active:scale-95`}
+                        className={`flex ml-6 items-center px-3 py-2  text-gray-600 duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 transition-transform active:scale-95`}
                       >
                         <FaAngleRight size={18} />
                         <span className="mx-2 text-sm font-semibold">
@@ -252,7 +260,19 @@ function MobileGustNavbar() {
             </div>
             {/*  */}
             {isAuthenticated ? (
-              ""
+              <li className=" list-none">
+                <Link
+                  href={`/profile/${client?._id}`}
+                  className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                >
+                  <FaUserTie size={24} />
+
+                  <span className="mx-2 text-sm font-semibold">Profile</span>
+                  <span className="ml-auto">
+                    <RxCaretRight className={`ml-3 h-[20px] w-[20px]`} />
+                  </span>
+                </Link>
+              </li>
             ) : (
               <div className="mt-8 space-y-1 font-semibold">
                 <Link href={"/signIn"}>
