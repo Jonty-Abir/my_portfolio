@@ -13,13 +13,13 @@ const SocialIcone = () => {
 
   // listent scroll
   const listenToScrol = () => {
-    let heightTohidden = 350;
+    let heightShow = 350;
     const windowScroll =
       document.body.scrollTop || document.documentElement.scrollTop;
-    if (windowScroll > heightTohidden) {
+    if (windowScroll > heightShow) {
       // visible top scroll button
       setIsVisable(true);
-      if (windowScroll >= 2250) {
+      if (windowScroll >= 2450) {
         setIsVisable(false);
       }
     } else {
@@ -113,9 +113,9 @@ const SocialIcone = () => {
 
   return (
     <>
-      <div className="hidden  lg:flex xl:flex 2xl:flex flex-col top-[35%] left-0 fixed">
-        {isVisable && (
-          <ul className=" hidden lg:flex flex-col gap-y-1">
+      <div className=" block lg:flex xl:flex 2xl:flex flex-col top-[35%] left-0 fixed">
+        {isVisable ? (
+          <ul className="block lg:flex flex-col gap-y-1 duration-500 opacity-100">
             {obj.map(({ id, link, socialMedia, child }, index) => {
               if (index <= 3) {
                 return (
@@ -140,7 +140,31 @@ const SocialIcone = () => {
               }
             })}
           </ul>
-        )}
+        ) : (<ul className="block lg:flex flex-col gap-y-1 duration-500 opacity-0">
+        {obj.map(({ id, link, socialMedia, child }, index) => {
+          if (index <= 3) {
+            return (
+              <li
+                key={index}
+                className="flex flex-col items-center justify-center  w-40 h-14 px-4 bg-gray-500 ml-[-100px] rounded-sm hover:rounded-md hover:ml-[5px] hover:ring-2 hover:ring-green-500 duration-300"
+              >
+                <a
+                  href={link}
+                  className="flex justify-between items-center text-white w-full"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <>
+                    {socialMedia} {child}
+                  </>
+                </a>
+              </li>
+            );
+          } else {
+            return <div key={index}></div>;
+          }
+        })}
+      </ul>)}
       </div>
     </>
   );
