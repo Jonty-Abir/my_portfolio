@@ -38,10 +38,8 @@ function FullsidebarDesktopMode({ client }: { client: Iuser | null }) {
   const [loading, setLoading] = useState(false);
   const [dashboardSub, setdashboardSub] = useState(true);
   const [eCommercedSub, seteCommerceSub] = useState(false);
-
   const router = useRouter();
   const dispatch = useDispatch();
-
   const subOfDashboard = [
     {
       text: "Profile",
@@ -150,15 +148,17 @@ function FullsidebarDesktopMode({ client }: { client: Iuser | null }) {
                 <FaAngleDown className="ml-auto" size={18} />
               )}
             </li>
-
             {/* Dashboard Nested START*/}
-
             {dashboardSub &&
               subOfDashboard.map((item) => (
                 <Link
                   href={`${item.link}`}
                   key={uniqid()}
-                  className={`flex items-center px-3 py-2  text-gray-600 duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 transition-transform active:scale-95`}
+                  className={`flex items-center px-3 py-2  text-gray-600 duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 transition-transform active:scale-95 ${
+                    router?.asPath === item?.link
+                      ? "border-b-2 border-b-blue-600 dark:font-bold dark:text-blue-600"
+                      : ""
+                  }`}
                 >
                   <FaAngleRight size={18} />
                   <span className="mx-2 text-sm font-semibold">
@@ -192,7 +192,11 @@ function FullsidebarDesktopMode({ client }: { client: Iuser | null }) {
                 <Link
                   href={`${item.link}`}
                   key={uniqid()}
-                  className={`flex items-center px-3 py-2  text-gray-600 duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 transition-transform active:scale-95`}
+                  className={`flex items-center px-3 py-2  text-gray-600 duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 transition-transform active:scale-95 ${
+                    router.asPath === item.link
+                      ? "border-b-2 border-b-blue-600 dark:font-bold dark:text-blue-600"
+                      : ""
+                  }`}
                 >
                   <FaAngleRight size={18} />
                   <span className="mx-2 text-sm font-semibold">
@@ -209,11 +213,15 @@ function FullsidebarDesktopMode({ client }: { client: Iuser | null }) {
           </ul>
 
           <hr />
-          
+
           {linkArray.map((items) => (
             <Link
               key={uniqid()}
-              className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+              className={`flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 ${
+                router?.asPath === items?.routeLink
+                  ? "border-b-2 border-b-blue-600 dark:font-bold dark:text-blue-600"
+                  : ""
+              }`}
               href={`${items.routeLink}`}
             >
               {items.icone}
@@ -224,7 +232,11 @@ function FullsidebarDesktopMode({ client }: { client: Iuser | null }) {
           ))}
           {UserRole.ADMIN === client?.role && (
             <Link
-              className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+              className={`flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 ${
+                router?.asPath === "/users"
+                  ? "border-b-2 border-b-blue-600 dark:font-bold dark:text-blue-600"
+                  : ""
+              }`}
               href={`/users`}
             >
               <FaUsers size={24} />
@@ -242,11 +254,11 @@ function FullsidebarDesktopMode({ client }: { client: Iuser | null }) {
             </p>
             <Link href={`/blog`}>
               <Image
-                className="object-cover w-full h-32 mt-2 rounded-lg"
+                className="object-cover w-full h-32 mt-2 rounded-lg duration-300 active:scale-105 hover:scale-105"
                 src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1806&q=80"
                 alt="Feature"
-                width={400}
-                height={300}
+                width={600}
+                height={600}
               />
             </Link>
           </div>

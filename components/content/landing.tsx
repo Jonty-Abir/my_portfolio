@@ -348,19 +348,19 @@ export const LandingPage = () => {
               return (
                 <div
                   key={v.id}
-                  className="cursor-pointer relative rounded-md border border-gray-400 shadow-lg transition-all duration-200 dark:border-gray-700"
+                  className=" relative rounded-md border border-gray-400 shadow-lg transition-all duration-200 dark:border-gray-700"
                 >
-                  <button className="flex w-full items-center justify-between px-4 py-5 sm:p-6">
+                  <button
+                    onClick={() => v.setStateFun(!v.state)}
+                    className="flex w-full items-center justify-between px-4 py-5 sm:p-6"
+                  >
                     <span className="flex text-lg font-semibold text-black dark:text-white">
                       {v.question}
                     </span>
 
                     {v.state ? (
                       <>
-                        <IoIosArrowUp
-                          className="h-5 w-5 text-gray-50"
-                          onClick={() => v.setStateFun(!v.state)}
-                        />
+                        <IoIosArrowUp className="h-5 w-5 text-gray-50" />
                         <span className=" absolute flex h-2 w-2 top-6 right-4">
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
                           <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
@@ -429,7 +429,7 @@ export const LandingPage = () => {
                     width={600}
                     height={600}
                   />
-                  <div className="absolute left-0 top-0 h-full  overflow-y-auto bg-white bg-opacity-40 px-4 py-4 backdrop-blur-sm">
+                  <div className="absolute left-0 top-0 h-full  overflow-y-auto bg-white bg-opacity-40 px-4 py-4 ">
                     <svg
                       className="mb-4"
                       width="47"

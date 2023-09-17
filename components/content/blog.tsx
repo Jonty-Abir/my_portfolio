@@ -1,3 +1,4 @@
+import Loading from "@/components/loading/loading";
 import { findAllPost } from "@/helper/blog.helper";
 import { IPost, IProps } from "@/interface/interface";
 import {
@@ -12,7 +13,6 @@ import { FaComments } from "react-icons/fa";
 import { FcClock } from "react-icons/fc";
 import { IoIosArrowUp } from "react-icons/io";
 import uniqId from "uniqid";
-import LodderCompo from "../shared/lodder";
 import SwiperCompo from "../shared/swiper";
 
 export default function Blog({
@@ -24,15 +24,10 @@ export default function Blog({
   const { error, isLoading, data, isError } = useQuery(["all-post"], () =>
     findAllPost(accessToken, refreshToken)
   );
-  if (isLoading)
-    return (
-      <div className="toCenter">
-        <LodderCompo />
-      </div>
-    );
+  if (isLoading) return <Loading />;
   if (!data) {
     console.log(data);
-    return <h2 className="isError">Some think went worng!</h2>;
+    return <h2 className="isError">Some think went wrong!</h2>;
   }
 
   const posts: IPost[] = data;

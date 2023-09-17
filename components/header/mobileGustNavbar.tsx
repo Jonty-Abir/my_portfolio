@@ -260,7 +260,7 @@ function MobileGustNavbar() {
               <li className=" list-none">
                 <Link
                   href={`/profile/${client?._id}`}
-                  className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                  className="flex items-center px-3 py-2 text-gray-600 duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 transition-transform active:scale-95"
                 >
                   <FaUserTie size={24} />
 
@@ -302,14 +302,14 @@ function MobileGustNavbar() {
             {/* Feature Start */}
             <div className="p-3 my-4 bg-gray-100 rounded-lg dark:bg-gray-800">
               <h2 className="text-xl font-medium text-gray-800 dark:text-white">
-                New feature availabel!
+                New feature available .
               </h2>
               <p className="mt-1 text-xs text-gray-500 dark:text-gray-300">
                 let{"'"}s go and explore the new features.
               </p>
               <Link href={`/blog`}>
                 <Image
-                  className="object-cover w-full h-32 mt-2 rounded-lg"
+                  className="object-cover w-full h-32 mt-2 rounded-lg duration-300 active:scale-105 hover:scale-105"
                   src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1806&q=80"
                   alt="Feature"
                   width={400}

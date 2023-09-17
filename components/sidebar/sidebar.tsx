@@ -171,14 +171,14 @@ export default function Sidebar() {
           <div className="mt-6">
             <div className="p-3 bg-gray-100 rounded-lg dark:bg-gray-800">
               <h2 className="text-sm font-medium text-gray-800 dark:text-white">
-                New feature availabel!
+                New feature available .
               </h2>
               <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
                 let{"'"}s go and explore the new features.
               </p>
               <Link href={`/blog`}>
                 <Image
-                  className="object-cover w-full h-32 mt-2 rounded-lg"
+                  className="object-cover w-full h-32 mt-2 rounded-lg duration-300 active:scale-105 hover:scale-105"
                   src={`https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1806&amp;q=80`}
                   alt="Feature"
                   width={80}

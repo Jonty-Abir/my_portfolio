@@ -1,6 +1,7 @@
 import Footer from "@/components/footer/footer";
 import Header from "@/components/header/header";
 import Navbar from "@/components/header/navbar";
+import Loading from "@/components/loading/loading";
 import { IState, setShowSideBar } from "@/redux/sclice/clientSclice";
 import { ReactElement, Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
@@ -21,7 +22,7 @@ export default function Layout({ children }: IChildren) {
       <ErrorBoundary
         fallback={<h2 className="isError">Something went wrong</h2>}
       >
-        <Suspense fallback={<h2 className="loading">Loading...</h2>}>
+        <Suspense fallback={<Loading />}>
           <div className={`w-screen h-screen`}>
             <div className={`flex`}>
               <Header />

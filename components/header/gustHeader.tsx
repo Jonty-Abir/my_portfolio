@@ -84,6 +84,7 @@ export function GustHeader() {
   const client = useSelector((state: RootState) => state.authSclice.user);
 
   const router = useRouter();
+
   const isAuthenticated = useSelector(
     (state: RootState) => state.authSclice.isAuthenticated
   );
@@ -204,7 +205,11 @@ export function GustHeader() {
                       <li key={uniqid()}>
                         <Link
                           href={item.routeLink}
-                          className=" flex gap-x-4 px-4 py-2 rounded-sm  text-indigo-700 hover:bg-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-white"
+                          className={`flex gap-x-4 px-4 py-2 rounded-sm  text-indigo-700 hover:bg-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-white ${
+                            router.pathname === item.routeLink
+                              ? "bg-indigo-600 dark:bg-indigo-600 dark:text-white"
+                              : ""
+                          }`}
                         >
                           {item.icone}
 

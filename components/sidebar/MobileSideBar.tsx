@@ -1,9 +1,10 @@
 import { UserRole } from "@/interface/interface";
 import { Iuser } from "@/redux/sclice/authSclice";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { AiFillProfile } from "react-icons/ai";
+import { BsFillInfoSquareFill } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import {
   FaAngleDown,
@@ -15,8 +16,6 @@ import {
 import { SiTask } from "react-icons/si";
 import { TiShoppingCart } from "react-icons/ti";
 import uniqid from "uniqid";
-import { BsFillInfoSquareFill } from "react-icons/bs";
-
 
 function MobileSideBar({ client }: { client: Iuser | null }) {
   const [dashboardSub, setdashboardSub] = useState(true);
@@ -98,7 +97,11 @@ function MobileSideBar({ client }: { client: Iuser | null }) {
                   <div
                     key={uniqid()}
                     onClick={() => router.push(`${item.link}`)}
-                    className={`flex items-center px-3 py-2  text-gray-600 duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 transition-transform active:scale-95`}
+                    className={`flex items-center px-3 py-2  text-gray-600 duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 transition-transform active:scale-95 ${
+                      router?.asPath === item?.link
+                        ? "border-b-2 border-b-blue-600 dark:font-bold dark:text-blue-600"
+                        : ""
+                    }`}
                   >
                     <FaAngleRight size={18} />
                     <span className="mx-2 text-sm font-semibold">
@@ -129,7 +132,11 @@ function MobileSideBar({ client }: { client: Iuser | null }) {
                 <div
                   onClick={() => router.push(`${item.link}`)}
                   key={uniqid()}
-                  className={`flex items-center px-3 py-2  text-gray-600 duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 transition-transform active:scale-95`}
+                  className={`flex items-center px-3 py-2  text-gray-600 duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 transition-transform active:scale-95 ${
+                    router?.asPath === item?.link
+                      ? "border-b-2 border-b-blue-600 dark:font-bold dark:text-blue-600"
+                      : ""
+                  }`}
                 >
                   <FaAngleRight size={18} />
                   <span className="mx-2 text-sm font-semibold">
@@ -144,7 +151,11 @@ function MobileSideBar({ client }: { client: Iuser | null }) {
       {linkArray.map((value, i) => (
         <Link
           key={uniqid()}
-          className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700  active:scale-95"
+          className={`flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700  active:scale-95 ${
+            router?.asPath === value?.routeLink
+              ? "border-b-2 border-b-blue-600 dark:font-bold dark:text-blue-600"
+              : ""
+          }`}
           href={`${value.routeLink}`}
         >
           {/* Icone */}
@@ -155,7 +166,11 @@ function MobileSideBar({ client }: { client: Iuser | null }) {
       ))}
       {UserRole.ADMIN === client?.role && (
         <Link
-          className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700  active:scale-95"
+          className={`flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700  active:scale-95 ${
+            router?.asPath === "/users"
+              ? "border-b-2 border-b-blue-600 dark:font-bold dark:text-blue-600"
+              : ""
+          }`}
           href={`/users`}
         >
           {/* Icone */}
