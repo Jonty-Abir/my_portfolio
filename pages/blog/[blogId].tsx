@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 
-import SingleBlogCompo from "@/components/content/singleBlogContent";
+import SingleBlogCompo from "@/components/blog/singleBlogContent";
 import Loading from "@/components/loading/loading";
 import { verifyAccesToken } from "@/helper/helper";
 import { IProps } from "@/interface/interface";

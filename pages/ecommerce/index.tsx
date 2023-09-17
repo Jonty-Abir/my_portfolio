@@ -1,4 +1,4 @@
-import Ecommerce from "@/components/content/Ecommerce";
+import Ecommerce from "@/components/e_commerces/Ecommerce";
 import { verifyAccesToken } from "@/helper/helper";
 import { IProps } from "@/interface/interface";
 import Layout from "@/layout/layout";

@@ -58,36 +58,28 @@ export default function Blog({
              =============================*/}
 
         <div className="w-full space-y-4 mb-1">
-          {/* <Image
-            className="aspect-video rounded-lg"
-            src="https://images.pexels.com/photos/2440021/pexels-photo-2440021.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-            alt=""
-            width={1260}
-            height={750}
-          /> */}
           <SwiperCompo />
           <div className="text-sm font-semibold leading-tight text-purple-700">
-            Olivia Rhye • 20 Jan 2022
+            Abir Santra • 20 Jan 2023
           </div>
           <div className="text-3xl font-semibold leading-9 text-gray-900">
-            UX review presentations
+            Welcome to my blog section.
           </div>
           <div className="text-base leading-normal text-gray-600 dark:text-gray-700 font-semibold">
-            How do you create compelling presentations that wow your colleagues
-            and impress your managers?
+            Here we have few category. let{"'"}s explore this category.
           </div>
           <div className="flex w-full items-end">
             <div className="cursor-pointer px-4 py-2 text-base font-semibold leading-normal text-gray-700 first:border-b-2 first:border-gray-700">
-              Design
+              Full-Stack
             </div>
             <div className="cursor-pointer px-4 py-2 text-base font-semibold leading-normal text-gray-700 first:border-b-2 first:border-gray-700">
-              Product
+              Design
             </div>
             <div className="cursor-pointer px-4 py-2 text-base font-semibold leading-normal text-gray-700 first:border-b-2 first:border-gray-700">
               Software Engineering
             </div>
             <div className="cursor-pointer px-4 py-2 text-base font-semibold leading-normal text-gray-700 first:border-b-2 first:border-gray-700">
-              Customer Success
+              Other{"'s"}
             </div>
           </div>
         </div>

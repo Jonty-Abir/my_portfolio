@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import SocialIcone from "../socialIcone";
+import SocialIcone from "../others/socialIcone";
 
 const logos = [
   {

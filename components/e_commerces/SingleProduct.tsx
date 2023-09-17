@@ -1,4 +1,4 @@
-import ProductDetailsCarosule from "@/components/content/productDetailsCarosule";
+import ProductDetailsCarosule from "@/components/e_commerces/productDetailsCarosule";
 import { Heart, Share } from "lucide-react";
 import { useRouter } from "next/router";
 import { AiFillStar } from "react-icons/ai";

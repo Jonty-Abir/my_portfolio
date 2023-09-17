@@ -1,4 +1,4 @@
-import DashboardContent from "@/components/content/dashboard.content";
+import DashboardContent from "@/components/dashboard/dashboardContent";
 import { verifyAccesToken } from "@/helper/helper";
 import { IProps } from "@/interface/interface";
 import Layout from "@/layout/layout";

@@ -1,4 +1,4 @@
-import { SingleProduct } from "@/components/content/SingleProduct";
+import { SingleProduct } from "@/components/e_commerces/SingleProduct";
 import { verifyAccesToken } from "@/helper/helper";
 import { IProps } from "@/interface/interface";
 import Layout from "@/layout/layout";

@@ -1,4 +1,4 @@
-import Blog from "@/components/content/blog";
+import Blog from "@/components/blog/blog";
 import Loading from "@/components/loading/loading";
 import { verifyAccesToken } from "@/helper/helper";
 import { IProps } from "@/interface/interface";

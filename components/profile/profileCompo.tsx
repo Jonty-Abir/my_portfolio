@@ -6,8 +6,8 @@ import {
 import { RootState } from "@/redux/store";
 import { FcSettings } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
-import ClientUpdateFrom from "./froms/ClientUpdateFrom";
-import BlogFrom from "./froms/blogFrom";
+import ClientUpdateFrom from "../froms/ClientUpdateFrom";
+import BlogFrom from "../froms/blogFrom";
 
 const ProfileCompo = () => {
   const client = useSelector((state: RootState) => state.authSclice.user);

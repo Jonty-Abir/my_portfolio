@@ -1,5 +1,5 @@
 import Loading from "@/components/loading/loading";
-import ProfileCompo from "@/components/profileCompo";
+import ProfileCompo from "@/components/profile/profileCompo";
 import { verifyAccesToken } from "@/helper/helper";
 import { IProps } from "@/interface/interface";
 import Layout from "@/layout/layout";

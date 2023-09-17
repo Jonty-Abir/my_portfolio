@@ -1,5 +1,5 @@
-import UsersContent from "@/components/content/usersContent";
 import TableLoading from "@/components/loading/tableLoading";
+import UsersContent from "@/components/users/usersContent";
 import { verifyAccesToken } from "@/helper/helper";
 import { IProps } from "@/interface/interface";
 import Layout from "@/layout/layout";
