@@ -5,23 +5,21 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { AiFillProfile } from "react-icons/ai";
+import { BsFillInfoSquareFill } from "react-icons/bs";
 import {
   FaAngleDown,
   FaAngleRight,
   FaAngleUp,
   FaHome,
-  FaRegUser,
   FaUserTie,
 } from "react-icons/fa";
+import { GiRotaryPhone, GiStoneStack } from "react-icons/gi";
 import { HiX } from "react-icons/hi";
 import { RxCaretRight } from "react-icons/rx";
 import { SiTask } from "react-icons/si";
 import { TiShoppingCart } from "react-icons/ti";
-import { GiStoneStack } from "react-icons/gi";
 import { useSelector } from "react-redux";
 import uniqid from "uniqid";
-import { BsFillInfoSquareFill } from "react-icons/bs";
-import { GiRotaryPhone } from "react-icons/gi";
 
 const mobileNavBar = [
   {
@@ -117,11 +115,11 @@ function MobileGustNavbar() {
         </svg>
       </div>
       <div
-        className={`absolute bg-transparent backdrop h-[80rem] inset-x-0 top-0 left-[-1rem] z-50 origin-top-right transform  ${
+        className={`absolute bg-transparent dark:backdrop-blur-xl h-[80rem] inset-x-0 top-0 left-[-1rem] z-50 origin-top-right transform  ${
           isMenuOpen ? " duration-75" : "duration-75 -translate-y-[80rem]"
         }  lg:-translate-y-[80rem] `}
       >
-        <div className="divide-y-2 divide-gray-50 rounded-lg dark:bg-blue-400 dark:backdrop:blur-3xl shadow-lg ring-1 ring-black ring-opacity-5 z-60 gustNavbar ">
+        <div className="divide-y-2 divide-gray-50 rounded-lg dark:bg-transparent dark:backdrop:blur-3xl shadow-lg ring-1 ring-black ring-opacity-5 z-60 gustNavbar ">
           <div className="px-5 pb-6 pt-5  text-black  dark:text-gray-50 ">
             <div className="flex items-center justify-between">
               <div className="inline-flex items-center space-x-2">
@@ -258,7 +256,6 @@ function MobileGustNavbar() {
                 </ul>
               </nav>
             </div>
-            {/*  */}
             {isAuthenticated ? (
               <li className=" list-none">
                 <Link
@@ -302,6 +299,25 @@ function MobileGustNavbar() {
               </div>
             )}
             {/*  */}
+            {/* Feature Start */}
+            <div className="p-3 my-4 bg-gray-100 rounded-lg dark:bg-gray-800">
+              <h2 className="text-xl font-medium text-gray-800 dark:text-white">
+                New feature availabel!
+              </h2>
+              <p className="mt-1 text-xs text-gray-500 dark:text-gray-300">
+                let{"'"}s go and explore the new features.
+              </p>
+              <Link href={`/blog`}>
+                <Image
+                  className="object-cover w-full h-32 mt-2 rounded-lg"
+                  src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1806&q=80"
+                  alt="Feature"
+                  width={400}
+                  height={300}
+                />
+              </Link>
+            </div>
+            {/* Feature End */}
           </div>
         </div>
       </div>
