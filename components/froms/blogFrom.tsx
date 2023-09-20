@@ -198,14 +198,35 @@ function BlogFrom({ client, accessToken, refreshToken }: IpageProops) {
                 >
                   Category
                 </label>
-                <input
+                <select
+                  className="form-input"
+                  id="category"
+                  {...formik.getFieldProps("category")}
+                >
+                  <option className=" font-semibold text-gray-600" value="full Stack">Full Stack</option>
+                  <option className=" font-semibold text-gray-600" value="web design">Web Design</option>
+                  <option className=" font-semibold text-gray-600" value="web development">Web Development</option>
+
+                  <option className=" font-semibold text-gray-600" value="software engineering">
+                    Software Engineering
+                  </option>
+                  <option className=" font-semibold text-gray-600" value="font end">Font End</option>
+                  <option className=" font-semibold text-gray-600" value="server end">Server End</option>
+                  <option className=" font-semibold text-gray-600" value="cloud computing">Cloud Computing</option>
+                  <option className=" font-semibold text-gray-600" value="devOps">DevOps</option>
+
+                  <option className=" font-semibold text-gray-600" value="food">Food</option>
+                  <option className=" font-semibold text-gray-600" value="travel">Travel</option>
+                  <option className=" font-semibold text-gray-600" value="others">Other{"'"}s</option>
+                </select>
+                {/* <input
                   placeholder="Enter Category"
                   autoComplete="off"
                   id="category"
                   className="form-input"
                   type="text"
                   {...formik.getFieldProps("category")}
-                />
+                /> */}
                 <p className="text-rose-500 pt-2 pl-2 font-semibold text-xs text-left">
                   {formik?.errors?.category && formik.touched.category
                     ? formik.errors.category
@@ -408,7 +429,7 @@ function BlogFrom({ client, accessToken, refreshToken }: IpageProops) {
               </div>
             </div>
           </section>
-          <div className="flex self-end">
+          <div className="flex ml-[75%]">
             {/* <button type="button" className="btn border-slate-200 hover:border-slate-300 text-slate-600">Cancel</button> */}
             <button
               disabled={loading ? true : false}

@@ -1,54 +1,51 @@
 import { IBlog_payload } from "@/interface/interface";
 
 export function blogValidate(value: IBlog_payload) {
-    const errors = {};
+  const errors = {};
+  /***_______  title    ________**/
+  if (!value.title) {
+    // @ts-ignore
+    errors.title = "Required*";
+  }
+  /***_______  subtitle    ________**/
 
-    /***_______  title    ________**/
+  if (!value.subtitle) {
+    // @ts-ignore
 
-    if (!value.title) {
-        // @ts-ignore
-        errors.title = "Required*";
-    }
-    /***_______  subtitle    ________**/
+    errors.subtitle = "Required*";
+  }
+  /***_______  category    ________**/
 
-    if (!value.subtitle) {
-        // @ts-ignore
+  if (!value.category) {
+    // @ts-ignore
 
-        errors.subtitle = "Required*";
-    }
-    /***_______  category    ________**/
+    errors.category = "Required*";
+  }
 
-    if (!value.category) {
-        // @ts-ignore
+  /***_______  description   ________**/
 
-        errors.category = "Required*";
-    }
+  if (!value.description) {
+    // @ts-ignore
 
+    errors.description = "Required*";
+  }
 
-    /***_______  description   ________**/
+  /***_______  published   ________**/
 
-    if (!value.description) {
-        // @ts-ignore
+  if (!value.published) {
+    // @ts-ignore
 
-        errors.description = "Required*";
-    }
+    errors.published = "Required*";
+  }
 
-    /***_______  published   ________**/
+  /***_______  author.name   ________**/
 
-    if (!value.published) {
-        // @ts-ignore
+  if (!value.authorName) {
+    // @ts-ignore
 
-        errors.published = "Required*";
-    }
+    errors.authorName = "Required*";
+  }
 
-    /***_______  author.name   ________**/
-
-    if (!value.authorName) {
-        // @ts-ignore
-
-        errors.authorName = "Required*";
-    }
-
-    // console.log(errors)
-    return errors;
+  // console.log(errors)
+  return errors;
 }

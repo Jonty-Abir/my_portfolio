@@ -93,8 +93,12 @@ input[type="search"]::-webkit-search-results-decoration {
 .loading {
   @apply h-screen w-screen flex justify-center items-center text-center text-green-500 text-2xl font-bold;
 }
+.loadingPagination {
+  @apply h-screen w-screen flex justify-center items-center text-center text-gray-800 text-2xl font-bold;
+}
+
 .isError {
-  @apply h-screen w-screen flex justify-center items-center text-center text-orange-500 text-2xl font-bold;
+  @apply flex justify-center items-center text-center text-orange-500 text-2xl font-bold;
 }
 
 .form-input {

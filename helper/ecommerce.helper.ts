@@ -9,6 +9,6 @@ export async function getAllProduct() {
     return Promise.resolve(data);
   } catch (error: any) {
     console.log(error?.message);
-    return Promise.reject(error?.message);
+    return Promise.reject(null);
   }
 }
