@@ -27,7 +27,7 @@ const initialState: IClientState = {
     blog: false,
   },
 };
-const uiSclice: any = createSlice({
+const uiSclice = createSlice({
   name: "uiSclice",
   initialState,
   reducers: {
