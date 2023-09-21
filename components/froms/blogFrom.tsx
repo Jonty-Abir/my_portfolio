@@ -212,6 +212,8 @@ function BlogFrom({ client, accessToken, refreshToken }: IpageProops) {
                   </option>
                   <option className=" font-semibold text-gray-600" value="font end">Font End</option>
                   <option className=" font-semibold text-gray-600" value="server end">Server End</option>
+                  <option className=" font-semibold text-gray-600" value="data base">Data Base</option>
+
                   <option className=" font-semibold text-gray-600" value="cloud computing">Cloud Computing</option>
                   <option className=" font-semibold text-gray-600" value="devOps">DevOps</option>
 

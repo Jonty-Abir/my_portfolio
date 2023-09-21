@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { AiFillProfile } from "react-icons/ai";
 import { BsFillInfoSquareFill } from "react-icons/bs";
-import { CgProfile } from "react-icons/cg";
 import {
   FaAngleDown,
   FaAngleRight,
@@ -13,6 +12,7 @@ import {
   FaHome,
   FaUsers,
 } from "react-icons/fa";
+import { GiRotaryPhone, GiStoneStack } from "react-icons/gi";
 import { SiTask } from "react-icons/si";
 import { TiShoppingCart } from "react-icons/ti";
 import uniqid from "uniqid";
@@ -65,9 +65,19 @@ function MobileSideBar({ client }: { client: Iuser | null }) {
       routeName: "About",
     },
     {
-      icone: <CgProfile size={24} />,
-      routeLink: `/profile/${client?._id}`,
-      routeName: "Profile",
+      routeName: "Tech-Stack",
+      routeLink: "/techStack",
+      icone: <GiStoneStack size={20} />,
+    },
+    {
+      routeName: "About",
+      routeLink: "/aboutUs",
+      icone: <BsFillInfoSquareFill size={20} />,
+    },
+    {
+      routeName: "Contact Us",
+      routeLink: "/contactUs",
+      icone: <GiRotaryPhone size={20} />,
     },
   ];
 

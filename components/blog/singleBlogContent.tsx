@@ -1,13 +1,7 @@
 import { findAllPost } from "@/helper/blog.helper";
 import { IPost, IProps } from "@/interface/interface";
 import { useQuery } from "@tanstack/react-query";
-import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  FacebookIcon,
-  InstagramIcon,
-  TwitterIcon,
-} from "lucide-react";
+import { FacebookIcon, InstagramIcon, TwitterIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -51,9 +45,7 @@ function SingleBlogCompo({
               </h1>
             </div>
             <div className="my-18 -mx-4 flex flex-wrap px-4">
-              {/* ==========================
-                                     Current Blog
-                            ============================== */}
+              {/*  =============== Current Blog ================*/}
 
               {posts &&
                 blogId &&
@@ -132,9 +124,7 @@ function SingleBlogCompo({
                     );
                   })}
 
-              {/* ==========================
-                                     Related Blog
-                            ============================== */}
+              {/*  =============== Related Blog ================*/}
 
               <div className="w-full px-4 lg:w-2/5">
                 {/* false side */}
@@ -192,11 +182,10 @@ function SingleBlogCompo({
         </div>
       </section>
       <hr className="py-8 pb-0 mx-16 bg-slate-400" />
-      {/*  ==============================
-                  pagination        
-            =============================*/}
 
-      <div className="flex w-full justify-center">
+      {/*  ===============pagination START==================*/}
+
+      {/* <div className="flex w-full justify-center">
         <div className="mx-auto flex">
           <a
             href="#"
@@ -226,7 +215,9 @@ function SingleBlogCompo({
             <ArrowRightIcon className="h-5 w-5" />
           </a>
         </div>
-      </div>
+      </div> */}
+
+      {/*  ===============pagination END==================*/}
       <div className="py-8 pb-16 text-center">
         <Link
           href={"/blog"}

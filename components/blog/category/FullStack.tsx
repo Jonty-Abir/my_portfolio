@@ -1,10 +1,12 @@
-import { postPagination } from "@/helper/blog.helper";
+import { useBlogs } from "@/hooks/useblogs";
 import { IPost } from "@/interface/interface";
+import { useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaAngleLeft, FaAngleRight, FaComment } from "react-icons/fa";
 import { FcClock } from "react-icons/fc";
+import Skeleton from "./Skeleton";
 
 function FullStack({
   refreshToken,
@@ -17,52 +19,40 @@ function FullStack({
 
   const [pageNo, setPageNO] = useState(1);
   const [limit, setLimit] = useState(3);
-  const [isLoading, setLoading] = useState(false);
-  const [isError, setError] = useState(false);
-  const [data, setData] = useState<any>([]);
 
-  useEffect(() => {
-    handlePagination();
-    return () => {};
-  }, [pageNo]);
+  const queryClient = useQueryClient();
 
-  const handlePagination = async () => {
-    try {
-      setLoading(true);
-      const result = await postPagination(
-        accessToken,
-        refreshToken,
-        pageNo,
-        limit
-      );
-      setData(result);
-      setLoading(false);
-      return result;
-    } catch (error) {
-      setError(true);
-      setLoading(false);
-    }
-  };
+  const { data, isError, isLoading } = useBlogs(
+    accessToken,
+    refreshToken,
+    pageNo,
+    limit
+  );
 
-  // const { isLoading, data, isFetching, isSuccess } = useQuery({
-  //   queryKey: ["pagination-post"],
-  //   queryFn: async () => postPagination(accessToken, refreshToken, pageNo, 3),
-  // });
-
-  if (isLoading) {
-    return <h2 className="loadingPagination">loading..</h2>;
+  if (isError) {
+    return <h2 className="isError">Data Fetch Failed...!</h2>;
   }
-  if (isError) return <h2 className="isError">Failed..!</h2>;
+  if (isLoading) {
+    return <Skeleton />;
+  }
 
   const posts: IPost[] = data?.blogs;
   const totalLengthOfPost = parseInt(data?.totalLength);
+
   return (
     <>
       <div
         id="letsUp"
-        className="mt-4 grid gap-4 gap-y-8 py-6 md:grid-cols-2 lg:grid-cols-3"
+        className={` ${posts?.length >= 1 && "mt-4"} ${
+          !isLoading && "grid gap-4 gap-y-8 py-6 md:grid-cols-2 lg:grid-cols-3"
+        }`}
       >
-        {posts?.length > 0 &&
+        {isLoading ? (
+          <>
+            <Skeleton />
+          </>
+        ) : (
+          posts?.length > 0 &&
           posts?.map((post, i) => {
             const data = post.description.split(" ");
             // const blogDescription = data.filter((v, i) => i <= 20).join(" ");
@@ -107,10 +97,11 @@ function FullStack({
                 </div>
               </div>
             );
-          })}
+          })
+        )}
       </div>
-      { posts?.length < 1 && (
-        <h2 className=" text-3xl text-gray-900 font-bold  text-center">
+      {posts?.length < 1 && (
+        <h2 className=" text-3xl text-gray-900 font-bold text-center">
           {" "}
           Data Not Found!
         </h2>
@@ -129,7 +120,7 @@ function FullStack({
               className={`rounded-md bg-gray-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black ${
                 pageNo > 1
                   ? ""
-                  : " cursor-not-allowed bg-gray-400 text-gray-600"
+                  : " cursor-not-allowed dark:bg-gray-400 dark:text-gray-500"
               }`}
               onClick={() => {
                 if (pageNo > 1) {
@@ -139,16 +130,16 @@ function FullStack({
             >
               <FaAngleLeft className=" inline-flex items-center" /> Previous
             </button>
-            <span>{/* {pageNo} of {totalLengthOfPost} */}</span>
+            <span className="text-gray-700 text-3xl font-semibold">....</span>
             <button
               type="button"
               className={`rounded-md bg-gray-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black ${
-                pageNo <= totalLengthOfPost
+                posts?.length >= 1
                   ? ""
-                  : " cursor-not-allowed bg-gray-400 text-gray-600"
+                  : " cursor-not-allowed dark:bg-gray-400 dark:text-gray-500"
               }`}
               onClick={() => {
-                if (pageNo <= totalLengthOfPost) {
+                if (posts?.length >= 1) {
                   setPageNO((prev) => prev + 1);
                 }
               }}

@@ -4,11 +4,13 @@ import { IPost, IProps } from "@/interface/interface";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 import { FaComments } from "react-icons/fa";
 import { FcClock } from "react-icons/fc";
 import { IoIosArrowUp } from "react-icons/io";
 import SwiperCompo from "../shared/swiper";
 import FullStack from "./category/FullStack";
+import Skeleton from "./category/Skeleton";
 
 export default function Blog({
   accessToken,
@@ -75,8 +77,9 @@ export default function Blog({
         <hr />
 
         {/* Current Post */}
-
-        <FullStack accessToken={accessToken} refreshToken={refreshToken} />
+        <Suspense fallback={<Skeleton />}>
+          <FullStack accessToken={accessToken} refreshToken={refreshToken} />
+        </Suspense>
       </div>
       {/*  ==============================
                   Latest writings        

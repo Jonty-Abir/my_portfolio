@@ -1,3 +1,4 @@
+import { BsFillInfoSquareFill } from "react-icons/bs";
 import uniqid from "uniqid";
 
 import { AiFillProfile } from "react-icons/ai";
@@ -23,7 +24,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
-import { CgProfile } from "react-icons/cg";
+import { GiRotaryPhone, GiStoneStack } from "react-icons/gi";
 import { SiTask } from "react-icons/si";
 import { TiShoppingCart } from "react-icons/ti";
 import { VscArrowLeft } from "react-icons/vsc";
@@ -77,9 +78,19 @@ function FullsidebarDesktopMode({ client }: { client: Iuser | null }) {
       routeName: "Project",
     },
     {
-      icone: <CgProfile size={24} />,
-      routeLink: `/profile/${client?._id}`,
-      routeName: "Profile",
+      icone: <BsFillInfoSquareFill size={24} />,
+      routeLink: "/aboutUs",
+      routeName: "About",
+    },
+    {
+      routeName: "Tech-Stack",
+      routeLink: "/techStack",
+      icone: <GiStoneStack size={20} />,
+    },
+    {
+      routeName: "Contact Us",
+      routeLink: "/contactUs",
+      icone: <GiRotaryPhone size={20} />,
     },
   ];
 

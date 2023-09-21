@@ -45,11 +45,11 @@ export async function postPagination(
       }
     );
     // status !== 200
-    if (status !== 200) throw new Error("custom msg");
-    return data;
-  } catch (error) {
+    if (status !== 200) throw new Error("Bad Request");
+    return Promise.resolve(data);
+  } catch (error: any) {
     // console.log(error);
-    return null;
+    return Promise.reject(error?.message);
   }
 }
 
