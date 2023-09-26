@@ -87,9 +87,13 @@ function VerifyOtp({ setCount }: IComponentProps) {
               id="email"
               autoComplete="off"
               placeholder="Enter Your OTP"
-              className={` w-full px-4 py-3 rounded-md placeholder:text-gray-300 ${
+              className={` w-full border-2 px-4 py-3 rounded-md placeholder:text-indigo-800 text-white font-semibold bg-transparent ${
                 formik.errors.otp && formik.touched.otp
                   ? "dark:border-rose-600"
+                  : "dark:border-gray-700"
+              } ${
+                !formik?.errors?.otp && formik?.touched?.otp
+                  ? "dark:border-green-500"
                   : "dark:border-gray-700"
               }`}
               type="text"
@@ -121,7 +125,7 @@ function VerifyOtp({ setCount }: IComponentProps) {
           </div>
           <button
             type="submit"
-            className="btn bg-indigo-600 hover:bg-indigo-600 text-white whitespace-nowrap"
+            className="btn bg-indigo-600 hover:bg-indigo-600 text-white whitespace-nowrap transition-transform active:scale-95"
           >
             {loading ? "sending..." : "Send OTP"}
           </button>

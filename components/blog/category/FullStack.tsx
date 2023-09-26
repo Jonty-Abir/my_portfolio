@@ -18,7 +18,7 @@ function FullStack({
   // react hooks
 
   const [pageNo, setPageNO] = useState(1);
-  const [limit, setLimit] = useState(3);
+  const [limit, setLimit] = useState(6);
 
   const queryClient = useQueryClient();
 

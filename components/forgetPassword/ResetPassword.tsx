@@ -81,9 +81,13 @@ function ResetPassword({ setCount }: IComponentProps) {
                 autoComplete="off"
                 id="pw"
                 placeholder="New Password"
-                className={` w-full px-4 py-3 rounded-md placeholder:text-gray-300 ${
-                  formik.errors.cPassword && formik.touched.cPassword
+                className={` w-full border-2 px-4 py-3 rounded-md placeholder:text-indigo-800 text-white font-semibold bg-transparent ${
+                  formik.errors.password && formik.touched.password
                     ? "dark:border-rose-600"
+                    : "dark:border-gray-700"
+                } ${
+                  !formik?.errors?.password && formik?.touched?.password
+                    ? "dark:border-green-500"
                     : "dark:border-gray-700"
                 }`}
                 {...formik.getFieldProps("password")}
@@ -114,10 +118,14 @@ function ResetPassword({ setCount }: IComponentProps) {
                 type={showCPw ? "text" : "password"}
                 autoComplete="off"
                 id="pw"
-                placeholder="Confrim New Password"
-                className={`w-full px-4 py-3 mt-2 rounded-md placeholder:text-gray-300 ${
+                placeholder="Confirm New Password"
+                className={`w-full border-2 px-4 py-3 mt-2 rounded-md placeholder:text-indigo-800 text-white font-semibold bg-transparent ${
                   formik.errors.cPassword && formik.touched.cPassword
                     ? "dark:border-rose-600"
+                    : "dark:border-gray-700"
+                } ${
+                  !formik?.errors?.cPassword && formik?.touched?.cPassword
+                    ? "dark:border-green-500"
                     : "dark:border-gray-700"
                 }`}
                 {...formik.getFieldProps("cPassword")}
@@ -154,7 +162,7 @@ function ResetPassword({ setCount }: IComponentProps) {
           </div>
           <button
             type="submit"
-            className="btn bg-indigo-600 hover:bg-indigo-600 text-white whitespace-nowrap"
+            className="btn bg-indigo-600 hover:bg-indigo-600 text-white whitespace-nowrap transition-transform active:scale-95"
           >
             {loading ? "sending..." : "Save Password"}
           </button>

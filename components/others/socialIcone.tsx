@@ -8,14 +8,26 @@ import { FaFacebookSquare, FaInstagramSquare, FaUserTie } from "react-icons/fa";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import uniqid from "uniqid";
 
+interface objIner {
+  id: string;
+  socialMedia: string;
+  link: string;
+  child: ReactElement;
+}
+
 const SocialIcone = () => {
   const [isVisable, setIsVisable] = useState(false);
 
   // listent scroll
   const listenToScrol = () => {
     let heightShow = 350;
+
     const windowScroll =
       document.body.scrollTop || document.documentElement.scrollTop;
+
+    // console.log(heightShow);
+    // console.log();
+
     if (windowScroll > heightShow) {
       // visible top scroll button
       setIsVisable(true);
@@ -32,12 +44,6 @@ const SocialIcone = () => {
     return () => window.removeEventListener("scroll", listenToScrol);
   }, []);
 
-  interface objIner {
-    id: string;
-    socialMedia: string;
-    link: string;
-    child: ReactElement;
-  }
   const obj: objIner[] = [
     {
       id: uniqid(),
@@ -113,14 +119,14 @@ const SocialIcone = () => {
 
   return (
     <>
-      <div className=" block lg:flex xl:flex 2xl:flex flex-col top-[35%] -left-2 lg:left-0  fixed">
+      <div className=" block lg:flex xl:flex 2xl:flex flex-col top-[35%] -left-1 lg:left-0  fixed">
         {isVisable ? (
           <ul className="block lg:flex flex-col lg:gap-y-1 duration-500 opacity-100">
             {obj.map(({ id, link, socialMedia, child }, index) => {
               if (index <= 3) {
                 return (
                   <li
-                    key={index}
+                    key={uniqid()}
                     className="mb-1 lg:mb-0 flex flex-col items-center justify-center  w-40 h-14 px-4 bg-gray-500 ml-[-100px] rounded-sm hover:rounded-md hover:ml-[12px] lg:hover:ml-[5px] hover:ring-2 hover:ring-green-500 duration-300"
                   >
                     <a

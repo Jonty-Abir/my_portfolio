@@ -77,13 +77,17 @@ function SendOtp({ setCount }: IComponentProps) {
               id="email"
               autoComplete="off"
               placeholder="Enter Your Email Address"
-              className={` w-full px-4 py-3 rounded-md placeholder:text-gray-300 ${
-                formik.errors.userName && formik.touched.userName
-                  ? "dark:border-rose-600"
-                  : "dark:border-gray-700"
-              }`}
               type="email"
               {...formik.getFieldProps("userName")}
+              className={` w-full border-2 px-4 py-3 rounded-md placeholder:text-indigo-800 text-white font-semibold bg-transparent ${
+                formik?.errors?.userName && formik.touched.userName
+                  ? " dark:border-rose-600"
+                  : "dark:border-gray-700"
+              } ${
+                !formik?.errors?.userName && formik?.touched?.userName
+                  ? "dark:border-green-500"
+                  : "dark:border-gray-700"
+              }`}
             />
             <p className="text-rose-500 pt-2 pl-2 font-semibold text-xs text-left">
               {formik?.errors?.userName && formik.touched.userName
@@ -109,7 +113,7 @@ function SendOtp({ setCount }: IComponentProps) {
 
           <button
             type="submit"
-            className="btn bg-indigo-600 hover:bg-indigo-600 text-white whitespace-nowrap"
+            className="btn bg-indigo-600 hover:bg-indigo-600 text-white whitespace-nowrap transition-transform active:scale-95"
           >
             {loading ? "Sending..." : "Send Mail"}
           </button>

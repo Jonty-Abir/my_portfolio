@@ -257,7 +257,7 @@ export const LandingPage = () => {
                   alt="Logo"
                   width={75}
                   height={75}
-                  className="w-8 h-8 lg:w-20 lg:h-20"
+                  className="w-14 h-14 lg:w-20 lg:h-20"
                 />
               </div>
             ))}

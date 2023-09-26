@@ -107,47 +107,44 @@ export default function Blog({
           </div>
           <div className="grid gap-4 gap-y-8 py-6 md:grid-cols-2 lg:grid-cols-3">
             {posts &&
-              posts
-                .filter((e, i) => i < 3)
-                .map((post, i) => (
-                  <div
-                    key={post.title}
-                    className="flex flex-col justify-between space-y-2 px-2 py-4 rounded-md bg-indigo-200 pb-8"
-                  >
-                    <div className="space-y-2">
-                      <Link href={`/blog/${post._id}`}>
-                        <Image
-                          src={`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/blogs/poster/${post.img}`}
-                          className="aspect-video w-full cursor-pointer rounded-md"
-                          alt="poster"
-                          width={300}
-                          height={200}
-                        />
-                      </Link>
-                      <div className="w-full text-sm flex items-center gap-x-2 font-semibold leading-tight text-gray-600">
-                        <Image
-                          src={`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/blogs/author/${post.author.img}`}
-                          width={25}
-                          height={20}
-                          alt="avtar_user"
-                          className="w-6 h-6 ring-2 ring-green-500 rounded-full"
-                        />
-                        {post.author.name} <FcClock size={22} />{" "}
-                        {post.published}
-                        <div className=" inline-flex gap-x-1">
-                          <FaComments size={20} />
-                          comments:0
-                        </div>
-                      </div>
-                      <div>
-                        <div className="flex-1 text-2xl font-semibold px-3 pt-3 text-gray-900">
-                          {post.title}
-                        </div>
+              posts.slice(-3).map((post, i) => (
+                <div
+                  key={post.title}
+                  className="flex flex-col justify-between space-y-2 px-2 py-4 rounded-md bg-indigo-200 pb-8"
+                >
+                  <div className="space-y-2">
+                    <Link href={`/blog/${post._id}`}>
+                      <Image
+                        src={`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/blogs/poster/${post.img}`}
+                        className="aspect-video w-full cursor-pointer rounded-md"
+                        alt="poster"
+                        width={300}
+                        height={200}
+                      />
+                    </Link>
+                    <div className="w-full text-sm flex items-center gap-x-2 font-semibold leading-tight text-gray-600">
+                      <Image
+                        src={`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/blogs/author/${post.author.img}`}
+                        width={25}
+                        height={20}
+                        alt="avtar_user"
+                        className="w-6 h-6 ring-2 ring-green-500 rounded-full"
+                      />
+                      {post.author.name} <FcClock size={22} /> {post.published}
+                      <div className=" inline-flex gap-x-1">
+                        <FaComments size={20} />
+                        comments:0
                       </div>
                     </div>
-                    {/*  */}
+                    <div>
+                      <div className="flex-1 text-2xl font-semibold px-3 pt-3 text-gray-900">
+                        {post.title}
+                      </div>
+                    </div>
                   </div>
-                ))}
+                  {/*  */}
+                </div>
+              ))}
           </div>
         </div>
       </div>
