@@ -86,6 +86,7 @@ function BlogFrom({ client, accessToken, refreshToken }: IpageProops) {
     validate: blogValidate,
     onSubmit: async (value) => {
       setloading(true);
+
       if (authorBase64 && posterBase64) {
         let payload: ICreatePostPayload = {
           title: value.title,
@@ -203,23 +204,78 @@ function BlogFrom({ client, accessToken, refreshToken }: IpageProops) {
                   id="category"
                   {...formik.getFieldProps("category")}
                 >
-                  <option className=" font-semibold text-gray-600" value="full Stack">Full Stack</option>
-                  <option className=" font-semibold text-gray-600" value="web design">Web Design</option>
-                  <option className=" font-semibold text-gray-600" value="web development">Web Development</option>
+                  <option
+                    className=" font-semibold text-gray-600"
+                    value="full Stack"
+                  >
+                    Full Stack
+                  </option>
+                  <option
+                    className=" font-semibold text-gray-600"
+                    value="web design"
+                  >
+                    Web Design
+                  </option>
+                  <option
+                    className=" font-semibold text-gray-600"
+                    value="web development"
+                  >
+                    Web Development
+                  </option>
 
-                  <option className=" font-semibold text-gray-600" value="software engineering">
+                  <option
+                    className=" font-semibold text-gray-600"
+                    value="software engineering"
+                  >
                     Software Engineering
                   </option>
-                  <option className=" font-semibold text-gray-600" value="font end">Font End</option>
-                  <option className=" font-semibold text-gray-600" value="server end">Server End</option>
-                  <option className=" font-semibold text-gray-600" value="data base">Data Base</option>
+                  <option
+                    className=" font-semibold text-gray-600"
+                    value="font end"
+                  >
+                    Font End
+                  </option>
+                  <option
+                    className=" font-semibold text-gray-600"
+                    value="server end"
+                  >
+                    Server End
+                  </option>
+                  <option
+                    className=" font-semibold text-gray-600"
+                    value="data base"
+                  >
+                    Data Base
+                  </option>
 
-                  <option className=" font-semibold text-gray-600" value="cloud computing">Cloud Computing</option>
-                  <option className=" font-semibold text-gray-600" value="devOps">DevOps</option>
+                  <option
+                    className=" font-semibold text-gray-600"
+                    value="cloud computing"
+                  >
+                    Cloud Computing
+                  </option>
+                  <option
+                    className=" font-semibold text-gray-600"
+                    value="devOps"
+                  >
+                    DevOps
+                  </option>
 
-                  <option className=" font-semibold text-gray-600" value="food">Food</option>
-                  <option className=" font-semibold text-gray-600" value="travel">Travel</option>
-                  <option className=" font-semibold text-gray-600" value="others">Other{"'"}s</option>
+                  <option className=" font-semibold text-gray-600" value="food">
+                    Food
+                  </option>
+                  <option
+                    className=" font-semibold text-gray-600"
+                    value="travel"
+                  >
+                    Travel
+                  </option>
+                  <option
+                    className=" font-semibold text-gray-600"
+                    value="others"
+                  >
+                    Other{"'"}s
+                  </option>
                 </select>
                 {/* <input
                   placeholder="Enter Category"

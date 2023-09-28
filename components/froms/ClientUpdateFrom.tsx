@@ -11,6 +11,7 @@ import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import LoadingBtn from "../shared/LoadingBtn";
 import LodderCompo from "../shared/lodder";
+import FromAlertMsg from "./FromAlertMsg";
 
 export interface IupdateClientPayload extends I_InitialValues {
   avatar?: string;
@@ -30,7 +31,10 @@ const ClientUpdateFrom = ({
   refreshToken,
 }: IpageProops) => {
   const disPatch = useDispatch();
-  const [success, setSuccess] = useState(false);
+  const [info, setInfo] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
 
   const [base64, setBase64] = useState("");
 
@@ -57,10 +61,17 @@ const ClientUpdateFrom = ({
     },
     {
       onSuccess: () => {
-        setSuccess(true);
+        setShowAlert(true);
+        setSuccess("User Update SuccessFull.");
+        setError("");
+        setInfo("");
         queryClient.invalidateQueries(["update-client"]);
       },
-      onError: (err) => {
+      onError: (err: any) => {
+        setShowAlert(true);
+        setSuccess("");
+        setInfo("");
+        setError(JSON.stringify(err?.message));
         console.log("MUTATON-FAILD");
       },
     }
@@ -104,7 +115,23 @@ const ClientUpdateFrom = ({
     validate: clientUpdateValidate,
     onSubmit: async (value) => {
       // console.log(client.avatar.split("/uploads/")[1])
+      const value1 = JSON.stringify({
+        firstName: value.firstName,
+        lastName: value.lastName,
+        number: value.number,
+        email: value.email,
+        avatar: base64 || client.avatar,
+      });
+      const value2 = JSON.stringify({
+        firstName: client.firstName,
+        lastName: client.lastName,
+        number: client.number,
+        email: client.email,
+        avatar: client.avatar,
+      });
+      // console.log(value1 === value2);
       let payload;
+
       if (base64) {
         payload = Object.assign(value, { ...value, avatar: base64 });
       } else if (client.avatar) {
@@ -116,7 +143,15 @@ const ClientUpdateFrom = ({
         payload = Object.assign(value, { ...value });
       }
 
-      mutate(payload);
+      if (value1 !== value2) {
+        mutate(payload);
+      } else {
+        setShowAlert(true);
+        setError("");
+        setSuccess("");
+        setInfo("Nothing to up-to date.!");
+
+      }
     },
   });
 
@@ -126,13 +161,9 @@ const ClientUpdateFrom = ({
     return <h2 className="isError">Something went worng!</h2>;
   }
 
-  // Faill Loading component
-
   if (isLoading) {
     return <LodderCompo />;
   }
-
-  //
 
   if (mData && mData._id && !mIsLoading) {
     disPatch(setUser(mData));
@@ -288,37 +319,21 @@ const ClientUpdateFrom = ({
             </div>
           </section>
 
-          <section
-            className={` ${
-              success ? "flex" : "hidden"
-            }  justify-center items-center `}
-          >
-            <div>
-              <div className="inline-flex min-w-80 px-4 py-2 rounded-sm text-sm bg-emerald-100 border border-emerald-200 text-emerald-600">
-                <div className="flex w-full justify-between items-start">
-                  <div className="flex">
-                    <svg
-                      className="w-6 h-4 shrink-0 fill-current opacity-80 mt-[3px] mr-3"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zM7 11.4L3.6 8 5 6.6l2 2 4-4L12.4 6 7 11.4z" />
-                    </svg>
-                    <div>User Updated succesfully.</div>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setSuccess(false)}
-                    className="opacity-70 hover:opacity-80 ml-3 mt-[3px]"
-                  >
-                    <div className="sr-only">Close</div>
-                    <svg className="w-4 h-4 fill-current">
-                      <path d="M7.95 6.536l4.242-4.243a1 1 0 111.415 1.414L9.364 7.95l4.243 4.242a1 1 0 11-1.415 1.415L7.95 9.364l-4.243 4.243a1 1 0 01-1.414-1.415L6.536 7.95 2.293 3.707a1 1 0 011.414-1.414L7.95 6.536z" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </section>
+          <FromAlertMsg
+            success={success}
+            showAlert={showAlert}
+            setShowAlert={setShowAlert}
+          />
+          <FromAlertMsg
+            error={error}
+            showAlert={showAlert}
+            setShowAlert={setShowAlert}
+          />
+          <FromAlertMsg
+            info={info}
+            showAlert={showAlert}
+            setShowAlert={setShowAlert}
+          />
 
           {/* Smart Sync */}
           <section className="text-gray-800">
