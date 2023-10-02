@@ -188,7 +188,7 @@ const ClientUpdateFrom = ({
                   src={base64 || client.avatar}
                   width="80"
                   height="80"
-                  alt="User avtar"
+                  alt="User avatar"
                 />
               </div>
               <label htmlFor="profile_img" className="cursor-pointer">

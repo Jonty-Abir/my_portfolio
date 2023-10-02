@@ -1,9 +1,9 @@
-import ProductDetailsCarosule from "@/components/e_commerces/productDetailsCarosule";
+import ProductDetailsCarosule from "@/components/e_commerces/product/productDetailsCarosule";
 import { Heart, Share } from "lucide-react";
 import { useRouter } from "next/router";
 import { AiFillStar } from "react-icons/ai";
 import { RWebShare } from "react-web-share";
-import Multicarosule from "../carosule/Multicarosule";
+import Multicarosule from "../../carosule/Multicarosule";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
@@ -26,48 +26,6 @@ function SingleProduct() {
         <div className="mb-9 pt-4 md:px-6 md:pt-7 lg:mb-2 lg:p-8 2xl:p-10 2xl:pt-10 ">
           <div className="items-start justify-between lg:flex lg:space-x-8">
             {/* Left Side ST */}
-            {/* <div className="mb-6 items-center justify-center overflow-hidden md:mb-8 lg:mb-0 xl:flex">
-              <div className="w-full xl:flex xl:flex-row-reverse">
-                <div className="relative mb-2.5 w-full shrink-0 overflow-hidden rounded-md border md:mb-3 xl:w-[480px] 2xl:w-[650px]">
-                  <div className="relative flex items-center justify-center">
-                    <Image
-                      id="tsting"
-                      alt="Product gallery 1"
-                      src="https://images.unsplash.com/photo-1580902394724-b08ff9ba7e8a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80"
-                      width={650}
-                      height={590}
-                      className="rounded-lg  md:h-[300px] md:w-full lg:h-full"
-                    />
-                  </div>
-                  <div className="absolute top-2/4 z-10 flex w-full items-center justify-between">
-                    <ChevronLeft className="text-white" />
-                    <ChevronRight className="text-white" />
-                  </div>
-                </div>
-                <div className="flex gap-2 xl:flex-col">
-                  {[
-                    "https://images.unsplash.com/photo-1580902394836-21e0d429b7f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=924&q=80",
-                    "https://images.unsplash.com/photo-1580902394743-1394a7ec93d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
-                    "https://images.unsplash.com/photo-1580902394767-81b0facc0894?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
-                  ].map((image, index) => (
-                    <div
-                      key={image}
-                      className="border-border-base flex cursor-pointer items-center justify-center overflow-hidden rounded border transition hover:opacity-75 "
-                    >
-                      <Image
-                        alt={`Product ${index}`}
-                        src={image}
-                        width={600}
-                        height={600}
-                        decoding="async"
-                        loading="lazy"
-                        className="h-20 w-20 object-cover md:h-24 md:w-24 lg:h-28 lg:w-28 xl:w-32"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div> */}
             {/* <WraperProduct className=""> */}
             <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]">
               <div className="w-full md:w-auto flex-[1.5] max-w-[500px] lg:max-w-full mx-auto lg:mx-0">
@@ -82,7 +40,7 @@ function SingleProduct() {
                 <h2 className="text-lg font-semibold md:text-xl xl:text-2xl">
                   Nike Airmax Pro V2
                 </h2>
-                <p className="mt-4 font-semibold">$250</p>
+                <p className="mt-4 font-bold">$250</p>
               </div>
               <div className="mb-2 pt-0.5">
                 <h4 className="text-15px mb-3 font-normal capitalize text-opacity-70">
@@ -140,11 +98,19 @@ function SingleProduct() {
                 <h3 className="text-15px mb-3 font-semibold sm:text-base lg:mb-3.5">
                   Product Details:
                 </h3>
+                <div className=" flex flex-col gap-y-4">
                 <div className="text-sm">
                   A chip (often just chip, or crisp in British and Irish
                   English) may be a thin slice of potato that has been either
                   deep fried or baked until crunchy. theyre commonly served as a
                   snack, side dish, or appetizer.
+                </div>
+                <div className="text-sm">
+                  A chip (often just chip, or crisp in British and Irish
+                  English) may be a thin slice of potato that has been either
+                  deep fried or baked until crunchy. theyre commonly served as a
+                  snack, side dish, or appetizer.
+                </div>
                 </div>
               </div>
             </div>
@@ -264,3 +230,4 @@ function SingleProduct() {
 }
 
 export { SingleProduct };
+

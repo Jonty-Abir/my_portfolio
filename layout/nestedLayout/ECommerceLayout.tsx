@@ -9,9 +9,10 @@ import { EcommerceSwiper } from "../../components/shared/EcommerceSwiper";
 
 interface IChildren {
   children: ReactElement;
+  e_slider: boolean;
 }
 
-export default function NestLayoutEcommerce({ children }: IChildren) {
+export default function NestLayoutEcommerce({ children, e_slider }: IChildren) {
   const categorys = [
     {
       category: "Grocery",
@@ -89,7 +90,7 @@ export default function NestLayoutEcommerce({ children }: IChildren) {
             </button>
           </form>
         </div>
-        <EcommerceSwiper />
+        {e_slider && <EcommerceSwiper />}
         <Suspense fallback={<Loading />}>{children}</Suspense>
       </div>
     </ErrorBoundary>

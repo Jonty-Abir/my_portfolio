@@ -1,4 +1,12 @@
-import { BsFillInfoSquareFill } from "react-icons/bs";
+import {
+  BsCart4,
+  BsFillBagHeartFill,
+  BsFillInfoSquareFill,
+} from "react-icons/bs";
+import { FaBlog } from "react-icons/fa";
+import { ImProfile } from "react-icons/im";
+import { MdDashboardCustomize } from "react-icons/md";
+import { VscServerProcess } from "react-icons/vsc";
 import uniqid from "uniqid";
 
 import { AiFillProfile } from "react-icons/ai";
@@ -45,24 +53,34 @@ function FullsidebarDesktopMode({ client }: { client: Iuser | null }) {
     {
       text: "Profile",
       link: `/profile/${client?._id}`,
+      icone: <ImProfile />,
+    },
+    {
+      text: "DashBoard",
+      link: `/dashboard`,
+      icone: <MdDashboardCustomize />,
     },
     {
       text: "Blogs",
       link: "/blog",
+      icone: <FaBlog />,
     },
   ];
   const subOfEcommerce = [
     {
       text: "Products",
       link: "/ecommerce",
+      icone: <BsFillBagHeartFill />,
     },
     {
-      text: "Cards",
-      link: "/card",
+      text: "Carts",
+      link: "/ecommerce/cart",
+      icone: <BsCart4 />,
     },
     {
       text: "Orders",
       link: "/orders",
+      icone: <VscServerProcess />,
     },
   ];
 
@@ -175,6 +193,7 @@ function FullsidebarDesktopMode({ client }: { client: Iuser | null }) {
                   <span className="mx-2 text-sm font-semibold">
                     {item.text}
                   </span>
+                  {item.icone}
                 </Link>
               ))}
 
@@ -213,6 +232,7 @@ function FullsidebarDesktopMode({ client }: { client: Iuser | null }) {
                   <span className="mx-2 text-sm font-semibold">
                     {item.text}
                   </span>
+                  {item.icone}
                 </Link>
               ))}
 
@@ -307,3 +327,4 @@ function FullsidebarDesktopMode({ client }: { client: Iuser | null }) {
 }
 
 export { FullsidebarDesktopMode };
+

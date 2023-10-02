@@ -4,17 +4,21 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { AiFillProfile } from "react-icons/ai";
-import { BsFillInfoSquareFill } from "react-icons/bs";
+import { BsCart4, BsFillBagHeartFill, BsFillInfoSquareFill } from "react-icons/bs";
 import {
   FaAngleDown,
   FaAngleRight,
   FaAngleUp,
+  FaBlog,
   FaHome,
   FaUsers,
 } from "react-icons/fa";
 import { GiRotaryPhone, GiStoneStack } from "react-icons/gi";
+import { ImProfile } from "react-icons/im";
+import { MdDashboardCustomize } from "react-icons/md";
 import { SiTask } from "react-icons/si";
 import { TiShoppingCart } from "react-icons/ti";
+import { VscServerProcess } from "react-icons/vsc";
 import uniqid from "uniqid";
 
 function MobileSideBar({ client }: { client: Iuser | null }) {
@@ -27,24 +31,34 @@ function MobileSideBar({ client }: { client: Iuser | null }) {
     {
       text: "Profile",
       link: `/profile/${client?._id}`,
+      icone: <ImProfile />,
+    },
+    {
+      text: "Dashboard",
+      link: "/dashboard",
+      icone: <MdDashboardCustomize />,
     },
     {
       text: "Blogs",
       link: "/blog",
+      icone: <FaBlog />,
     },
   ];
   const subOfEcommerce = [
     {
       text: "Products",
       link: "/ecommerce",
+      icone: <BsFillBagHeartFill />,
     },
     {
-      text: "Cards",
-      link: "/card",
+      text: "Carts",
+      link: "/ecommerce/cart",
+      icone: <BsCart4 />,
     },
     {
       text: "Orders",
       link: "/orders",
+      icone: <VscServerProcess />,
     },
   ];
 
@@ -117,6 +131,7 @@ function MobileSideBar({ client }: { client: Iuser | null }) {
                     <span className="mx-2 text-sm font-semibold">
                       {item.text}
                     </span>
+                    {item.icone}
                   </div>
                 ))}
             </div>
@@ -152,6 +167,8 @@ function MobileSideBar({ client }: { client: Iuser | null }) {
                   <span className="mx-2 text-sm font-semibold">
                     {item.text}
                   </span>
+                  {item.icone}
+
                 </div>
               ))}
           </div>
@@ -194,3 +211,4 @@ function MobileSideBar({ client }: { client: Iuser | null }) {
 }
 
 export { MobileSideBar };
+

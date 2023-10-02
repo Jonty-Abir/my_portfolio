@@ -2,7 +2,7 @@
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
-function ProductDetailsCarosule({ imgAr }: { imgAr: string[] }) {
+function ProductDetailsCarousel({ imgAr }: { imgAr: string[] }) {
   return (
     <div className="text-white text-[20px] w-full max-w-[1360px] mx-auto sticky top-[50px]">
       <Carousel
@@ -24,4 +24,4 @@ function ProductDetailsCarosule({ imgAr }: { imgAr: string[] }) {
   );
 }
 
-export default ProductDetailsCarosule;
+export default ProductDetailsCarousel;

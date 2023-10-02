@@ -1,12 +1,11 @@
-import { SingleProduct } from "@/components/e_commerces/product/SingleProduct";
+import Cart from "@/components/e_commerces/cart/Cart";
 import { verifyAccesToken } from "@/helper/helper";
 import { IProps } from "@/interface/interface";
 import Layout from "@/layout/layout";
-import NestLayoutEcommerce from "@/layout/nestedLayout/ECommerceLayout";
 import {
-  setAccessToken,
-  setIsAuthenticate,
-  setUser,
+    setAccessToken,
+    setIsAuthenticate,
+    setUser,
 } from "@/redux/sclice/authSclice";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
@@ -27,7 +26,7 @@ function Page({
   return (
     <>
       <Head>
-        <title>E-Commerce</title>
+        <title>Cart</title>
         <meta charSet="UTF-8" />
         <meta name="description" content="abir santra profile" />
         <meta name="keywords" content="abir santra web developer " />
@@ -36,9 +35,9 @@ function Page({
         <link rel="icon" href="/assets/favicone.png" />
       </Head>
       <Layout>
-        <NestLayoutEcommerce e_slider={false}>
-          <SingleProduct />
-        </NestLayoutEcommerce>
+        {/* <NestLayoutEcommerce e_slider={false}> */}
+          <Cart />
+        {/* </NestLayoutEcommerce> */}
       </Layout>
     </>
   );
@@ -47,7 +46,6 @@ function Page({
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const req = context.req;
   const res = context.res;
-  const param: any = context.params;
   try {
     // param
     const accessToken =
@@ -62,7 +60,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     if (isAuthenticate) {
       return {
         props: {
-          name: `Product No: ${param.productId}`,
+          name: `Cart`,
           user: data.data,
           accessToken: data.accessToken,
           refreshToken: data.refreshToken,

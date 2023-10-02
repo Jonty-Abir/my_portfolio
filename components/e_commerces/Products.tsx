@@ -42,7 +42,7 @@ const Products = ({ products }: any) => {
     <div className="mx-auto grid w-full max-w-7xl items-center space-y-4 px-2 py-10 md:grid-cols-2 md:gap-6 md:space-y-0 lg:grid-cols-4">
       {data &&
         data instanceof Array &&
-        data.map((value: ResData) => (
+        data?.map((value: ResData) => (
           <Link key={uniqid()} href={`/ecommerce/${value.id}`} target="blank">
             <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <div>
@@ -51,14 +51,14 @@ const Products = ({ products }: any) => {
                   height={400}
                   className="p-8 rounded-t-lg"
                   // src="/assets/apple-watch.png"
-                  src={`${value.image}`}
+                  src={`${value?.image}`}
                   alt="product image"
                 />
               </div>
               <div className="px-5 pb-5">
                 <div>
                   <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                    {value.title}
+                    {value?.title}
                   </h5>
                 </div>
                 <div className="flex items-center mt-2.5 mb-5">
@@ -113,7 +113,7 @@ const Products = ({ products }: any) => {
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-3xl font-bold text-gray-900 dark:text-white">
-                    ${value.price}
+                    ${Math.floor(value?.price)}
                   </span>
                   <div className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 text-center dark:bg-orange-500 dark:hover:bg-orange-600 dark:focus:ring-blue-800">
                     Add to cart

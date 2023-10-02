@@ -3,7 +3,7 @@ import Products from "./Products";
 
 function Ecommerce() {
   return (
-    <NestLayoutEcommerce>
+    <NestLayoutEcommerce e_slider={true}>
       <Products />
     </NestLayoutEcommerce>
   );

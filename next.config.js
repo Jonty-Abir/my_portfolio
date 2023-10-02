@@ -18,7 +18,8 @@ const nextConfig = {
       "placeimg.com",
       "img1.akspic.ru",
       "source.unsplash.com",
-    ],
+      "static.nike.com",
+    ], 
   },
 };
 
