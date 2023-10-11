@@ -1,12 +1,13 @@
 import { verifyOtp } from "@/helper/helper";
 import { IComponentProps } from "@/interface/interface";
+import { setResetToken } from "@/redux/sclice/otpSclice";
 import { RootState } from "@/redux/store";
 import { verifyOtpValidate } from "@/utility/ResetPassword/validate";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { FcPrevious } from "react-icons/fc";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import NoficationToast from "../notification/NoficationToast";
 
 interface formikObj {
@@ -35,6 +36,7 @@ function VerifyOtp({ setCount }: IComponentProps) {
   const [loading, setLoading] = useState(false);
 
   // redux Hook
+  const dispatch = useDispatch();
   const state = useSelector((state: RootState) => state.otpSclice);
 
   const formik = useFormik({
@@ -47,10 +49,12 @@ function VerifyOtp({ setCount }: IComponentProps) {
           otp: value?.otp,
           email: state.userName,
         });
+        dispatch(setResetToken(response?.token));
         setLoading(false);
         toast.custom((t) => (
-          <NoficationToast t={t} msg={response} success={true} />
+          <NoficationToast t={t} msg={response?.message} success={true} />
         ));
+
         handleIncrement();
       } catch (error: any) {
         setLoading(false);

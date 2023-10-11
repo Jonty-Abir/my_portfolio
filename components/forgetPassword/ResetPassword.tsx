@@ -30,6 +30,9 @@ function ResetPassword({ setCount }: IComponentProps) {
   const router = useRouter();
   // redux hook
   const userName = useSelector((state: RootState) => state.otpSclice.userName);
+  const resetToken = useSelector(
+    (state: RootState) => state.otpSclice.resetPwToken
+  );
 
   const formik = useFormik({
     initialValues,
@@ -37,8 +40,9 @@ function ResetPassword({ setCount }: IComponentProps) {
     onSubmit: async (value) => {
       try {
         setLoading(true);
-        const response = await resetPassword(value, userName);
+        const response = await resetPassword(value, userName, resetToken);
         setLoading(false);
+        setError(null);
         toast.custom((t) => (
           <NoficationToast t={t} msg={"SUCCESS"} success={true} />
         ));
@@ -152,6 +156,9 @@ function ResetPassword({ setCount }: IComponentProps) {
                 : ""}
             </p>
           </div>
+          <p className="text-rose-500 pt-2 pl-2 font-semibold text-xs text-left">
+            {error && JSON.stringify(error)}
+          </p>
         </div>
         <div className="flex justify-between mt-6">
           <div

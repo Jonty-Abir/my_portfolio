@@ -103,9 +103,11 @@ interface IResetPayload {
     cPassword: string;
 }
 
-export async function resetPassword(payload: IResetPayload, id: string) {
+export async function resetPassword(payload: IResetPayload, id: string, token: string) {
     try {
-        const { data, status } = await instance.patch(`/reset-password/?email=${id}`, { ...payload });
+        const { data, status } = await instance.patch(`/reset-password/?email=${id}`, { ...payload },{ headers:{
+            Authorization: `Bearer ${token}`
+        }});
         if (status !== 200) throw new Error("Invalid OTP!");
         return Promise.resolve(data);
     } catch (error: any) {
