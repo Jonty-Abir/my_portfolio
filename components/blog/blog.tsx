@@ -4,23 +4,29 @@ import { IPost, IProps } from "@/interface/interface";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
-import { Suspense } from "react";
+import { Suspense, useRef } from "react";
 import { FaComments } from "react-icons/fa";
 import { FcClock } from "react-icons/fc";
 import { IoIosArrowUp } from "react-icons/io";
 import SwiperCompo from "../shared/swiper";
 import FullStack from "./category/FullStack";
 import Skeleton from "./category/Skeleton";
-
 export default function Blog({
   accessToken,
   refreshToken,
   user,
   isAuthenticate,
 }: IProps) {
+  const valueRef = useRef<HTMLDivElement>(null);
+
+  const scrollToTop = () => {
+    valueRef.current?.scrollIntoView({ block: "center", behavior: "smooth" });
+  };
+
   const { error, isLoading, data, isError } = useQuery(["all-post"], () =>
     findAllPost(accessToken, refreshToken)
   );
+
   if (isLoading) return <Loading />;
   if (!data) {
     return <h3 className="isError">Some think went wrong!</h3>;
@@ -47,7 +53,10 @@ export default function Blog({
 
         <div className="w-full space-y-4 mb-1">
           <SwiperCompo />
-          <div className="text-sm font-semibold leading-tight text-purple-700">
+          <div
+            className="text-sm font-semibold leading-tight text-purple-700"
+            ref={valueRef}
+          >
             Abir Santra • 20 Jan 2023
           </div>
           <div className="text-3xl font-semibold leading-9 text-gray-900">
@@ -97,12 +106,12 @@ export default function Blog({
               </div>
             </div>
             <div className="mt-8 md:mt-0 ml-auto">
-              <Link
-                href={"/blog#letsUp"}
+              <div
+                onClick={scrollToTop}
                 className="rounded-md bg-indigo-600 px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-indigo-800  inline-flex justify-center items-center"
               >
                 <IoIosArrowUp size={32} className="" />
-              </Link>
+              </div>
             </div>
           </div>
           <div className="grid gap-4 gap-y-8 py-6 md:grid-cols-2 lg:grid-cols-3">

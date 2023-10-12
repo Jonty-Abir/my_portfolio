@@ -25,6 +25,7 @@ const Products = ({ products }: any) => {
     ["e-commerce-products"],
     () => getAllProduct()
   );
+  console.log(data)
 
   if (isLoading)
     return (
@@ -32,9 +33,6 @@ const Products = ({ products }: any) => {
         <LodderCompo />
       </div>
     );
-  if (!data && !isLoading && error && isError) {
-    return <h2 className="isError capitalize">Request Time Out Try again!</h2>;
-  }
   if (!data && !isLoading) {
     return <h2 className="isError">Some think went worng!</h2>;
   }

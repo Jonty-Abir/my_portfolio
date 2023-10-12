@@ -66,7 +66,7 @@ const subOfEcommerce = [
   },
   {
     text: "Cards",
-    link: "/card",
+    link: "/ecommerce/cart",
   },
   {
     text: "Orders",
@@ -195,7 +195,7 @@ function MobileGustNavbar() {
                   >
                     <AiFillProfile size={24} />
 
-                    <span className="mx-2 text-sm font-semibold">
+                    <span className="mx-2 text-sm font-semibold cursor-pointer">
                       Dashboard
                     </span>
                     {dashboardSub ? (
@@ -228,7 +228,7 @@ function MobileGustNavbar() {
                   >
                     <TiShoppingCart size={24} />
 
-                    <span className="mx-2 text-sm font-semibold">
+                    <span className="mx-2 text-sm font-semibold cursor-pointer">
                       E-Commerce
                     </span>
                     {eCommercedSub ? (

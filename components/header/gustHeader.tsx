@@ -67,7 +67,7 @@ const ecommecreLink = [
   },
   {
     icone: <FaCartPlus size={18} />,
-    routeLink: "/card",
+    routeLink: "/ecommerce/cart",
     routeName: "Cards",
   },
   {
@@ -137,7 +137,7 @@ export function GustHeader() {
                   className="cursor-pointer flex items-center"
                   onClick={() => seteSetShowNav((prev) => !prev)}
                 >
-                  <span>Dashboard</span>
+                  <span className="cursor-pointer">Dashboard</span>
 
                   <span>
                     {!showNav ? (
@@ -173,7 +173,7 @@ export function GustHeader() {
                         onClick={() => seteSetsubShowNav((prev) => !prev)}
                         className="flex justify-between px-4 py-2 rounded-sm text-indigo-700 hover:bg-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-white"
                       >
-                        <span> E-Commerce</span>
+                        <span className="cursor-pointer"> E-Commerce</span>
                         {showsubNav ? (
                           <FaAngleLeft className="inline-flex" size={18} />
                         ) : (

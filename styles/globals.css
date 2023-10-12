@@ -198,3 +198,13 @@ input[type="search"]::-webkit-search-results-decoration {
   }
 }
 /* PRODUCT DETAILS CAROUSEL STYLING CUSTOMIZATION END */
+
+.markdown ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: disc;
+  margin: 20px 0;
+}
+.markdown ul li {
+  margin: 10px 0;
+}

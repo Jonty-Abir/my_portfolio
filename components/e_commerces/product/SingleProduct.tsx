@@ -1,13 +1,23 @@
 import ProductDetailsCarosule from "@/components/e_commerces/product/productDetailsCarosule";
 import { Heart, Share } from "lucide-react";
 import { useRouter } from "next/router";
+import { useEffect, useRef, useState } from "react";
 import { AiFillStar } from "react-icons/ai";
+import { FaCartPlus } from "react-icons/fa";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { RWebShare } from "react-web-share";
 import Multicarosule from "../../carosule/Multicarosule";
 
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-
 function SingleProduct() {
+  const [selectedSize, setSelectedSize] = useState("");
+  const [showError, setShowError] = useState(false);
+  const [pageUrl, setPageUrl] = useState("");
+  const valueRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setPageUrl(window.location.href);
+  }, []);
+
   const router = useRouter();
   const imgAr = [
     "/assets/ecommerce/product/p1.png",
@@ -18,6 +28,26 @@ function SingleProduct() {
     "/assets/ecommerce/product/p6.png",
   ];
 
+  const p_size = [
+    { size: "8 UK", enabled: true },
+    { size: "5 UK", enabled: true },
+    { size: "6 UK", enabled: false },
+    { size: "9 UK", enabled: true },
+    { size: "29 UK", enabled: true },
+    { size: "1 UK", enabled: true },
+    { size: "6 UK", enabled: true },
+    { size: "7 UK", enabled: true },
+    { size: "9 UK", enabled: true },
+    { size: "10 UK", enabled: false },
+  ];
+
+  const submitProductSize = () => {
+    if (!selectedSize) {
+      setShowError(true);
+      // console.log(valueRef.current);
+      valueRef.current?.scrollIntoView({ block: "center", behavior: "smooth" });
+    }
+  };
   const { productId } = router.query;
 
   return (
@@ -36,31 +66,86 @@ function SingleProduct() {
             {/* Left Side End */}
             {/* Right Side St */}
             <div className="flex shrink-0 flex-col lg:w-[430px] xl:w-[470px] 2xl:w-[480px]">
-              <div className="pb-5">
-                <h2 className="text-lg font-semibold md:text-xl xl:text-2xl">
-                  Nike Airmax Pro V2
-                </h2>
-                <p className="mt-4 font-bold">$250</p>
+              {/* PRODUCT TITLE */}
+              <div className="text-[34px] font-semibold mb-2 mt-2 leading-tight">
+                Nike Airmax Pro V2
               </div>
-              <div className="mb-2 pt-0.5">
-                <h4 className="text-15px mb-3 font-normal capitalize text-opacity-70">
-                  available in:
-                </h4>
-                <ul className="flex flex-wrap space-x-2">
-                  <li className="md:text-15px mb-2 flex h-9 cursor-pointer items-center justify-center rounded border p-1 px-3 text-sm font-medium transition duration-200 ease-in-out md:mb-3 md:h-10">
-                    8 UK
-                  </li>
-                  <li className="md:text-15px mb-2 flex h-9 cursor-pointer items-center justify-center rounded border p-1 px-3 text-sm font-medium transition duration-200 ease-in-out md:mb-3 md:h-10">
-                    9 UK
-                  </li>
-                  <li className="md:text-15px mb-2 flex h-9 cursor-pointer items-center justify-center rounded border p-1 px-3 text-sm font-medium transition duration-200 ease-in-out md:mb-3 md:h-10">
-                    10 UK
-                  </li>
-                </ul>
+
+              {/* PRODUCT SUBTITLE */}
+              <div className="text-lg font-semibold mb-5">Man{"'"}s shoes</div>
+              {/* PRODUCT PRICE */}
+              <div className="flex items-center">
+                <p className="mr-2 text-lg font-semibold">MRP : &#8377; 56</p>
+                {true && (
+                  <>
+                    <p className="text-base  font-medium line-through">
+                      &#8377;{85}
+                    </p>
+                    <p className="ml-auto text-base font-medium text-green-500">
+                      {25}% off
+                    </p>
+                  </>
+                )}
               </div>
+              <div className="text-md font-medium text-gray-500">
+                incl. of taxes
+              </div>
+              <div className="text-md font-medium mb-20  text-gray-500">
+                {`(Also includes all applicable duties)`}
+              </div>
+              {/* PRODUCT SIZE RANGE START */}
+              <div className="mb-10">
+                {/* HEADING START */}
+                <div className="flex justify-between mb-2">
+                  <div className="text-md font-semibold">Select Size</div>
+                  <div className="text-md font-medium text-gray-400/[0.5] cursor-pointer">
+                    Select Guide
+                  </div>
+                </div>
+                {/* HEADING END */}
+
+                {/* SIZE START */}
+                <div
+                  ref={valueRef}
+                  id="sizesGrid"
+                  className="grid grid-cols-3 gap-2"
+                >
+                  {p_size.map((item, i) => (
+                    <div
+                      key={i}
+                      className={`border-2 rounded-md text-center py-3 font-medium transition-transform active:scale-95 ${
+                        item.enabled
+                          ? "cursor-pointer"
+                          : "cursor-not-allowed bg-gray-400/[0.6] opacity-50"
+                      } ${
+                        selectedSize === item.size && item.enabled
+                          ? "border-green-500 "
+                          : ""
+                      }`}
+                      onClick={() => {
+                        setSelectedSize(item.size);
+                        setShowError(false);
+                      }}
+                    >
+                      {item.size}
+                    </div>
+                  ))}
+                </div>
+                {/* SIZE END */}
+
+                {/* SHOW ERROR START */}
+                {showError && (
+                  <div className="text-red-600 mt-1">
+                    Size selection is required
+                  </div>
+                )}
+                {/* SHOW ERROR END */}
+              </div>
+              {/* PRODUCT SIZE RANGE END */}
               <div className="pb-2" />
               <div className="space-y-2.5 pt-1.5 md:space-y-3.5 lg:pt-3 xl:pt-4">
                 <button
+                  onClick={submitProductSize}
                   type="button"
                   className="w-full rounded-md bg-yellow-500 px-3 py-4 text-md font-semibold text-white shadow-sm hover:bg-yellow-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black transition-transform active:scale-95"
                 >
@@ -69,16 +154,21 @@ function SingleProduct() {
                 <div className="grid grid-cols-2 gap-2.5">
                   <button
                     type="button"
-                    className="inline-flex items-center justify-center rounded-md bg-orange-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-orange-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black transition-transform active:scale-95"
+                    className="inline-flex items-center justify-center rounded-md bg-pink-100 px-3 py-2 text-sm font-semibold text-pink-500 shadow-sm hover:bg-pink-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black transition-transform active:scale-95 group"
                   >
-                    <Heart size={16} className="mr-3" />
+                    <Heart
+                      size={16}
+                      className={`mr-3 transition-transform duration-200 group-active:animate-ping  ${
+                        true && "stroke-pink-700 fill-pink-700"
+                      }`}
+                    />
                     <span className="block">Wishlist</span>
                   </button>
                   <div className="relative">
                     <RWebShare
                       data={{
                         text: "E-Commerce Product",
-                        url: "http://abirsantraonline.netlify.app/ecommerce/2",
+                        url: pageUrl,
                         title: "E-Commerce Abir",
                       }}
                       onClick={() => console.log("shared successfully!")}
@@ -93,24 +183,35 @@ function SingleProduct() {
                     </RWebShare>
                   </div>
                 </div>
+                <button
+                  type="button"
+                  className="w-full rounded-full bg-orange-500 px-3 py-4 text-md font-semibold text-white shadow-sm hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black transition-transform active:scale-95"
+                >
+                  Add To Cart{" "}
+                  <span>
+                    <FaCartPlus className=" inline-flex ml-2" />
+                  </span>
+                </button>
               </div>
               <div className="pt-6 xl:pt-8">
                 <h3 className="text-15px mb-3 font-semibold sm:text-base lg:mb-3.5">
                   Product Details:
                 </h3>
-                <div className=" flex flex-col gap-y-4">
-                <div className="text-sm">
-                  A chip (often just chip, or crisp in British and Irish
-                  English) may be a thin slice of potato that has been either
-                  deep fried or baked until crunchy. theyre commonly served as a
-                  snack, side dish, or appetizer.
-                </div>
-                <div className="text-sm">
-                  A chip (often just chip, or crisp in British and Irish
-                  English) may be a thin slice of potato that has been either
-                  deep fried or baked until crunchy. theyre commonly served as a
-                  snack, side dish, or appetizer.
-                </div>
+                <div className=" flex flex-col gap-y-4 text-gray-400">
+                  <div className="text-sm">
+                    A chip (often just chip, or crisp in British and Irish
+                    English) may be a thin slice of potato that has been either
+                    deep fried or baked until crunchy. theyre commonly served as
+                    a snack, side dish, or appetizer.
+                  </div>
+                  <div className="text-sm markdown">
+                    Every time the AJ1 gets a remake, you get the classic
+                    sneaker in new colours and textures for an exciting,
+                    revamped look but with all the familiar comforts you know.
+                    Premium materials and accents give modern expression to an
+                    all-time favourite. Colour Shown: White/Black/Ice Blue
+                    Style: DV1308-104
+                  </div>
                 </div>
               </div>
             </div>
@@ -221,7 +322,7 @@ function SingleProduct() {
         </div>
         Reating Bar
       </section>
-      {/* Reating Section End */}
+      {/* Rating Section End */}
       {/* Related Section START */}
       <Multicarosule />
       {/* Related Section END  */}
