@@ -5,10 +5,13 @@ import { FacebookIcon, InstagramIcon, TwitterIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { Suspense } from "react";
 import { BsTagsFill } from "react-icons/bs";
 import { FaComments } from "react-icons/fa";
 import { FcBusinessContact, FcClock } from "react-icons/fc";
-import LodderCompo from "../shared/lodder";
+import CommentSkeleton from "../loading/commentSkeleton";
+import SpinnerCompo from "../shared/spinner";
+import CommentSection from "./commentSection";
 
 function SingleBlogCompo({
   user,
@@ -20,33 +23,41 @@ function SingleBlogCompo({
   const { blogId } = router.query;
   const {
     isError: isErrorOfAllPost,
-    isLoading: isloadingAllPost,
+    isLoading: isLoadingAllPost,
     data: dataAllPost,
-  } = useQuery(["all-post"], () => findAllPost(accessToken, refreshToken));
+    error,
+  } = useQuery({
+    queryKey: ["all-post"],
+    queryFn: () => findAllPost(accessToken, refreshToken),
+    useErrorBoundary: false,
+    staleTime: 1000 * 30,
+  });
+  /*==============HANDLE ERROR================*/
+  if (error && isErrorOfAllPost) {
+    const errorQuery: any = error;
+    return <h2 className="isError">{JSON.stringify(errorQuery.message)}</h2>;
+  }
 
-  if (isloadingAllPost)
+  if (isLoadingAllPost)
     return (
       <div className="toCenter">
-        <LodderCompo />
+        <SpinnerCompo />
       </div>
     );
-  if (!dataAllPost && !isloadingAllPost)
-    return <h2 className="isError">Some think went worng!</h2>;
 
   const posts: IPost[] = dataAllPost;
   return (
-    <div className="w-full bg-slate-400">
+    <div className="w-full bg-gray-900">
       <section className="relative overflow-hidden py-20 ">
         <div className="relative">
           <div className="mx-auto max-w-xl lg:max-w-7xl">
             <div className="mx-auto mb-14 max-w-2xl text-center px-6">
-              <h1 className="text-5xl font-bold capitalize text-gray-700">
+              <h1 className="text-5xl font-bold capitalize text-gray-400">
                 Latest news from our blog
               </h1>
             </div>
             <div className="my-18 -mx-4 flex flex-wrap px-4">
               {/*  =============== Current Blog ================*/}
-
               {posts &&
                 blogId &&
                 posts
@@ -128,17 +139,17 @@ function SingleBlogCompo({
 
               <div className="w-full px-4 lg:w-2/5">
                 {/* false side */}
-                <h3 className="text-gray-800 font-bold text-center capitalize text-2xl">
+                <h3 className="text-gray-400 font-bold text-center capitalize text-2xl">
                   Related blog
                 </h3>
                 <hr className="mx-4 my-5" />
 
-                {isErrorOfAllPost && !isloadingAllPost ? (
-                  <h2 className="isError">Some think went worng!</h2>
-                ) : isloadingAllPost ? (
+                {isErrorOfAllPost && !isLoadingAllPost ? (
+                  <h2 className="isError">Some think went wrong!</h2>
+                ) : isLoadingAllPost ? (
                   dataAllPost && (
                     <div className="toCenter">
-                      <LodderCompo />
+                      <SpinnerCompo />
                     </div>
                   )
                 ) : (
@@ -169,7 +180,7 @@ function SingleBlogCompo({
                             <h3 className=" pl-2 text-gray-900 font-semibold">
                               {value.title}
                             </h3>
-                            <span className="mb-2 pl-2 block text-gray-600 dark:text-gray-600">
+                            <span className="mb-2 pl-2 block text-gray-600 dark:text-gray-400">
                               {value.published}
                             </span>
                           </div>
@@ -180,8 +191,15 @@ function SingleBlogCompo({
             </div>
           </div>
         </div>
+        <Suspense fallback={<CommentSkeleton />}>
+          <CommentSection
+            accessToken={accessToken}
+            refreshToken={refreshToken}
+          />
+        </Suspense>
       </section>
-      <hr className="py-8 pb-0 mx-16 bg-slate-400" />
+
+      <hr className="py-8 pb-0 mx-16 bg-gray-900" />
 
       {/*  ===============pagination START==================*/}
 

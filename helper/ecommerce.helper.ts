@@ -1,14 +1,16 @@
+import { IProduct } from "@/interface/interface";
 import axios from "axios";
 
 export async function getAllProduct() {
-  try {
-    const { data, status } = await axios.get(
-      "https://fakestoreapi.com/products?limit=10"
-    );
-    if (status !== 200) throw new Error("Faild To Get Products!");
-    return Promise.resolve(data);
-  } catch (error: any) {
-    console.log(error?.message);
-    return Promise.reject(null);
-  }
+  const { data, status } = await axios.get(
+    "https://dummyjson.com/products?limit=100"
+  );
+  return data.products as IProduct[];
+}
+
+export async function getSingleProduct(id: any) {
+  const { data, status } = await axios.get(
+    `https://dummyjson.com/products/${id}`
+  );
+  return data as IProduct;
 }

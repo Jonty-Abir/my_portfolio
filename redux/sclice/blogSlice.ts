@@ -5,12 +5,14 @@ export interface Iblog {
   isLoading: boolean;
   isError: boolean;
   blogs: [];
+  blog: any
 }
 
 const initialState: Iblog = {
   isError: false,
   isLoading: false,
   blogs: [],
+  blog: null,
 };
 
 /*==============  ================*/
@@ -23,7 +25,11 @@ export const getAllBlogs = createAsyncThunk("all_blogs", async () => {
 const blogSlice = createSlice({
   name: "blog_slice",
   initialState,
-  reducers: {},
+  reducers: {
+    setBlog: (state, { payload }) => {
+      state.blogs = payload;
+    },
+  },
   extraReducers(builder) {
     builder.addCase(getAllBlogs.pending, (state) => {
       state.isLoading = true;
@@ -39,5 +45,5 @@ const blogSlice = createSlice({
     });
   },
 });
-
+export const {setBlog}= blogSlice.actions;
 export default blogSlice.reducer;

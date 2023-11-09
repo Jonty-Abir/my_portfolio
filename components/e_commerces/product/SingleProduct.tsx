@@ -1,4 +1,6 @@
 import ProductDetailsCarosule from "@/components/e_commerces/product/productDetailsCarosule";
+import { getSingleProduct } from "@/helper/ecommerce.helper";
+import { useQuery } from "@tanstack/react-query";
 import { Heart, Share } from "lucide-react";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
@@ -19,14 +21,29 @@ function SingleProduct() {
   }, []);
 
   const router = useRouter();
-  const imgAr = [
-    "/assets/ecommerce/product/p1.png",
-    "/assets/ecommerce/product/p2.png",
-    "/assets/ecommerce/product/p3.png",
-    "/assets/ecommerce/product/p4.png",
-    "/assets/ecommerce/product/p5.png",
-    "/assets/ecommerce/product/p6.png",
-  ];
+  const paramId = router.query?.productId;
+
+  // console.log(paramId)
+  const {
+    error,
+    isError,
+    data: product,
+    isLoading,
+  } = useQuery({
+    queryKey: ["singleProduct", paramId],
+    queryFn: () => getSingleProduct(paramId),
+    useErrorBoundary: false,
+    staleTime: 1000 * 30,
+  });
+
+  // const imgAr = [
+  //   "/assets/ecommerce/product/p1.png",
+  //   "/assets/ecommerce/product/p2.png",
+  //   "/assets/ecommerce/product/p3.png",
+  //   "/assets/ecommerce/product/p4.png",
+  //   "/assets/ecommerce/product/p5.png",
+  //   "/assets/ecommerce/product/p6.png",
+  // ];
 
   const p_size = [
     { size: "8 UK", enabled: true },
@@ -41,6 +58,7 @@ function SingleProduct() {
     { size: "10 UK", enabled: false },
   ];
 
+  /*==============HANDLE SUBMIT================*/
   const submitProductSize = () => {
     if (!selectedSize) {
       setShowError(true);
@@ -48,8 +66,11 @@ function SingleProduct() {
       valueRef.current?.scrollIntoView({ block: "center", behavior: "smooth" });
     }
   };
-  const { productId } = router.query;
 
+  if (error && isError) {
+    const errorQuery: any = error;
+    return <h2 className="isError">{JSON.stringify(errorQuery.message)}</h2>;
+  }
   return (
     <div className="sp mx-auto max-w-7xl px-2 py-10 lg:px-0">
       <div className="overflow-hidden">
@@ -59,7 +80,8 @@ function SingleProduct() {
             {/* <WraperProduct className=""> */}
             <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]">
               <div className="w-full md:w-auto flex-[1.5] max-w-[500px] lg:max-w-full mx-auto lg:mx-0">
-                <ProductDetailsCarosule imgAr={imgAr} />
+                {/* @ts-ignore */}
+                <ProductDetailsCarosule imgAr={product?.images} />
               </div>
             </div>
             {/* </WraperProduct> */}
@@ -68,30 +90,32 @@ function SingleProduct() {
             <div className="flex shrink-0 flex-col lg:w-[430px] xl:w-[470px] 2xl:w-[480px]">
               {/* PRODUCT TITLE */}
               <div className="text-[34px] font-semibold mb-2 mt-2 leading-tight">
-                Nike Airmax Pro V2
+                {product?.title}
               </div>
 
               {/* PRODUCT SUBTITLE */}
-              <div className="text-lg font-semibold mb-5">Man{"'"}s shoes</div>
+              {/* <div className="text-lg font-semibold mb-5">{product?.brand}</div> */}
               {/* PRODUCT PRICE */}
-              <div className="flex items-center">
-                <p className="mr-2 text-lg font-semibold">MRP : &#8377; 56</p>
+              <div className="flex items-center mt-4">
+                <p className="mr-2 text-lg font-semibold list-item">
+                  MRP : &#8377; {product?.price}
+                </p>
                 {true && (
                   <>
                     <p className="text-base  font-medium line-through">
                       &#8377;{85}
                     </p>
                     <p className="ml-auto text-base font-medium text-green-500">
-                      {25}% off
+                      {product?.discountPercentage}% off
                     </p>
                   </>
                 )}
               </div>
-              <div className="text-md font-medium text-gray-500">
-                incl. of taxes
+              <div className="text-md font-medium text-gray-500 list-item">
+              Brand: {product?.brand}
               </div>
-              <div className="text-md font-medium mb-20  text-gray-500">
-                {`(Also includes all applicable duties)`}
+              <div className="text-md font-medium mb-20  text-gray-500 list-item">
+              Category: {product?.category}
               </div>
               {/* PRODUCT SIZE RANGE START */}
               <div className="mb-10">
@@ -99,7 +123,7 @@ function SingleProduct() {
                 <div className="flex justify-between mb-2">
                   <div className="text-md font-semibold">Select Size</div>
                   <div className="text-md font-medium text-gray-400/[0.5] cursor-pointer">
-                    Select Guide
+                    stock: {product?.stock}
                   </div>
                 </div>
                 {/* HEADING END */}
@@ -198,12 +222,7 @@ function SingleProduct() {
                   Product Details:
                 </h3>
                 <div className=" flex flex-col gap-y-4 text-gray-400">
-                  <div className="text-sm">
-                    A chip (often just chip, or crisp in British and Irish
-                    English) may be a thin slice of potato that has been either
-                    deep fried or baked until crunchy. theyre commonly served as
-                    a snack, side dish, or appetizer.
-                  </div>
+                  <div className="text-sm">{product?.description}</div>
                   <div className="text-sm markdown">
                     Every time the AJ1 gets a remake, you get the classic
                     sneaker in new colours and textures for an exciting,
@@ -228,7 +247,7 @@ function SingleProduct() {
           <AiFillStar fill="#fafa05" className="inline" size={22} />
           <AiFillStar className="inline" size={22} />
           <p className="ml-2 text-sm font-medium text-gray-900 dark:text-white">
-            4.95 out of 5
+            {product?.rating} out of 5
           </p>
         </div>
         <p className="text-sm font-medium text-gray-500 dark:text-gray-400">

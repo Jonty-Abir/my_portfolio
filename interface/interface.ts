@@ -9,8 +9,8 @@ export interface IuserProps {
   role: string;
   avatar: string;
   isValid: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface IProps {
@@ -63,4 +63,73 @@ export interface IBlog_payload {
   description: string;
   published: string;
   authorName: string;
+}
+
+export interface IProduct {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  discountPercentage: number;
+  rating: number;
+  stock: number;
+  brand: string;
+  category: string;
+  thumbnail: string;
+  images: string[];
+}
+
+interface ICommentUser {
+  likedBlog: [string];
+  likedComment: [string];
+  likedReply: [string];
+  _id: string;
+  avatar: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  number: string;
+  role: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: 0;
+  blogIds: string[];
+  id: string;
+}
+export interface IComment {
+  _id: string;
+  likes: number;
+  body: string;
+  userId: ICommentUser;
+  blogId: {
+    _id: string;
+    commentIds: string[];
+    likes: number;
+    title: string;
+    subtitle: string;
+    category: string;
+    img: string;
+    description: string;
+    published: string;
+    author: {
+      name: string;
+      img: string;
+      designation: string;
+      _id: string;
+    };
+    userId: string;
+  };
+  replyIds: [
+    {
+      _id: string;
+      body: string;
+      commentId: string;
+      userId: ICommentUser;
+      likes: number;
+      createdAt: string;
+      updatedAt: string;
+    }
+  ];
+  createdAt: string;
+  updatedAt: string;
 }

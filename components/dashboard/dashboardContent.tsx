@@ -1,11 +1,14 @@
+import { RootState } from "@/redux/store";
 import Link from "next/link";
 import { FaBlog, FaShopify } from "react-icons/fa";
 import { FcSearch } from "react-icons/fc";
 import { HiChevronDoubleRight } from "react-icons/hi2";
+import { useSelector } from "react-redux";
 
 import uniqId from "uniqid";
 
 function DashboardContent() {
+  const client= useSelector((state: RootState)=> state.authSclice.user);
   const items = [
     {
       id: uniqId(),
@@ -107,7 +110,7 @@ function DashboardContent() {
         <div className="relative w-full max-w-2xl mx-auto text-center">
           <div className="mb-5">
             <h1 className="text-2xl md:text-3xl text-white font-bold">
-              👋 What Can We Help You Find?
+              👋 Welcome back {client?.firstName} 🥳
             </h1>
           </div>
           <form className="relative flex justify-center text-center">

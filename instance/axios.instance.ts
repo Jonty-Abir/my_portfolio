@@ -15,16 +15,17 @@ instance.interceptors.response.use(
     return config;
   },
   async (err) => {
-    const originalRequest = err.config;
+    const originalRequest = err?.config;
     if (
-      err.response.status === 401 &&
+      err.response?.status === 401 &&
       originalRequest &&
       !originalRequest._isRetry
     ) {
       originalRequest._isRetry = true;
       try {
         const [type, accessToken, refreshToken] =
-          originalRequest.headers.Authorization.split(" ") ?? [];
+          originalRequest.headers?.Authorization?.split(" ") ?? [];
+          console.log(refreshToken)
         const { data, status } = await axios.get(
           `${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/auth/auto-login`,
           {

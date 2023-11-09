@@ -10,7 +10,7 @@ import { ChangeEvent, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import LoadingBtn from "../shared/LoadingBtn";
-import LodderCompo from "../shared/lodder";
+import LodderCompo from "../shared/spinner";
 import FromAlertMsg from "./FromAlertMsg";
 
 export interface IupdateClientPayload extends I_InitialValues {

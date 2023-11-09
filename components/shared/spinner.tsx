@@ -1,6 +1,6 @@
-import style from "./lodder.module.css";
+import style from "./spinner.module.css";
 
-const LodderCompo = () => {
+const SpinnerCompo = () => {
   return (
     <div className=" mx-auto my-auto">
       <div className={`${style.lds_roller}`}>
@@ -17,4 +17,4 @@ const LodderCompo = () => {
   );
 };
 
-export default LodderCompo;
+export default SpinnerCompo;

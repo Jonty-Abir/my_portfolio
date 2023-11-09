@@ -76,7 +76,7 @@ const subOfEcommerce = [
 
 function MobileGustNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [dashboardSub, setdashboardSub] = useState(true);
+  const [dashboardSub, setdashboardSub] = useState(false);
   const [eCommercedSub, seteCommerceSub] = useState(false);
 
   const isAuthenticated = useSelector(

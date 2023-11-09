@@ -19,7 +19,9 @@ const nextConfig = {
       "img1.akspic.ru",
       "source.unsplash.com",
       "static.nike.com",
-    ], 
+      "flowbite.com",
+      "i.dummyjson.com"
+    ],
   },
 };
 

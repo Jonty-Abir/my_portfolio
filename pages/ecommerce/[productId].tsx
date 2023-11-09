@@ -1,4 +1,5 @@
 import { SingleProduct } from "@/components/e_commerces/product/SingleProduct";
+import Loading from "@/components/loading/loading";
 import { verifyAccesToken } from "@/helper/helper";
 import { IProps } from "@/interface/interface";
 import Layout from "@/layout/layout";
@@ -10,6 +11,7 @@ import {
 } from "@/redux/sclice/authSclice";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
+import { Suspense } from "react";
 import { useDispatch } from "react-redux";
 
 function Page({
@@ -37,7 +39,9 @@ function Page({
       </Head>
       <Layout>
         <NestLayoutEcommerce e_slider={false}>
-          <SingleProduct />
+          <Suspense fallback={<Loading />}>
+            <SingleProduct />
+          </Suspense>
         </NestLayoutEcommerce>
       </Layout>
     </>

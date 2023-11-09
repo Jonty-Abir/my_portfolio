@@ -11,6 +11,7 @@ import { useState } from "react";
 import { AiTwotoneDelete } from "react-icons/ai";
 import { GrEdit } from "react-icons/gr";
 
+import { AxiosError } from "axios";
 import { toast } from "react-hot-toast";
 import uniqid from "uniqid";
 import LoadingBtn from "../shared/LoadingBtn";
@@ -33,16 +34,23 @@ function UsersContent({
   // create query client
   const queryClient = useQueryClient();
 
-  const { error, isLoading, data } = useQuery(["all-client"], () =>
-    findAllClient(accessToken, refreshToken)
-  );
+  const { error, isLoading, data } = useQuery({
+    queryKey: ["all-client"],
+    queryFn: () => findAllClient(accessToken, refreshToken),
+    useErrorBoundary: false,
+    staleTime: 1000 * 60,
+  });
   const {
     error: contactInfoError,
     isLoading: contactInfoIsLoading,
     data: contactInfoData,
-  } = useQuery(["all-contactInfo"], () =>
-    getAllContactInfo(accessToken, refreshToken)
-  );
+  } = useQuery({
+    queryKey: ["all-contactInfo"],
+    queryFn: () => getAllContactInfo(accessToken, refreshToken),
+    useErrorBoundary: false,
+    staleTime: 1000 * 60,
+    // refetchOnWindowFocus: false,
+  });
 
   const handleDelete = (id: string) => {
     setLoading(true);
@@ -60,11 +68,12 @@ function UsersContent({
   };
 
   if (isLoading) return <h2 className="loading">Loading...</h2>;
-  if (!data && !isLoading)
-    return <h2 className="isError">Some think went worng!</h2>;
 
   const clients: Iuser[] = data;
   const contactInfo: Iresponse[] = contactInfoData;
+  const contactError = contactInfoError as AxiosError;
+  const clientError = error as AxiosError;
+
   return (
     <>
       <section className="mx-auto w-full max-w-7xl px-4 py-4 overflow-x-hidden">
@@ -121,61 +130,71 @@ function UsersContent({
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-200 bg-white">
-                    {clients.map((person) => (
-                      <tr key={uniqid()} className="divide-x divide-gray-200">
-                        <td className="whitespace-nowrap px-4 py-4">
-                          <div className="flex items-center">
-                            <div className="h-10 w-10 flex-shrink-0">
-                              <Image
-                                className="h-10 w-10 rounded-full object-cover"
-                                src={person.avatar || "/assets/user.png"}
-                                alt=""
-                                width={40}
-                                height={40}
-                              />
-                            </div>
-                            <div className="ml-4">
-                              <div className="text-sm font-medium text-gray-900">
-                                {person.firstName} {person.lastName}
+                  {!error && !clientError && (
+                    <tbody className="divide-y divide-gray-200 bg-white">
+                      {clients.map((person) => (
+                        <tr key={uniqid()} className="divide-x divide-gray-200">
+                          <td className="whitespace-nowrap px-4 py-4">
+                            <div className="flex items-center">
+                              <div className="h-10 w-10 flex-shrink-0">
+                                <Image
+                                  className="h-10 w-10 rounded-full object-cover"
+                                  src={person.avatar || "/assets/user.png"}
+                                  alt=""
+                                  width={40}
+                                  height={40}
+                                />
                               </div>
-                              <div className="text-sm text-gray-500">
-                                {person.email}
+                              <div className="ml-4">
+                                <div className="text-sm font-medium text-gray-900">
+                                  {person.firstName} {person.lastName}
+                                </div>
+                                <div className="text-sm text-gray-500">
+                                  {person.email}
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </td>
-                        <td className="whitespace-nowrap px-12 py-4">
-                          <div className="text-sm text-gray-900">
-                            {person.number}
-                          </div>
-                          {/* <div className="text-sm text-gray-500">{person.department}</div> */}
-                        </td>
-                        {/* <td className="whitespace-nowrap px-4 py-4">
+                          </td>
+                          <td className="whitespace-nowrap px-12 py-4">
+                            <div className="text-sm text-gray-900">
+                              {person.number}
+                            </div>
+                            {/* <div className="text-sm text-gray-500">{person.department}</div> */}
+                          </td>
+                          {/* <td className="whitespace-nowrap px-4 py-4">
                                                 <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
                                                     Active
                                                 </span>
                                             </td> */}
-                        <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500">
-                          {person.role}
-                        </td>
-                        <td className="whitespace-nowrap px-4 py-4 text-right text-sm font-medium cursor-not-allowed ">
-                          <div className="flex justify-center items-center">
-                            <AiTwotoneDelete
-                              size={20}
-                              className=" text-gray-700"
-                            />
-                          </div>
-                        </td>
-                        <td className="whitespace-nowrap px-4 py-4 text-right text-sm font-medium cursor-not-allowed">
-                          <div className="flex justify-center items-center">
-                            <GrEdit size={20} className=" text-gray-700" />
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
+                          <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500">
+                            {person.role}
+                          </td>
+                          <td className="whitespace-nowrap px-4 py-4 text-right text-sm font-medium cursor-not-allowed ">
+                            <div className="flex justify-center items-center">
+                              <AiTwotoneDelete
+                                size={20}
+                                className=" text-gray-700"
+                              />
+                            </div>
+                          </td>
+                          <td className="whitespace-nowrap px-4 py-4 text-right text-sm font-medium cursor-not-allowed">
+                            <div className="flex justify-center items-center">
+                              <GrEdit size={20} className=" text-gray-700" />
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  )}
                 </table>
+                {/* FILED SIDE */}
+                {clientError ? (
+                  <h2 className="isError">
+                    {JSON.stringify(clientError.message)}
+                  </h2>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>
@@ -260,8 +279,10 @@ function UsersContent({
                       </th>
                     </tr>
                   </thead>
+                  {/* SUCCESS SIDE */}
                   <tbody className="divide-y divide-gray-200 bg-white">
-                    {contactInfo &&
+                    {!contactInfoError &&
+                      contactInfo &&
                       contactInfo instanceof Array &&
                       contactInfo.map((person) => (
                         <tr key={uniqid()} className="divide-x divide-gray-200">
@@ -299,15 +320,18 @@ function UsersContent({
                               )}
                             </div>
                           </td>
-                          {/* <td className="whitespace-nowrap px-4 py-4 text-right text-sm font-medium cursor-not-allowed">
-                                        <div className='flex justify-center items-center'>
-                                            <GrEdit size={20} className=' text-gray-700' />
-                                        </div>
-                                    </td> */}
                         </tr>
                       ))}
                   </tbody>
                 </table>
+                {/* FILED SIDE */}
+                {contactInfoError ? (
+                  <h2 className="isError">
+                    {JSON.stringify(contactError.message)}
+                  </h2>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>
