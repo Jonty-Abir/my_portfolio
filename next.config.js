@@ -10,7 +10,7 @@ const nextConfig = {
       "localhost",
       "plus.unsplash.com",
       "serverofabirsantraonilne.adaptable.app",
-      "https://serverofmysite.onrender.com",
+      "serverofmysite.onrender.com",
       "images.unsplash.com",
       "fakestoreapi.com",
       "dfcdn.defacto.com.tr",
